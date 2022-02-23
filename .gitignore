@@ -1,0 +1,8 @@
+/.husky
+/.reports
+/dist
+/hint-report
+/node_modules
+package-lock.json
+*.log
+.npmrc
