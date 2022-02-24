@@ -1,39 +1,57 @@
-import { editor } from 'monaco-editor';
+import { editor, KeyCode, IKeyboardEvent } from 'monaco-editor';
 import { components } from './store';
 import { format } from 'prettier';
 import parserCss from 'prettier/esm/parser-postcss.mjs';
+import { KoliBriDevHelper } from '@kolibri/lib';
+
+const isSaveKeyEvent = (event: IKeyboardEvent) => {
+  return event.ctrlKey || event.keyCode;
+};
 
 /**
  * - https://www.npmjs.com/package/sass
  * - https://www.npmjs.com/package/clean-css
  * - https://www.npmjs.com/package/monaco-editor
  */
-export const createCssEditor = (ref: HTMLElement, component: string, theme: string, setSignal: Function) => {
+export const createCssEditor = (ref: HTMLElement, tagName: string, theme: string, setSignal: Function) => {
   setTimeout(() => {
+    let css = ``;
+    if (
+      typeof window.KoliBri === 'object' &&
+      window.KoliBri !== null &&
+      typeof window.KoliBri.Themes === 'object' &&
+      window.KoliBri.Themes !== null &&
+      typeof window.KoliBri.Themes[theme] === 'object' &&
+      window.KoliBri.Themes[theme] !== null &&
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      typeof window.KoliBri.Themes[theme][tagName] === 'string'
+    ) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      css = window.KoliBri.Themes[theme][tagName];
+      try {
+        css = format(css, { parser: 'css', plugins: [parserCss] });
+      } catch (e) {}
+    }
+    console.log(components, tagName);
     const vs = editor.create(ref, {
-      value: components[component].css,
+      value: css,
       language: 'css',
       theme: 'vs-dark',
       lineNumbers: 'on',
       formatOnPaste: true,
       formatOnType: true,
     });
-    let timeout: NodeJS.Timer;
-    vs.getModel()?.onDidChangeContent(() => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        const css = vs.getValue();
-        window.KoliBriTheme = {
-          [theme]: {
-            'KOL-BUTTON': css,
-          },
-        };
-        // const formattedCss = format(css, { parser: 'css', plugins: [parserCss] });
-        // if (formattedCss != css) vs.setValue(formattedCss);
+
+    vs.onKeyDown((event) => {
+      if ((event.ctrlKey || event.metaKey) && event.keyCode === KeyCode.KeyS) {
+        event.preventDefault();
+        let css = vs.getValue();
+        try {
+          css = format(css, { parser: 'css', plugins: [parserCss] });
+        } catch (e) {}
+        KoliBriDevHelper.patchKoliBriTheme(theme, tagName, css);
         setSignal(() => false);
-        // const css = sass.compile(scss);
-        // const minCss = console.log(vs.getValue());
-      }, 1000);
+      }
     });
   }, 0);
 };
