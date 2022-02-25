@@ -1,12 +1,15 @@
 import { Component, createSignal } from 'solid-js';
 
-import { KolInputText, KolSelect } from '@kolibri/solid';
+import { KolInputText, KolSelect, KolButton } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
+import { createHtmlEditor } from '../editor/html-editor';
 import { KoliBriDevHelper } from '@kolibri/lib';
 
 export const AppComponent: Component = () => {
   const [getTheme, setTheme] = createSignal<string>('default');
   const [getComponent, setComponent] = createSignal<string>('KOL-BUTTON');
+  const [getShow, setShow] = createSignal<boolean>(false);
+  const [getValue, setValue] = createSignal<string>('');
 
   KoliBriDevHelper.patchKoliBriTheme(
     getTheme(),
@@ -54,6 +57,31 @@ export const AppComponent: Component = () => {
     background-color: gray;
   }`
   );
+  const renderJsonString = (theme: String) => {
+    //const val = window?.KoliBri?.Themes?[theme]
+
+    if (
+      typeof window.KoliBri === 'object' &&
+      window.KoliBri !== null &&
+      typeof window.KoliBri.Themes === 'object' &&
+      window.KoliBri.Themes !== null &&
+      typeof window.KoliBri.Themes[theme as string] === 'object' &&
+      window.KoliBri.Themes[theme as string] !== null &&
+      window.KoliBri.Themes[theme as string] !== undefined
+    ) {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+      let cssString = JSON.stringify(window.KoliBri.Themes[theme as string]);
+      try {
+        setShow(true);
+        setValue(cssString);
+        return cssString;
+      } catch (e) {}
+    }
+
+    console.log(window.KoliBri.Themes?.[theme as string]);
+    console.log(theme);
+  };
+  
 
   return (
     <div class="font-sans grid">
@@ -63,6 +91,8 @@ export const AppComponent: Component = () => {
           _on={{
             onChange: (_event, value) => {
               setTheme(value as string);
+              setValue('');
+              setShow(false);
             },
           }}
           _type="text"
@@ -87,7 +117,7 @@ export const AppComponent: Component = () => {
           _value={[getComponent()]}
           _on={{
             onChange: (_event, value) => {
-              setComponent((value as KoliBri.TagName[])[0]);
+              setComponent((value as string[])[0]);
             },
           }}
         >
@@ -95,6 +125,15 @@ export const AppComponent: Component = () => {
         </KolSelect>
       </div>
       <EditorComponent tagName={getComponent()} theme={getTheme()}></EditorComponent>
+      <KolButton
+        _label="Css String generieren"
+        _on={{
+          onClick: () => {
+            renderJsonString(getTheme());
+          },
+        }}
+      ></KolButton>
+      {getShow() && <pre>{getValue()}</pre>}
     </div>
   );
 };
