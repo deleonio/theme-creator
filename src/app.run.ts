@@ -9,21 +9,5 @@ export const run = (name: string, version: string | null, bootstrap: Function): 
     name,
     version,
   });
-  import(
-    /* webpackMode: "eager" */
-    /* webpackChunkName: "shares.register" */
-    './shares/register'
-  )
-    .then(() => {
-      import(
-        /* webpackMode: "eager" */
-        /* webpackChunkName: "shares.routing" */
-        './shares/routing'
-      )
-        .then(() => {
-          bootstrap();
-        })
-        .catch(importCatch);
-    })
-    .catch(importCatch);
+  bootstrap();
 };

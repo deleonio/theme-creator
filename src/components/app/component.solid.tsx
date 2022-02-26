@@ -3,6 +3,7 @@ import { Component, createSignal } from 'solid-js';
 import { KolInputText, KolSelect, KolButton } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper } from '@kolibri/lib';
+import { createTsEditor } from '../editor/ts-editor';
 
 export const AppComponent: Component = () => {
   const [getTheme, setTheme] = createSignal<string>('default');
@@ -56,29 +57,35 @@ export const AppComponent: Component = () => {
     background-color: gray;
   }`
   );
-  const renderJsonString = (theme: String) => {
-    //const val = window?.KoliBri?.Themes?[theme]
-
+  const renderJsonString = (theme: string): void => {
+    setShow(false);
     if (
       typeof window.KoliBri === 'object' &&
       window.KoliBri !== null &&
       typeof window.KoliBri.Themes === 'object' &&
       window.KoliBri.Themes !== null &&
-      typeof window.KoliBri.Themes[theme as string] === 'object' &&
-      window.KoliBri.Themes[theme as string] !== null &&
-      window.KoliBri.Themes[theme as string] !== undefined
+      typeof window.KoliBri.Themes[theme] === 'object' &&
+      window.KoliBri.Themes[theme] !== null &&
+      window.KoliBri.Themes[theme] !== undefined
     ) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-      let cssString = JSON.stringify(window.KoliBri.Themes[theme as string]);
-      try {
-        setShow(true);
-        setValue(cssString);
-        return cssString;
-      } catch (e) {}
+      setValue(JSON.stringify(window.KoliBri.Themes[theme]));
+      setShow(true);
     }
 
-    console.log(window.KoliBri.Themes?.[theme as string]);
+    console.log(window.KoliBri.Themes?.[theme]);
     console.log(theme);
+  };
+
+  const renderTsEditor = (ref: HTMLElement) => {
+    createTsEditor(ref, getValue());
+  };
+
+  const onClickGenerieren = {
+    onClick: (...args: any[]) => {
+      console.log(args);
+      console.log(getTheme());
+      renderJsonString(getTheme());
+    },
   };
 
   return (
@@ -123,15 +130,16 @@ export const AppComponent: Component = () => {
         </KolSelect>
       </div>
       <EditorComponent tagName={getComponent()} theme={getTheme()}></EditorComponent>
-      <KolButton
-        _label="Css String generieren"
-        _on={{
-          onClick: () => {
-            renderJsonString(getTheme());
-          },
-        }}
-      ></KolButton>
-      {getShow() && <pre>{getValue()}</pre>}
+      <KolButton _label="Css String generieren" _on={onClickGenerieren}></KolButton>
+      {getShow() && (
+        <div
+          ref={renderTsEditor}
+          style={{
+            height: '500px',
+            width: '100%',
+          }}
+        ></div>
+      )}
     </div>
   );
 };
