@@ -9,7 +9,10 @@ import { TAG_NAMES } from '../tags';
 const TAG_NAME_LIST: SelectOption<string>[] = [];
 TAG_NAMES.forEach((tagName) => {
   TAG_NAME_LIST.push({
-    label: tagName,
+    label:
+      tagName === 'kol-badge' || tagName === 'kol-breadcrumb' || tagName === 'kol-button'
+        ? tagName
+        : `${tagName} (not prepared yet)`,
     value: tagName.toLocaleUpperCase(),
   });
 });
@@ -209,6 +212,11 @@ export const AppComponent: Component = () => {
             </KolSelect>
           </div>
           <EditorComponent tagName={getComponent()} theme={getTheme()}></EditorComponent>
+          <div class="mt-4">
+            Drücke entweder <code class="text-lg border-1 rounded px-1">Strg + S</code> oder{' '}
+            <code class="text-lg border-1 rounded px-1">Command + S</code>, um die Änderungen zu übernehmen und zu
+            speichern.
+          </div>
           <div class="flex gap-2">
             <KolButton _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
             <KolButton _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="ghost"></KolButton>
