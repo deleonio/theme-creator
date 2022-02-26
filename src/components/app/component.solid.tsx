@@ -2,7 +2,6 @@ import { Component, createSignal } from 'solid-js';
 
 import { KolInputText, KolSelect, KolButton } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
-import { createHtmlEditor } from '../editor/html-editor';
 import { KoliBriDevHelper } from '@kolibri/lib';
 
 export const AppComponent: Component = () => {
