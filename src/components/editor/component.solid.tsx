@@ -15,14 +15,14 @@ export const EditorComponent: Component<Props> = (props: Props) => {
     setShow(() => true);
   }, 0);
 
-  const PreviewComponent = () => components[props.tagName].html;
+  const PreviewComponent = () => components[props.tagName] || <div>No defined.</div>;
 
   const renderEditor = (ref: HTMLElement) => {
     createCssEditor(ref, props.tagName, props.theme, setShow);
   };
 
   return (
-    <div class="grid grid-cols-2 gap-2 items-center content-center h-80vh m-1">
+    <div class="grid grid-cols-2 gap-2 items-center content-center h-80vh">
       {getShow() && (
         <>
           <div class="h-80vh">

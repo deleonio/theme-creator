@@ -2,8 +2,17 @@ import { Component, createSignal } from 'solid-js';
 
 import { KolInputText, KolSelect, KolButton } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
-import { KoliBriDevHelper } from '@kolibri/lib';
+import { KoliBriDevHelper, SelectOption } from '@kolibri/lib';
 import { createTsEditor } from '../editor/ts-editor';
+import { TAG_NAMES } from '../tags';
+
+const TAG_NAME_LIST: SelectOption<string>[] = [];
+TAG_NAMES.forEach((tagName) => {
+  TAG_NAME_LIST.push({
+    label: tagName,
+    value: tagName.toLocaleUpperCase(),
+  });
+});
 
 export const AppComponent: Component = () => {
   const [getTheme, setTheme] = createSignal<string>('default');
@@ -11,7 +20,7 @@ export const AppComponent: Component = () => {
   const [getShow, setShow] = createSignal<boolean>(false);
   const [getValue, setValue] = createSignal<string>('');
 
-  KoliBriDevHelper.patchKoliBriTheme(
+  KoliBriDevHelper.patchTheme(
     getTheme(),
     'KOL-BADGE',
     `:host span {
@@ -19,7 +28,15 @@ export const AppComponent: Component = () => {
   padding: 0.5em 1em;
 }`
   );
-  KoliBriDevHelper.patchKoliBriTheme(
+  KoliBriDevHelper.patchTheme(
+    getTheme(),
+    'KOL-BREADCRUMB',
+    `:host kol-link {
+      color: green;
+    }
+    `
+  );
+  KoliBriDevHelper.patchTheme(
     getTheme(),
     'KOL-BUTTON',
     `:host button {
@@ -58,7 +75,6 @@ export const AppComponent: Component = () => {
   }`
   );
   const renderJsonString = (theme: string): void => {
-    setShow(false);
     if (
       typeof window.KoliBri === 'object' &&
       window.KoliBri !== null &&
@@ -68,77 +84,76 @@ export const AppComponent: Component = () => {
       window.KoliBri.Themes[theme] !== null &&
       window.KoliBri.Themes[theme] !== undefined
     ) {
+      const styles = window.KoliBri.Themes[theme];
+      const keys = Object.getOwnPropertyNames(styles);
+      keys.forEach((key: string) => {
+        styles[key] = (styles[key] as string).replace(/( {2,}|\n|)/g, '');
+      });
       setValue(JSON.stringify(window.KoliBri.Themes[theme]));
-      setShow(true);
     }
-
-    console.log(window.KoliBri.Themes?.[theme]);
-    console.log(theme);
   };
 
   const renderTsEditor = (ref: HTMLElement) => {
-    createTsEditor(ref, getValue());
+    createTsEditor(ref, getTheme(), getValue() || '{}');
   };
 
-  const onClickGenerieren = {
-    onClick: (...args: any[]) => {
-      console.log(args);
-      console.log(getTheme());
+  const onClickCreate = {
+    onClick: () => {
       renderJsonString(getTheme());
+      setShow(true);
+    },
+  };
+
+  const onClickEdit = {
+    onClick: () => {
+      setShow(false);
     },
   };
 
   return (
-    <div class="font-sans grid">
-      <div class="m-1 grid grid-cols-2 gap-2">
-        <KolInputText
-          _value={getTheme()}
-          _on={{
-            onChange: (_event, value) => {
-              setTheme(value as string);
-              setValue('');
-              setShow(false);
-            },
-          }}
-          _type="text"
-        >
-          Theme
-        </KolInputText>
-        <KolSelect
-          _list={[
-            {
-              label: 'Badge',
-              value: 'KOL-BADGE',
-            },
-            {
-              label: 'Breadcrumb',
-              value: 'KOL-BREADCRUMB',
-            },
-            {
-              label: 'Button',
-              value: 'KOL-BUTTON',
-            },
-          ]}
-          _value={[getComponent()]}
-          _on={{
-            onChange: (_event, value) => {
-              setComponent((value as string[])[0]);
-            },
-          }}
-        >
-          Komponenten
-        </KolSelect>
-      </div>
-      <EditorComponent tagName={getComponent()} theme={getTheme()}></EditorComponent>
-      <KolButton _label="Css String generieren" _on={onClickGenerieren}></KolButton>
-      {getShow() && (
-        <div
-          ref={renderTsEditor}
-          style={{
-            height: '500px',
-            width: '100%',
-          }}
-        ></div>
+    <div class="font-sans grid gap-2">
+      {getShow() ? (
+        <>
+          <div
+            ref={renderTsEditor}
+            style={{
+              height: '500px',
+              width: '100%',
+            }}
+          ></div>
+          <KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
+        </>
+      ) : (
+        <>
+          <div class="grid grid-cols-2 gap-2">
+            <KolInputText
+              _value={getTheme()}
+              _on={{
+                onChange: (_event, value) => {
+                  setTheme(value as string);
+                  setValue('');
+                  setShow(false);
+                },
+              }}
+              _type="text"
+            >
+              Theme
+            </KolInputText>
+            <KolSelect
+              _list={TAG_NAME_LIST}
+              _value={[getComponent()]}
+              _on={{
+                onChange: (_event, value) => {
+                  setComponent((value as string[])[0]);
+                },
+              }}
+            >
+              Komponenten
+            </KolSelect>
+          </div>
+          <EditorComponent tagName={getComponent()} theme={getTheme()}></EditorComponent>
+          <KolButton _label="Theme erstellen" _on={onClickCreate}></KolButton>
+        </>
       )}
     </div>
   );

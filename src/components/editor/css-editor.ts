@@ -1,12 +1,8 @@
-import { editor, KeyCode, IKeyboardEvent } from 'monaco-editor';
+import { editor, KeyCode } from 'monaco-editor';
 import { components } from './store';
 import { format } from 'prettier';
 import parserCss from 'prettier/esm/parser-postcss.mjs';
 import { KoliBriDevHelper } from '@kolibri/lib';
-
-const isSaveKeyEvent = (event: IKeyboardEvent) => {
-  return event.ctrlKey || event.keyCode;
-};
 
 /**
  * - https://www.npmjs.com/package/sass
@@ -27,12 +23,11 @@ export const createCssEditor = (ref: HTMLElement, tagName: string, theme: string
       typeof window.KoliBri.Themes[theme][tagName] === 'string'
     ) {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-      css = window.KoliBri.Themes[theme][tagName];
+      css = window.KoliBri.Themes[theme][tagName] as string;
       try {
         css = format(css, { parser: 'css', plugins: [parserCss] });
       } catch (e) {}
     }
-    console.log(components, tagName);
     const vs = editor.create(ref, {
       value: css,
       language: 'css',
@@ -49,7 +44,7 @@ export const createCssEditor = (ref: HTMLElement, tagName: string, theme: string
         try {
           css = format(css, { parser: 'css', plugins: [parserCss] });
         } catch (e) {}
-        KoliBriDevHelper.patchKoliBriTheme(theme, tagName, css);
+        KoliBriDevHelper.patchTheme(theme, tagName, css);
         setSignal(() => false);
       }
     });

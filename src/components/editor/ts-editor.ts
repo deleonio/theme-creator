@@ -7,14 +7,14 @@ import parserTypeScript from 'prettier/esm/parser-typescript.mjs';
  * - https://www.npmjs.com/package/clean-css
  * - https://www.npmjs.com/package/monaco-editor
  */
-export const createTsEditor = (ref: HTMLElement, code: string) => {
+export const createTsEditor = (ref: HTMLElement, theme: string, code: string) => {
   setTimeout(() => {
     try {
       code = format(
         `
 import { KoliBriDevHelper } from '@kolibri/lib';
 
-KoliBriDevHelper.patchKoliBriTheme(${code}); `,
+KoliBriDevHelper.patchTheme('${theme}', ${code}); `,
         { parser: 'typescript', plugins: [parserTypeScript] }
       );
     } catch (e) {}
