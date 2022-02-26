@@ -81,7 +81,6 @@ export const AppComponent: Component = () => {
     console.log(window.KoliBri.Themes?.[theme as string]);
     console.log(theme);
   };
-  
 
   return (
     <div class="font-sans grid">
