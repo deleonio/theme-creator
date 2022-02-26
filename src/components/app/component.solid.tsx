@@ -14,13 +14,39 @@ TAG_NAMES.forEach((tagName) => {
   });
 });
 
+const restoreThemes = () => {
+  let store: Record<string, Record<string, string>> = {};
+  try {
+    store = JSON.parse(localStorage.getItem('kolibri-themes') || '{}') as Record<string, Record<string, string>>;
+  } catch (e) {}
+  if (typeof store === 'object' && store !== null) {
+    const themeNames = Object.getOwnPropertyNames(store);
+    themeNames.forEach((themeName) => {
+      if (typeof store[themeName] === 'object' && store[themeName] !== null) {
+        KoliBriDevHelper.patchTheme(themeName, store[themeName]);
+      }
+    });
+  }
+};
+
+const storeThemes = () => {
+  if (
+    typeof window.KoliBri === 'object' &&
+    window.KoliBri !== null &&
+    typeof window.KoliBri.Themes === 'object' &&
+    window.KoliBri.Themes !== null
+  ) {
+    localStorage.setItem('kolibri-themes', JSON.stringify(window.KoliBri.Themes));
+  }
+};
+
 export const AppComponent: Component = () => {
   const [getTheme, setTheme] = createSignal<string>('default');
   const [getComponent, setComponent] = createSignal<string>('KOL-BUTTON');
   const [getShow, setShow] = createSignal<boolean>(false);
   const [getValue, setValue] = createSignal<string>('');
 
-  KoliBriDevHelper.patchTheme(
+  KoliBriDevHelper.patchThemeTag(
     getTheme(),
     'KOL-BADGE',
     `:host span {
@@ -28,7 +54,7 @@ export const AppComponent: Component = () => {
   padding: 0.5em 1em;
 }`
   );
-  KoliBriDevHelper.patchTheme(
+  KoliBriDevHelper.patchThemeTag(
     getTheme(),
     'KOL-BREADCRUMB',
     `:host kol-link {
@@ -36,7 +62,7 @@ export const AppComponent: Component = () => {
     }
     `
   );
-  KoliBriDevHelper.patchTheme(
+  KoliBriDevHelper.patchThemeTag(
     getTheme(),
     'KOL-BUTTON',
     `:host button {
@@ -74,6 +100,8 @@ export const AppComponent: Component = () => {
     background-color: gray;
   }`
   );
+  restoreThemes();
+  setInterval(storeThemes, 1000);
   const renderJsonString = (theme: string): void => {
     if (
       typeof window.KoliBri === 'object' &&
@@ -107,6 +135,13 @@ export const AppComponent: Component = () => {
   const onClickEdit = {
     onClick: () => {
       setShow(false);
+    },
+  };
+
+  const onClickClear = {
+    onClick: () => {
+      localStorage.removeItem('kolibri-themes');
+      window.location.reload();
     },
   };
 
@@ -174,7 +209,10 @@ export const AppComponent: Component = () => {
             </KolSelect>
           </div>
           <EditorComponent tagName={getComponent()} theme={getTheme()}></EditorComponent>
-          <KolButton _label="Theme erstellen" _on={onClickCreate}></KolButton>
+          <div class="flex gap-2">
+            <KolButton _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
+            <KolButton _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="ghost"></KolButton>
+          </div>
         </>
       )}
     </div>
