@@ -1,6 +1,6 @@
 import { Component, createSignal } from 'solid-js';
 
-import { KolInputText, KolSelect, KolButton } from '@kolibri/solid';
+import { KolInputText, KolSelect, KolButton, KolHeading, KolAlert, KolLink } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@kolibri/lib';
 import { createTsEditor } from '../editor/ts-editor';
@@ -114,13 +114,35 @@ export const AppComponent: Component = () => {
     <div class="font-sans grid gap-2">
       {getShow() ? (
         <>
-          <div
-            ref={renderTsEditor}
-            style={{
-              height: '500px',
-              width: '100%',
-            }}
-          ></div>
+          <div class="grid grid-cols-2 gap-2">
+            <div>
+              <KolHeading>Theming</KolHeading>
+              <KolAlert _type="info">
+                Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden
+                Sie sich gerne an <KolLink _href="mailto: ---@---.de">---@---.de</KolLink>
+              </KolAlert>
+              <p>
+                KoliBri ist eine Komponenten-Bibliothek mit barrierefreien Basis-Komponenten die komponentenweise
+                gestyled werden können.
+              </p>
+              <p>
+                Zum Gestalten der Komponenten werden sogenannte Themes verwendet. Jedes Theme beinhaltet
+                CSS-Definitionen, die jede Komponente individuell stylt.
+              </p>
+              <KolHeading>Theme einbinden</KolHeading>
+              <p>
+                Um ihr Theme ({getTheme()}) in ihre Anwendung einzubinden, müssen Sie einfach den Quellcode kopieren und
+                in z.B. die <code>main.ts</code> ihrer Anwendung einfügen.
+              </p>
+            </div>
+            <div
+              ref={renderTsEditor}
+              style={{
+                height: '500px',
+                width: '100%',
+              }}
+            ></div>
+          </div>
           <KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
         </>
       ) : (
