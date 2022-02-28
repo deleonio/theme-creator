@@ -160,10 +160,6 @@ export const AppComponent: Component = () => {
                 Sie sich gerne an <KolLink _href="mailto: ---@---.de">---@---.de</KolLink>
               </KolAlert>
               <p>
-                KoliBri ist eine Komponenten-Bibliothek mit barrierefreien Basis-Komponenten die komponentenweise
-                gestyled werden können.
-              </p>
-              <p>
                 Zum Gestalten der Komponenten werden sogenannte Themes verwendet. Jedes Theme beinhaltet
                 CSS-Definitionen, die jede Komponente individuell stylt.
               </p>
