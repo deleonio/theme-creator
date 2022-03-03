@@ -250,7 +250,7 @@ export const AppComponent: Component = () => {
   };
 
   return (
-    <div class="mapz font-sans grid gap-2">
+    <div class="font-sans grid gap-2">
       {getShow() ? (
         <>
           <div class="grid grid-cols-2 gap-2">
