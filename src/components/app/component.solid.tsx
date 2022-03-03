@@ -10,7 +10,41 @@ const TAG_NAME_LIST: SelectOption<string>[] = [];
 TAG_NAMES.forEach((tagName) => {
   TAG_NAME_LIST.push({
     label:
-      tagName === 'kol-badge' || tagName === 'kol-breadcrumb' || tagName === 'kol-button'
+      tagName === 'kol-abbr' ||
+      tagName === 'kol-accordion' ||
+      tagName === 'kol-alert' ||
+      tagName === 'kol-badge' ||
+      tagName === 'kol-breadcrumb' ||
+      tagName === 'kol-button' ||
+      tagName === 'kol-button-group' ||
+      tagName === 'kol-card' ||
+      tagName === 'kol-details' ||
+      tagName === 'kol-heading' ||
+      tagName === 'kol-icon-font-awesome' ||
+      tagName === 'kol-icon-icofont' ||
+      tagName === 'kol-indented-text' ||
+      tagName === 'kol-input-checkbox' ||
+      tagName === 'kol-input-color' ||
+      tagName === 'kol-input-email' ||
+      tagName === 'kol-input-file' ||
+      tagName === 'kol-input-number' ||
+      tagName === 'kol-input-password' ||
+      tagName === 'kol-input-range' ||
+      tagName === 'kol-input-radio' ||
+      tagName === 'kol-input-text' ||
+      tagName === 'kol-link' ||
+      tagName === 'kol-link-group' ||
+      tagName === 'kol-logo' ||
+      tagName === 'kol-modal' ||
+      tagName === 'kol-nav' ||
+      tagName === 'kol-progress' ||
+      tagName === 'kol-select' ||
+      tagName === 'kol-spin' ||
+      tagName === 'kol-table' ||
+      tagName === 'kol-tabs' ||
+      tagName === 'kol-textarea' ||
+      tagName === 'kol-tooltip' ||
+      tagName === 'kol-version'
         ? tagName
         : `${tagName} (not prepared yet)`,
     value: tagName.toLocaleUpperCase(),
@@ -51,11 +85,32 @@ export const AppComponent: Component = () => {
 
   KoliBriDevHelper.patchThemeTag(
     getTheme(),
+    'KOL-ABBR',
+    `:host abbr {
+      background-color: #2D424DE3;
+      color: #fff;
+    }`
+  );
+  KoliBriDevHelper.patchThemeTag(
+    getTheme(),
+    'KOL-ACCORDION',
+    `:host kol-heading {
+      border-color: #bec5c9;
+      border-style: solid;
+      border-width: 1px;
+      padding: 0.25em;
+    }
+    :host kol-icon-icofont {
+      padding-right: 0.5em;
+    }`
+  );
+  KoliBriDevHelper.patchThemeTag(
+    getTheme(),
     'KOL-BADGE',
     `:host span {
-  border-radius: 2em;
-  padding: 0.5em 1em;
-}`
+      border-radius: 2em;
+      padding: 0.5em 1em;
+    }`
   );
   KoliBriDevHelper.patchThemeTag(
     getTheme(),
@@ -103,6 +158,52 @@ export const AppComponent: Component = () => {
     background-color: gray;
   }`
   );
+  KoliBriDevHelper.patchThemeTag(
+    getTheme(),
+    'KOL-BUTTON-GROUP',
+    `:host button {
+    border-radius: 2em;
+    padding: 0.5em 1em;
+  }
+  :host button.primary {
+    background-color: blueviolet;
+  }
+  :host button.primary:hover {
+    background-color: white;
+  }
+  :host button.secondary {
+    background-color: rgb(165, 89, 236);
+  }
+  :host button.secondary:hover {
+    background-color: white;
+  }
+  :host button.normal {
+    background-color: rgb(43, 153, 226);
+  }
+  :host button.normal:hover {
+    background-color: white;
+  }
+  :host button.danger {
+    background-color: red;
+  }
+  :host button.danger:hover {
+    background-color: white;
+  }
+  :host button.ghost {
+    background-color: white;
+  }
+  :host button.ghost:hover {
+    background-color: gray;
+  }`
+  );
+  KoliBriDevHelper.patchThemeTag(
+    getTheme(),
+    'KOL-LOGO',
+    `kol-logo {
+      width: 300px;
+    }
+    `
+  );
   restoreThemes();
   setInterval(storeThemes, 1000);
   const renderJsonString = (theme: string): void => {
@@ -149,7 +250,7 @@ export const AppComponent: Component = () => {
   };
 
   return (
-    <div class="font-sans grid gap-2">
+    <div class="mapz font-sans grid gap-2">
       {getShow() ? (
         <>
           <div class="grid grid-cols-2 gap-2">
