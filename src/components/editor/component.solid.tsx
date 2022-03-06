@@ -22,7 +22,7 @@ export const EditorComponent: Component<Props> = (props: Props) => {
   };
 
   return (
-    <div class="grid grid-cols-2 gap-2 items-center content-center">
+    <div class={`grid grid-cols-2 gap-2 items-center content-center ${props.theme}`}>
       {getShow() && (
         <>
           <div class="h-70vh">
