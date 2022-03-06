@@ -10,7 +10,7 @@
     "lint": "eslint \"{src,tests}/**/*.{html,js,json,jsx,ts,tsx,gql,graphql}\"",
     "reinstall": "npm run remove && npm install",
     "reinstall:kolibri": "rm -rf node_modules/@kolibri && npm update @kolibri/lib @kolibri/solid",
-    "remove": "rm -rf node_modules package-lock.json",
+    "remove": "git clean -f -d -X",
     "update": "ncu -t minor -u && npm install && ncu",
     "build": "cross-env NODE_ENV=production webpack",
     "start": "npm run serve -- --open",
@@ -22,8 +22,8 @@
     "pre-commit": "lint-staged"
   },
   "dependencies": {
-    "@kolibri/lib": "1.0.10-rc.2",
-    "@kolibri/solid": "1.0.10-rc.2",
+    "@kolibri/lib": "1.0.10",
+    "@kolibri/solid": "1.0.10",
     "@leanup/cli": "1.3.6",
     "@leanup/cli-solid": "1.3.6",
     "@leanup/form": "1.3.6",

@@ -1,10 +1,24 @@
 import { Component, createSignal } from 'solid-js';
 
-import { KolInputText, KolSelect, KolButton, KolHeading, KolAlert, KolLink } from '@kolibri/solid';
+import { KolInputText, KolSelect, KolButton, KolHeading, KolAlert, KolLink, KolInputFile } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@kolibri/lib';
 import { createTsEditor } from '../editor/ts-editor';
+import { format } from 'prettier';
+import parserBabel from 'prettier/esm/parser-babel.mjs';
 import { TAG_NAMES } from '../tags';
+
+const saveData = (content: string, fileName: string) => {
+  const a = document.createElement('a');
+  document.body.appendChild(a);
+  a.style.display = 'none';
+  const blob = new Blob([content], { type: 'octet/stream' }),
+    url = window.URL.createObjectURL(blob);
+  a.href = url;
+  a.download = fileName;
+  a.click();
+  window.URL.revokeObjectURL(url);
+};
 
 const TAG_NAME_LIST: SelectOption<string>[] = [];
 TAG_NAMES.forEach((tagName) => {
@@ -78,7 +92,7 @@ const storeThemes = () => {
 };
 
 export const AppComponent: Component = () => {
-  const [getTheme, setTheme] = createSignal<string>('default');
+  const [getTheme, setTheme] = createSignal<string>(localStorage.getItem('kolibri-theme') || 'default');
   const [getComponent, setComponent] = createSignal<string>('KOL-BUTTON');
   const [getShow, setShow] = createSignal<boolean>(false);
   const [getValue, setValue] = createSignal<string>('');
@@ -236,6 +250,29 @@ export const AppComponent: Component = () => {
     },
   };
 
+  const onClickDownload = {
+    onClick: () => {
+      renderJsonString(getTheme());
+      console.log(getValue(), format(getValue(), { parser: 'json', plugins: [parserBabel] }));
+      saveData(format(getValue(), { parser: 'json', plugins: [parserBabel] }), `kolibri-theme-${getTheme()}.json`);
+    },
+  };
+
+  const onChangeUpload = {
+    onChange: (_event: Event, value: unknown) => {
+      if (value instanceof FileList && value.item(0) instanceof File) {
+        value
+          .item(0)
+          ?.text()
+          .then((content: string) => {
+            KoliBriDevHelper.patchTheme(getTheme(), JSON.parse(content) as Record<string, string>);
+            window.location.reload();
+          })
+          .catch(console.warn);
+      }
+    },
+  };
+
   const onClickEdit = {
     onClick: () => {
       setShow(false);
@@ -244,13 +281,14 @@ export const AppComponent: Component = () => {
 
   const onClickClear = {
     onClick: () => {
+      localStorage.removeItem('kolibri-theme');
       localStorage.removeItem('kolibri-themes');
       window.location.reload();
     },
   };
 
   return (
-    <div class="font-sans grid gap-2">
+    <div class={`font-sans grid gap-2 ${getTheme()}`}>
       {getShow() ? (
         <>
           <div class="grid grid-cols-2 gap-2">
@@ -287,6 +325,7 @@ export const AppComponent: Component = () => {
               _value={getTheme()}
               _on={{
                 onChange: (_event, value) => {
+                  localStorage.setItem('kolibri-theme', value as string);
                   setTheme(value as string);
                   setValue('');
                   setShow(false);
@@ -316,7 +355,11 @@ export const AppComponent: Component = () => {
           </div>
           <div class="flex gap-2">
             <KolButton _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
-            <KolButton _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="ghost"></KolButton>
+            <KolButton _label="Theme herunterladen" _on={onClickDownload}></KolButton>
+            <KolButton _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
+          </div>
+          <div class="flex gap-2">
+            <KolInputFile _on={onChangeUpload}>Theme laden</KolInputFile>
           </div>
         </>
       )}
