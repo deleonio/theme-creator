@@ -1,3 +1,4 @@
+import { KolTabs } from '@kolibri/solid';
 import { Component, createSignal } from 'solid-js';
 
 import { createCssEditor } from './css-editor';
@@ -22,17 +23,11 @@ export const EditorComponent: Component<Props> = (props: Props) => {
   };
 
   return (
-    <div class={`grid grid-cols-2 gap-2 items-center content-center ${props.theme}`}>
+    <div class="grid grid-cols-2 gap-2 items-center content-center">
       {getShow() && (
         <>
           <div class="h-70vh">
-            <div
-              ref={renderEditor}
-              style={{
-                height: '100%',
-                width: '100%',
-              }}
-            ></div>
+            <div ref={renderEditor} class="block w-full h-full"></div>
             {/* <div
           ref={(ref) => createHtmlEditor(ref, props.component)}
           style={{
@@ -41,7 +36,12 @@ export const EditorComponent: Component<Props> = (props: Props) => {
           }}
         ></div> */}
           </div>
-          <div class="text-center" data-theme={props.theme}>
+          <div
+            class={`text-center ${props.theme}`}
+            data-theme={props.theme}
+            data-theme-cache="false"
+            data-theme-reset="true"
+          >
             <PreviewComponent />
           </div>
         </>

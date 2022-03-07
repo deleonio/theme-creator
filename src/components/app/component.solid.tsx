@@ -288,7 +288,7 @@ export const AppComponent: Component = () => {
   };
 
   return (
-    <div class="font-sans grid gap-2" data-theme="default">
+    <div class="font-sans grid gap-2 mapz" data-theme="mapz">
       {getShow() ? (
         <>
           <div class="grid grid-cols-2 gap-2">
