@@ -7,18 +7,7 @@ import { createTsEditor } from '../editor/ts-editor';
 import { format } from 'prettier';
 import parserBabel from 'prettier/esm/parser-babel.mjs';
 import { TAG_NAMES } from '../tags';
-
-const saveData = (content: string, fileName: string) => {
-  const a = document.createElement('a');
-  document.body.appendChild(a);
-  a.style.display = 'none';
-  const blob = new Blob([content], { type: 'octet/stream' }),
-    url = window.URL.createObjectURL(blob);
-  a.href = url;
-  a.download = fileName;
-  a.click();
-  window.URL.revokeObjectURL(url);
-};
+import { restoreThemes, saveData, storeThemes } from '../../shares/theme';
 
 const TAG_NAME_LIST: SelectOption<string>[] = [];
 TAG_NAMES.forEach((tagName) => {
@@ -64,32 +53,6 @@ TAG_NAMES.forEach((tagName) => {
     value: tagName.toLocaleUpperCase(),
   });
 });
-
-const restoreThemes = () => {
-  let store: Record<string, Record<string, string>> = {};
-  try {
-    store = JSON.parse(localStorage.getItem('kolibri-themes') || '{}') as Record<string, Record<string, string>>;
-  } catch (e) {}
-  if (typeof store === 'object' && store !== null) {
-    const themeNames = Object.getOwnPropertyNames(store);
-    themeNames.forEach((themeName) => {
-      if (typeof store[themeName] === 'object' && store[themeName] !== null) {
-        KoliBriDevHelper.patchTheme(themeName, store[themeName]);
-      }
-    });
-  }
-};
-
-const storeThemes = () => {
-  if (
-    typeof window.KoliBri === 'object' &&
-    window.KoliBri !== null &&
-    typeof window.KoliBri.Themes === 'object' &&
-    window.KoliBri.Themes !== null
-  ) {
-    localStorage.setItem('kolibri-themes', JSON.stringify(window.KoliBri.Themes));
-  }
-};
 
 export const AppComponent: Component = () => {
   const [getTheme, setTheme] = createSignal<string>(localStorage.getItem('kolibri-theme') || 'default');
@@ -219,7 +182,6 @@ export const AppComponent: Component = () => {
     `
   );
   restoreThemes();
-  setInterval(storeThemes, 1000);
   const renderJsonString = (theme: string): void => {
     if (
       typeof window.KoliBri === 'object' &&
@@ -253,7 +215,6 @@ export const AppComponent: Component = () => {
   const onClickDownload = {
     onClick: () => {
       renderJsonString(getTheme());
-      console.log(getValue(), format(getValue(), { parser: 'json', plugins: [parserBabel] }));
       saveData(format(getValue(), { parser: 'json', plugins: [parserBabel] }), `kolibri-theme-${getTheme()}.json`);
     },
   };
@@ -266,6 +227,7 @@ export const AppComponent: Component = () => {
           ?.text()
           .then((content: string) => {
             KoliBriDevHelper.patchTheme(getTheme(), JSON.parse(content) as Record<string, string>);
+            storeThemes();
             window.location.reload();
           })
           .catch(console.warn);
@@ -288,11 +250,11 @@ export const AppComponent: Component = () => {
   };
 
   return (
-    <div class="font-sans grid gap-2 mapz" data-theme="mapz">
+    <div class="font-sans grid gap-2" data-theme="mapz">
       {getShow() ? (
         <>
           <div class="grid grid-cols-2 gap-2">
-            <div>
+            <div class="mapz">
               <KolHeading>Theming</KolHeading>
               <KolAlert _type="info">
                 Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden
@@ -320,7 +282,7 @@ export const AppComponent: Component = () => {
         </>
       ) : (
         <>
-          <div class="grid grid-cols-2 gap-2">
+          <div class="grid gap-2 grid-cols-2 mapz">
             <KolInputText
               _value={getTheme()}
               _on={{
@@ -348,18 +310,20 @@ export const AppComponent: Component = () => {
             </KolSelect>
           </div>
           <EditorComponent tagName={getComponent()} theme={getTheme()}></EditorComponent>
-          <div class="mt-4">
-            Drücke entweder <code class="text-lg border-1 rounded px-1">Strg + S</code> oder{' '}
-            <code class="text-lg border-1 rounded px-1">Command + S</code>, um die Änderungen zu übernehmen und zu
-            speichern.
-          </div>
-          <div class="flex gap-2">
-            <KolButton _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
-            <KolButton _label="Theme herunterladen" _on={onClickDownload}></KolButton>
-            <KolButton _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
-          </div>
-          <div class="flex gap-2">
-            <KolInputFile _on={onChangeUpload}>Theme laden</KolInputFile>
+          <div class="grid gap-2 mapz">
+            <div class="mt-4">
+              Drücke entweder <code class="text-lg border-1 rounded px-1">Strg + S</code> oder{' '}
+              <code class="text-lg border-1 rounded px-1">Command + S</code>, um die Änderungen zu übernehmen und zu
+              speichern.
+            </div>
+            <div class="flex gap-2">
+              <KolButton _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
+              <KolButton _label="Theme herunterladen" _on={onClickDownload}></KolButton>
+              <KolButton _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
+            </div>
+            <div class="flex gap-2">
+              <KolInputFile _on={onChangeUpload}>Theme laden</KolInputFile>
+            </div>
           </div>
         </>
       )}

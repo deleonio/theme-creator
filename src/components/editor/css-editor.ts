@@ -2,6 +2,7 @@ import { editor, KeyCode } from 'monaco-editor';
 import { format } from 'prettier';
 import parserCss from 'prettier/esm/parser-postcss.mjs';
 import { KoliBriDevHelper } from '@kolibri/lib';
+import { storeThemes } from '../../shares/theme';
 
 /**
  * - https://www.npmjs.com/package/sass
@@ -44,6 +45,7 @@ export const createCssEditor = (ref: HTMLElement, tagName: string, theme: string
           css = format(css, { parser: 'css', plugins: [parserCss] });
         } catch (e) {}
         KoliBriDevHelper.patchThemeTag(theme, tagName, css);
+        storeThemes();
         setSignal(() => false);
       }
     });

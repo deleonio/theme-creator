@@ -57,6 +57,6 @@
     "npm-check-updates": "12.5.2",
     "sass": "1.49.9",
     "selenium-server": "3.141.59",
-    "typescript": "4.6.2"
+    "typescript": "4.5.5"
   }
 }
