@@ -60,128 +60,8 @@ export const AppComponent: Component = () => {
   const [getShow, setShow] = createSignal<boolean>(false);
   const [getValue, setValue] = createSignal<string>('');
 
-  KoliBriDevHelper.patchThemeTag(
-    getTheme(),
-    'KOL-ABBR',
-    `:host abbr {
-      background-color: #2D424DE3;
-      color: #fff;
-    }`
-  );
-  KoliBriDevHelper.patchThemeTag(
-    getTheme(),
-    'KOL-ACCORDION',
-    `:host kol-heading {
-      border-color: #bec5c9;
-      border-style: solid;
-      border-width: 1px;
-      padding: 0.25em;
-    }
-    :host kol-icon-icofont {
-      padding-right: 0.5em;
-    }`
-  );
-  KoliBriDevHelper.patchThemeTag(
-    getTheme(),
-    'KOL-BADGE',
-    `:host span {
-      border-radius: 2em;
-      padding: 0.5em 1em;
-    }`
-  );
-  KoliBriDevHelper.patchThemeTag(
-    getTheme(),
-    'KOL-BREADCRUMB',
-    `:host kol-link {
-      color: green;
-    }
-    `
-  );
-  KoliBriDevHelper.patchThemeTag(
-    getTheme(),
-    'KOL-BUTTON',
-    `:host button {
-    border-radius: 2em;
-    padding: 0.5em 1em;
-  }
-  :host button.primary {
-    background-color: blueviolet;
-  }
-  :host button.primary:hover {
-    background-color: white;
-  }
-  :host button.secondary {
-    background-color: rgb(165, 89, 236);
-  }
-  :host button.secondary:hover {
-    background-color: white;
-  }
-  :host button.normal {
-    background-color: rgb(43, 153, 226);
-  }
-  :host button.normal:hover {
-    background-color: white;
-  }
-  :host button.danger {
-    background-color: red;
-  }
-  :host button.danger:hover {
-    background-color: white;
-  }
-  :host button.ghost {
-    background-color: white;
-  }
-  :host button.ghost:hover {
-    background-color: gray;
-  }`
-  );
-  KoliBriDevHelper.patchThemeTag(
-    getTheme(),
-    'KOL-BUTTON-GROUP',
-    `:host button {
-    border-radius: 2em;
-    padding: 0.5em 1em;
-  }
-  :host button.primary {
-    background-color: blueviolet;
-  }
-  :host button.primary:hover {
-    background-color: white;
-  }
-  :host button.secondary {
-    background-color: rgb(165, 89, 236);
-  }
-  :host button.secondary:hover {
-    background-color: white;
-  }
-  :host button.normal {
-    background-color: rgb(43, 153, 226);
-  }
-  :host button.normal:hover {
-    background-color: white;
-  }
-  :host button.danger {
-    background-color: red;
-  }
-  :host button.danger:hover {
-    background-color: white;
-  }
-  :host button.ghost {
-    background-color: white;
-  }
-  :host button.ghost:hover {
-    background-color: gray;
-  }`
-  );
-  KoliBriDevHelper.patchThemeTag(
-    getTheme(),
-    'KOL-LOGO',
-    `kol-logo {
-      width: 300px;
-    }
-    `
-  );
   restoreThemes();
+
   const renderJsonString = (theme: string): void => {
     if (
       typeof window.KoliBri === 'object' &&
@@ -215,7 +95,10 @@ export const AppComponent: Component = () => {
   const onClickDownload = {
     onClick: () => {
       renderJsonString(getTheme());
-      saveData(format(getValue(), { parser: 'json', plugins: [parserBabel] }), `kolibri-theme-${getTheme()}.json`);
+      saveData(
+        format(getValue(), { parser: 'json', plugins: [parserBabel] }),
+        `kolibri-theme-${getTheme()}-${new Date().toISOString()}.json`
+      );
     },
   };
 
@@ -246,6 +129,20 @@ export const AppComponent: Component = () => {
       localStorage.removeItem('kolibri-theme');
       localStorage.removeItem('kolibri-themes');
       window.location.reload();
+    },
+  };
+
+  let timeoutTheme: NodeJS.Timer;
+  const onTheme = {
+    onChange: (_event: Event, value: unknown) => {
+      clearTimeout(timeoutTheme);
+      timeoutTheme = setTimeout(() => {
+        clearTimeout(timeoutTheme);
+        localStorage.setItem('kolibri-theme', value as string);
+        setTheme(value as string);
+        setValue('');
+        setShow(false);
+      }, 1000);
     },
   };
 
@@ -283,18 +180,7 @@ export const AppComponent: Component = () => {
       ) : (
         <>
           <div class="grid gap-2 grid-cols-2 mapz">
-            <KolInputText
-              _value={getTheme()}
-              _on={{
-                onChange: (_event, value) => {
-                  localStorage.setItem('kolibri-theme', value as string);
-                  setTheme(value as string);
-                  setValue('');
-                  setShow(false);
-                },
-              }}
-              _type="text"
-            >
+            <KolInputText _value={getTheme()} _on={onTheme} _type="text">
               Theme
             </KolInputText>
             <KolSelect
