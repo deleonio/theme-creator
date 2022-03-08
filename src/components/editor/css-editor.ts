@@ -4,6 +4,14 @@ import parserCss from 'prettier/esm/parser-postcss.mjs';
 import { KoliBriDevHelper } from '@kolibri/lib';
 import { storeThemes } from '../../shares/theme';
 
+let position: {
+  column: number;
+  lineNumber: number;
+} | null = {
+  column: 0,
+  lineNumber: 0,
+};
+
 /**
  * - https://www.npmjs.com/package/sass
  * - https://www.npmjs.com/package/clean-css
@@ -36,10 +44,18 @@ export const createCssEditor = (ref: HTMLElement, tagName: string, theme: string
       formatOnPaste: true,
       formatOnType: true,
     });
+    vs.setPosition(
+      position || {
+        column: 0,
+        lineNumber: 0,
+      }
+    );
+    vs.focus();
 
     vs.onKeyDown((event) => {
       if ((event.ctrlKey || event.metaKey) && event.keyCode === KeyCode.KeyS) {
         event.preventDefault();
+        position = vs.getPosition();
         let css = vs.getValue();
         try {
           css = format(css, { parser: 'css', plugins: [parserCss] });
