@@ -253,8 +253,8 @@ export const AppComponent: Component = () => {
     <div class="font-sans grid gap-2" data-theme="mapz">
       {getShow() ? (
         <>
-          <div class="grid grid-cols-2 gap-2">
-            <div class="mapz">
+          <div class="grid grid-cols-2 gap-2 mapz">
+            <div>
               <KolHeading>Theming</KolHeading>
               <KolAlert _type="info">
                 Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden
@@ -277,8 +277,8 @@ export const AppComponent: Component = () => {
                 width: '100%',
               }}
             ></div>
+            <KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
           </div>
-          <KolButton _label="Theme editieren" _on={onClickEdit}></KolButton>
         </>
       ) : (
         <>
