@@ -200,7 +200,7 @@ export const AppComponent: Component = () => {
         fallback={
           <>
             <div class="grid gap-2 grid-cols-3 justify-items-center items-end mapz">
-              <KolInputText class="w-full" _value={getTheme()} _on={onTheme} _type="text">
+              <KolInputText class="w-full" style="width: 100%" _value={getTheme()} _on={onTheme} _type="text">
                 Theme
               </KolInputText>
               <KolButton
