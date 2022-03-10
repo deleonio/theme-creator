@@ -1,3 +1,4 @@
+import { KolTabs } from '@kolibri/solid';
 import { Component, createSignal } from 'solid-js';
 
 import { createCssEditor } from './css-editor';

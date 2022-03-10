@@ -1,4 +1,4 @@
-import { Component, createSignal, Match, Switch } from 'solid-js';
+import { Component, createEffect, createSignal, Match, onMount, Switch } from 'solid-js';
 
 import {
   KolInputText,
@@ -84,11 +84,26 @@ TAG_NAMES.forEach((tagName) => {
   });
 });
 
+// const InputComponent: Component = () => {
+//   const [getClass, setClass] = createSignal('');
+
+//   return <input class={getClass()} onInput={(event) => setClass((event.target as HTMLInputElement).value)} />;
+// };
+
 export const AppComponent: Component = () => {
   const [getTheme, setTheme] = createSignal(localStorage.getItem('kolibri-theme') || 'default');
   const [getComponent, setComponent] = createSignal('KOL-BUTTON');
   const [getShow, setShow] = createSignal<Page>('editor');
   const [getValue, setValue] = createSignal('');
+
+  let select: HTMLElement;
+
+  createEffect(() => {
+    console.log(getComponent());
+    if (select instanceof HTMLElement) {
+      select._value = [getComponent()];
+    }
+  });
 
   restoreThemes();
 
@@ -176,8 +191,11 @@ export const AppComponent: Component = () => {
     },
   };
 
+  onMount(() => console.log(select));
+
   return (
     <div class="font-sans grid gap-2" data-theme="mapz">
+      {/* <InputComponent /> */}
       <Switch
         fallback={
           <>
@@ -202,17 +220,23 @@ export const AppComponent: Component = () => {
                   _on={{
                     onClick: (event) => {
                       event.preventDefault();
-                      setShow('overview');
+                      const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
+                      if (index > 0) {
+                        setComponent(() => TAG_NAMES[index - 1].toUpperCase());
+                      }
                     },
                   }}
                 ></KolButton>
                 <KolSelect
                   _list={TAG_NAME_LIST}
-                  _value={[getComponent()]}
                   _on={{
                     onChange: (_event, value) => {
                       setComponent((value as string[])[0]);
                     },
+                  }}
+                  ref={(el) => {
+                    console.log(el);
+                    select = el;
                   }}
                 >
                   Komponenten
@@ -224,7 +248,10 @@ export const AppComponent: Component = () => {
                   _on={{
                     onClick: (event) => {
                       event.preventDefault();
-                      setShow('overview');
+                      const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
+                      if (index < TAG_NAMES.length - 1) {
+                        setComponent(() => TAG_NAMES[index + 1].toUpperCase());
+                      }
                     },
                   }}
                 ></KolButton>
