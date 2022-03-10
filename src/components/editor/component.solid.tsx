@@ -1,3 +1,4 @@
+import { KolTabs } from '@kolibri/solid';
 import { Component, createSignal } from 'solid-js';
 
 import { createCssEditor } from './css-editor';
@@ -35,7 +36,7 @@ export const EditorComponent: Component<Props> = (props: Props) => {
           }}
         ></div> */}
           </div>
-          <div class={`text-center`} data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
+          <div data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
             <PreviewComponent />
           </div>
         </>

@@ -173,45 +173,45 @@ export const components: Record<string, Component> = {
         <KolButton
           _label="Klick mich!"
           _icon="home"
-          _icon-align="right"
+          _iconAlign="right"
           _variant="primary"
           style="width: 120px"
         ></KolButton>
         <KolButton
           _label="Klick mich!"
           _icon="home"
-          _icon-align="right"
+          _iconAlign="right"
           _variant="secondary"
           style="width: 120px"
         ></KolButton>
         <KolButton
           _label="Klick mich!"
           _icon="home"
-          _icon-align="right"
+          _iconAlign="right"
           _variant="normal"
           style="width: 120px"
         ></KolButton>
         <KolButton
           _label="Klick mich!"
           _icon="home"
-          _icon-align="right"
+          _iconAlign="right"
           _variant="danger"
           style="width: 120px"
         ></KolButton>
         <KolButton
           _label="Klick mich!"
           _icon="home"
-          _icon-align="right"
+          _iconAlign="right"
           _variant="ghost"
           style="width: 120px"
         ></KolButton>
       </div>
       <div class="grid gap-2">
-        <KolButton _label="Klick mich!" _icon="home" _icon-only _variant="primary"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _icon-only _variant="secondary"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _icon-only _variant="normal"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _icon-only _variant="danger"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _icon-only _variant="ghost"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="primary"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="secondary"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="normal"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="danger"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="ghost"></KolButton>
       </div>
       <div class="grid gap-2">
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="primary"></KolButton>
@@ -462,10 +462,10 @@ export const components: Record<string, Component> = {
   ),
   'KOL-LINK': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolLink _href="https://www.w3.org" _icon="home" _icon-align="left">
+      <KolLink _href="https://www.w3.org" _icon="home" _iconAlign="left">
         Dies ist ein Link
       </KolLink>
-      <KolLink _href="https://www.w3.org" _icon="home" _icon-align="right">
+      <KolLink _href="https://www.w3.org" _icon="home" _iconAlign="right">
         Dies ist ein Link
       </KolLink>
     </div>
@@ -617,10 +617,10 @@ export const components: Record<string, Component> = {
   ),
   'KOL-TOOLTIP': () => (
     <div class="flex gap-2">
-      <KolButton _icon="simple-down" _icon-only _label="unten" _tooltip-align="bottom" _variant="primary"></KolButton>
-      <KolButton _icon="simple-up" _icon-only _label="oben" _tooltip-align="top" _variant="secondary"></KolButton>
-      <KolButton _icon="simple-left" _icon-only _label="links" _tooltip-align="left" _variant="normal"></KolButton>
-      <KolButton _icon="simple-right" _icon-only _label="rechts" _tooltip-align="right" _variant="danger"></KolButton>
+      <KolButton _icon="simple-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary"></KolButton>
+      <KolButton _icon="simple-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary"></KolButton>
+      <KolButton _icon="simple-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal"></KolButton>
+      <KolButton _icon="simple-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger"></KolButton>
     </div>
   ),
   'KOL-VERSION': () => (
