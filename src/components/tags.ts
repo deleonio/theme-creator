@@ -1,8 +1,8 @@
 export const TAG_NAMES: string[] = [
-  // 'kol-icon',
+  // 'kol-icon', no shadow dom
 
-  // 'kol-icon-font-awesome',
-  // 'kol-icon-icofont',
+  // 'kol-icon-font-awesome', no shadow dom
+  // 'kol-icon-icofont', no shadow dom
 
   'kol-badge',
   'kol-heading',
@@ -10,7 +10,7 @@ export const TAG_NAMES: string[] = [
   'kol-accordion',
   'kol-alert',
   'kol-card',
-  'kol-tooltip',
+  // 'kol-tooltip', no shadow dom
   'kol-version',
 
   'kol-abbr',
