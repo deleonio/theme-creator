@@ -154,7 +154,7 @@ export const components: Record<string, Component> = {
     </>
   ),
   'KOL-BUTTON': () => (
-    <div class="grid grid-cols-4 gap-2">
+    <div class="grid grid-cols-3 items-center justify-items-center gap-2">
       <div class="grid gap-2">
         <KolButton _label="Klick mich!" _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
