@@ -172,6 +172,7 @@ export const AppComponent: Component = () => {
   const onClickClear = {
     onClick: () => {
       localStorage.removeItem('kolibri-component');
+      localStorage.removeItem('kolibri-props');
       localStorage.removeItem('kolibri-theme');
       localStorage.removeItem('kolibri-themes');
       window.location.reload();

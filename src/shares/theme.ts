@@ -37,5 +37,3 @@ export const storeThemes = () => {
     localStorage.setItem('kolibri-themes', JSON.stringify(window.KoliBri.Themes));
   }
 };
-
-window.getThemeDetails = KoliBriDevHelper.getThemeDetails;

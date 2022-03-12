@@ -17,7 +17,13 @@ let position: {
  * - https://www.npmjs.com/package/clean-css
  * - https://www.npmjs.com/package/monaco-editor
  */
-export const createCssEditor = (ref: HTMLElement, tagName: string, theme: string, setSignal: Function) => {
+export const createCssEditor = (
+  model: editor.ITextModel,
+  ref: HTMLElement,
+  tagName: string,
+  theme: string,
+  setSignal: Function
+) => {
   setTimeout(() => {
     let css = ``;
     if (
@@ -36,14 +42,14 @@ export const createCssEditor = (ref: HTMLElement, tagName: string, theme: string
         css = format(css, { parser: 'css', plugins: [parserCss] });
       } catch (e) {}
     }
+    model.setValue(css);
     const vs = editor.create(ref, {
-      value: css,
-      language: 'css',
       theme: 'vs-dark',
       lineNumbers: 'on',
       formatOnPaste: true,
       formatOnType: true,
     });
+    vs.setModel(model);
     vs.setPosition(
       position || {
         column: 0,
