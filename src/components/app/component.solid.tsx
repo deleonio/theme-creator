@@ -92,7 +92,7 @@ TAG_NAMES.forEach((tagName) => {
 
 export const AppComponent: Component = () => {
   const [getTheme, setTheme] = createSignal(localStorage.getItem('kolibri-theme') || 'default');
-  const [getComponent, setComponent] = createSignal('KOL-BUTTON');
+  const [getComponent, setComponent] = createSignal(localStorage.getItem('kolibri-component') || 'KOL-BUTTON');
   const [getShow, setShow] = createSignal<Page>('editor');
   const [getValue, setValue] = createSignal('');
 
@@ -171,6 +171,7 @@ export const AppComponent: Component = () => {
 
   const onClickClear = {
     onClick: () => {
+      localStorage.removeItem('kolibri-component');
       localStorage.removeItem('kolibri-theme');
       localStorage.removeItem('kolibri-themes');
       window.location.reload();
@@ -190,8 +191,6 @@ export const AppComponent: Component = () => {
       }, 1000);
     },
   };
-
-  onMount(() => console.log(select));
 
   return (
     <div class="font-sans grid gap-2" data-theme="mapz">
@@ -223,6 +222,7 @@ export const AppComponent: Component = () => {
                       const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
                       if (index > 0) {
                         setComponent(() => TAG_NAMES[index - 1].toUpperCase());
+                        localStorage.setItem('kolibri-component', getComponent());
                       }
                     },
                   }}
@@ -232,6 +232,7 @@ export const AppComponent: Component = () => {
                   _on={{
                     onChange: (_event, value) => {
                       setComponent((value as string[])[0]);
+                      localStorage.setItem('kolibri-component', getComponent());
                     },
                   }}
                   ref={(el) => {
@@ -251,6 +252,7 @@ export const AppComponent: Component = () => {
                       const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
                       if (index < TAG_NAMES.length - 1) {
                         setComponent(() => TAG_NAMES[index + 1].toUpperCase());
+                        localStorage.setItem('kolibri-component', getComponent());
                       }
                     },
                   }}

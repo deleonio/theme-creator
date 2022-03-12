@@ -432,23 +432,36 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-TEXT': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputText _id="vorname" _name="vorname" _type="text">
-        Vorname
+      <KolInputText _placeholder="Placeholder" _type="text">
+        Vorname (text)
       </KolInputText>
-      <KolInputText _id="vorname" _name="vorname" _type="search">
-        Suche
+      <KolInputText _placeholder="Placeholder" _type="search">
+        Suche (search)
       </KolInputText>
-      <KolInputText _id="vorname" _name="vorname" _type="url">
-        URL
+      <KolInputText
+        _id="vorname"
+        _name="vorname"
+        _placeholder="Placeholder"
+        _error="Fehlermeldung"
+        _touched
+        _type="url"
+      >
+        URL (url)
       </KolInputText>
-      <KolInputText _id="vorname" _name="vorname" _type="tel">
-        Telefon
+      <KolInputText _placeholder="Placeholder" _type="tel">
+        Telefon (tel)
       </KolInputText>
-      <KolInputText _id="vorname" _name="vorname" _read-only _type="text">
-        Vorname (Readonly)
+      <KolInputText _placeholder="Placeholder" _read-only _type="text">
+        Vorname (text, readonly)
       </KolInputText>
-      <KolInputText _disabled _id="vorname" _name="vorname" _type="text">
-        Vorname (Disabled)
+      <KolInputText _value="Value" _read-only _type="text">
+        Vorname (text, readonly)
+      </KolInputText>
+      <KolInputText _placeholder="Placeholder" _disabled _type="text">
+        Vorname (text, disabled)
+      </KolInputText>
+      <KolInputText _value="Value" _disabled _type="text">
+        Vorname (text, disabled)
       </KolInputText>
     </div>
   ),
