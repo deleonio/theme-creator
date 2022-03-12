@@ -226,6 +226,7 @@ export const AppComponent: Component = () => {
                       }
                     },
                   }}
+                  _tooltipAlign="bottom"
                 ></KolButton>
                 <KolSelect
                   _list={TAG_NAME_LIST}
@@ -256,6 +257,7 @@ export const AppComponent: Component = () => {
                       }
                     },
                   }}
+                  _tooltipAlign="bottom"
                 ></KolButton>
               </div>
             </div>

@@ -208,10 +208,10 @@ export const components: Record<string, Component> = {
       </div>
       <div class="grid gap-2">
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="primary"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="secondary"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="normal"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="danger"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="ghost"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top"></KolButton>
       </div>
       <div class="grid gap-2">
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="primary"></KolButton>
