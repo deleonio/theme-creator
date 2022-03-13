@@ -1,15 +1,6 @@
-import { Component, createEffect, createSignal, Match, onMount, Switch } from 'solid-js';
+import { Component, createEffect, createSignal, Match, Switch } from 'solid-js';
 
-import {
-  KolInputText,
-  KolSelect,
-  KolButton,
-  KolHeading,
-  KolAlert,
-  KolLink,
-  KolInputFile,
-  KolModal,
-} from '@kolibri/solid';
+import { KolInputText, KolSelect, KolButton, KolHeading, KolAlert, KolLink, KolInputFile } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@kolibri/lib';
 import { createTsEditor } from '../editor/ts-editor';
@@ -99,7 +90,6 @@ export const AppComponent: Component = () => {
   let select: HTMLElement;
 
   createEffect(() => {
-    console.log(getComponent());
     if (select instanceof HTMLElement) {
       select._value = [getComponent()];
     }
@@ -193,6 +183,19 @@ export const AppComponent: Component = () => {
     },
   };
 
+  const getList = (): string[] => {
+    if (
+      typeof window.KoliBri === 'object' &&
+      window.KoliBri !== null &&
+      typeof window.KoliBri.Themes === 'object' &&
+      window.KoliBri.Themes !== null
+    ) {
+      return Object.getOwnPropertyNames(window.KoliBri.Themes);
+    } else {
+      return [];
+    }
+  };
+
   return (
     <div class="font-sans grid gap-2" data-theme="mapz">
       {/* <InputComponent /> */}
@@ -200,7 +203,7 @@ export const AppComponent: Component = () => {
         fallback={
           <>
             <div class="grid gap-2 grid-cols-3 justify-items-center items-end mapz">
-              <KolInputText class="w-full" _value={getTheme()} _on={onTheme} _type="text">
+              <KolInputText class="w-full" _list={getList()} _value={getTheme()} _on={onTheme} _type="text">
                 Theme
               </KolInputText>
               <KolButton

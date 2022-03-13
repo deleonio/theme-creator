@@ -56,7 +56,7 @@ export const createCssEditor = (
         lineNumber: 0,
       }
     );
-    vs.focus();
+    // vs.focus();
 
     vs.onKeyDown((event) => {
       if ((event.ctrlKey || event.metaKey) && event.keyCode === KeyCode.KeyS) {
@@ -66,6 +66,10 @@ export const createCssEditor = (
         try {
           css = format(css, { parser: 'css', plugins: [parserCss] });
         } catch (e) {}
+        model.setValue(css);
+        model.updateOptions({
+          tabSize: 2,
+        });
         KoliBriDevHelper.patchThemeTag(theme, tagName, css);
         storeThemes();
         setSignal(() => false);
