@@ -1,6 +1,16 @@
 import { Component, createEffect, createSignal, Match, Switch } from 'solid-js';
 
-import { KolInputText, KolSelect, KolButton, KolHeading, KolAlert, KolLink, KolInputFile } from '@kolibri/solid';
+import {
+  KolInputText,
+  KolSelect,
+  KolButton,
+  KolHeading,
+  KolAlert,
+  KolLink,
+  KolInputFile,
+  KolInputCheckbox,
+  KolIconIcofont,
+} from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@kolibri/lib';
 import { createTsEditor } from '../editor/ts-editor';
@@ -86,6 +96,7 @@ export const AppComponent: Component = () => {
   const [getComponent, setComponent] = createSignal(localStorage.getItem('kolibri-component') || 'KOL-BUTTON');
   const [getShow, setShow] = createSignal<Page>('editor');
   const [getValue, setValue] = createSignal('');
+  const [getPropsStyle, setPropsStyle] = createSignal(true);
 
   let select: HTMLElement;
 
@@ -199,72 +210,89 @@ export const AppComponent: Component = () => {
   return (
     <div class="font-sans grid gap-2" data-theme="mapz">
       {/* <InputComponent /> */}
+      <div class="grid gap-2 grid-cols-3 justify-items-center items-end mapz">
+        <div class="w-full grid gap-2 grid-cols-2 justify-items-center items-end">
+          <KolInputText class="w-full" _list={getList()} _value={getTheme()} _on={onTheme} _type="text">
+            Theme
+          </KolInputText>
+          <KolInputCheckbox
+            _on={{
+              onChange: () => {
+                setPropsStyle((props) => props === false);
+              },
+            }}
+            _checked={getPropsStyle()}
+            _type="switch"
+          >
+            <span>
+              Global-Properties /
+              <br />
+              Component-Style
+            </span>
+          </KolInputCheckbox>
+        </div>
+        <KolButton
+          _label="Komponenten-Übersicht"
+          _on={{
+            onClick: (event) => {
+              event.preventDefault();
+              setShow('overview');
+            },
+          }}
+        ></KolButton>
+        <div class="flex gap-2 items-end">
+          <KolButton
+            _label="Zurück"
+            _icon="arrow-left"
+            _iconOnly
+            _on={{
+              onClick: (event) => {
+                event.preventDefault();
+                const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
+                if (index > 0) {
+                  setComponent(() => TAG_NAMES[index - 1].toUpperCase());
+                  localStorage.setItem('kolibri-component', getComponent());
+                }
+              },
+            }}
+            _tooltipAlign="bottom"
+          ></KolButton>
+          <KolSelect
+            _list={TAG_NAME_LIST}
+            _on={{
+              onChange: (_event, value) => {
+                setComponent((value as string[])[0]);
+                localStorage.setItem('kolibri-component', getComponent());
+              },
+            }}
+            ref={(el) => {
+              select = el;
+            }}
+          >
+            Komponenten
+          </KolSelect>
+          <KolButton
+            _label="Weiter"
+            _icon="arrow-right"
+            _iconOnly
+            _on={{
+              onClick: (event) => {
+                event.preventDefault();
+                const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
+                if (index < TAG_NAMES.length - 1) {
+                  setComponent(() => TAG_NAMES[index + 1].toUpperCase());
+                  localStorage.setItem('kolibri-component', getComponent());
+                }
+              },
+            }}
+            _tooltipAlign="bottom"
+          ></KolButton>
+        </div>
+      </div>
       <Switch
         fallback={
           <>
-            <div class="grid gap-2 grid-cols-3 justify-items-center items-end mapz">
-              <KolInputText class="w-full" _list={getList()} _value={getTheme()} _on={onTheme} _type="text">
-                Theme
-              </KolInputText>
-              <KolButton
-                _label="Komponenten-Übersicht"
-                _on={{
-                  onClick: (event) => {
-                    event.preventDefault();
-                    setShow('overview');
-                  },
-                }}
-              ></KolButton>
-              <div class="flex gap-2 items-end">
-                <KolButton
-                  _label="Zurück"
-                  _icon="arrow-left"
-                  _iconOnly
-                  _on={{
-                    onClick: (event) => {
-                      event.preventDefault();
-                      const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
-                      if (index > 0) {
-                        setComponent(() => TAG_NAMES[index - 1].toUpperCase());
-                        localStorage.setItem('kolibri-component', getComponent());
-                      }
-                    },
-                  }}
-                  _tooltipAlign="bottom"
-                ></KolButton>
-                <KolSelect
-                  _list={TAG_NAME_LIST}
-                  _on={{
-                    onChange: (_event, value) => {
-                      setComponent((value as string[])[0]);
-                      localStorage.setItem('kolibri-component', getComponent());
-                    },
-                  }}
-                  ref={(el) => {
-                    select = el;
-                  }}
-                >
-                  Komponenten
-                </KolSelect>
-                <KolButton
-                  _label="Weiter"
-                  _icon="arrow-right"
-                  _iconOnly
-                  _on={{
-                    onClick: (event) => {
-                      event.preventDefault();
-                      const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
-                      if (index < TAG_NAMES.length - 1) {
-                        setComponent(() => TAG_NAMES[index + 1].toUpperCase());
-                        localStorage.setItem('kolibri-component', getComponent());
-                      }
-                    },
-                  }}
-                  _tooltipAlign="bottom"
-                ></KolButton>
-              </div>
-            </div>
-            <EditorComponent tagName={getComponent()} theme={getTheme()}></EditorComponent>
+            <EditorComponent propsStyle={getPropsStyle()} tagName={getComponent()} theme={getTheme()}></EditorComponent>
             <div class="grid gap-2 mapz">
               <div class="mt-4">
                 Drücke entweder <code class="text-lg border-1 rounded px-1">Strg + S</code> oder{' '}

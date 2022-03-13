@@ -5,6 +5,7 @@ import { createCssEditor as createCssStyleEditor } from './css-style.editor';
 import { components } from './store';
 
 type Props = {
+  propsStyle: boolean;
   tagName: string;
   theme: string;
 };
@@ -88,12 +89,12 @@ export const EditorComponent: Component<Props> = (props: Props) => {
 
   const PreviewComponent = () => components[props.tagName] || <div>not prepared yet</div>;
 
-  const renderPropsEditor = (ref: HTMLElement) => {
-    createCssStyleEditor(modelProps, ref, 'GLOBAL', props.theme, setRerenderEditor);
-  };
-
-  const renderStyleEditor = (ref: HTMLElement) => {
-    createCssStyleEditor(modelStyle, ref, props.tagName, props.theme, setRerenderEditor);
+  const renderEditor = (ref: HTMLElement) => {
+    if (props.propsStyle === true) {
+      createCssStyleEditor(modelStyle, ref, props.tagName, props.theme, setRerenderEditor);
+    } else {
+      createCssStyleEditor(modelProps, ref, 'GLOBAL', props.theme, setRerenderEditor);
+    }
   };
 
   return (
@@ -115,8 +116,7 @@ export const EditorComponent: Component<Props> = (props: Props) => {
                 }}
               ></KolButton>
             </KolButtonGroup> */}
-            <div ref={renderPropsEditor} class="h-20vh"></div>
-            <div ref={renderStyleEditor} class="h-50vh"></div>
+            <div ref={renderEditor} class="h-70vh"></div>
             {/* <div
           ref={(ref) => createHtmlEditor(ref, props.component)}
           style={{
@@ -126,7 +126,12 @@ export const EditorComponent: Component<Props> = (props: Props) => {
         ></div> */}
           </div>
           {getRerenderEditor() && (
-            <div class="col-span-2 p-4" data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
+            <div
+              class="col-span-2 p-4 border-1 border-gray-300"
+              data-theme={props.theme}
+              data-theme-cache="false"
+              data-theme-reset="true"
+            >
               <PreviewComponent />
             </div>
           )}
