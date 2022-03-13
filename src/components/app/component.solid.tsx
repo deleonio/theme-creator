@@ -241,7 +241,6 @@ export const AppComponent: Component = () => {
                     },
                   }}
                   ref={(el) => {
-                    console.log(el);
                     select = el;
                   }}
                 >

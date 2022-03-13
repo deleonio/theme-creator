@@ -291,7 +291,7 @@ export const components: Record<string, Component> = {
   'KOL-INPUT-CHECKBOX': () => (
     <div class="grid grid-cols-1 gap-2">
       <div class="grid gap-2">
-        <KolInputCheckbox _id="anrede" _name="anrede" _type="checkbox">
+        <KolInputCheckbox _id="anrede" _name="anrede" _required _type="checkbox">
           Nicht ausgewählt
         </KolInputCheckbox>
         <KolInputCheckbox _checked _id="anrede" _name="anrede" _type="checkbox">
@@ -316,7 +316,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-COLOR': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputColor _id="farbe" _name="farbe" _value="#ff0000">
+      <KolInputColor _id="farbe" _name="farbe" _required _value="#ff0000">
         Farbe
       </KolInputColor>
       <KolInputColor _id="farbe" _name="farbe" _list="['#000000','#ff0000', '#0000ff','#00ff00']">
@@ -329,7 +329,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-EMAIL': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputEmail _id="email" _name="email" _value="test@mail.de">
+      <KolInputEmail _id="email" _name="email" _required _value="test@mail.de">
         E-Mail
       </KolInputEmail>
       <KolInputEmail _id="email" _name="email" _list="['test1@mail.de', 'test2@mail.de', 'test3@mail.de']">
@@ -345,7 +345,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-FILE': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputFile _id="file" _name="file">
+      <KolInputFile _id="file" _name="file" _required>
         Datei hochladen
       </KolInputFile>
       <KolInputFile _id="file" _multiple _name="file">
@@ -358,7 +358,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-NUMBER': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputNumber _id="number" _name="number" _type="number">
+      <KolInputNumber _id="number" _name="number" _required _type="number">
         Zahleneingabe
       </KolInputNumber>
       <KolInputNumber _id="number" _max={10} _min={-10} _name="number" _step={2} _type="number">
@@ -395,7 +395,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-PASSWORD': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputPassword _id="password" _name="password">
+      <KolInputPassword _id="password" _name="password" _required>
         Passwort
       </KolInputPassword>
       <KolInputPassword _disabled _id="password" _name="password">
@@ -419,7 +419,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-RANGE': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputRange _id="range" _min={0} _max={50} _name="range">
+      <KolInputRange _id="range" _min={0} _max={50} _name="range" _required>
         Schieberegler
       </KolInputRange>
       <KolInputRange _id="range" _min={0} _max={50} _name="range" _step={10}>
@@ -432,7 +432,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-TEXT': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputText _placeholder="Placeholder" _type="text">
+      <KolInputText _placeholder="Placeholder" _required _type="text">
         Vorname (text)
       </KolInputText>
       <KolInputText _placeholder="Placeholder" _type="search">
@@ -617,7 +617,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-TEXTAREA': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolTextarea _id="text" _name="text">
+      <KolTextarea _id="text" _name="text" _required>
         Ihre Nachricht
       </KolTextarea>
       <KolTextarea _disabled _id="text" _name="text">

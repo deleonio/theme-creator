@@ -38,31 +38,35 @@ class CssProvider implements languages.CompletionItemProvider {
         suggestions: [],
       };
     }
-    const selector = matches[0].replace('var(', '');
-    console.log(selector);
 
-    console.log(modelProps.getValue());
+    const whiteList = [...new Set(modelProps.getValue().match(/-(-[a-z0-9]+)+:/g) || [])];
+    whiteList.sort();
 
-    let properties: string[] = [];
-    properties = properties.concat(modelProps.getValue().match(/-(-[a-z0-9]+)+:/g) || []);
-    // properties = properties.concat(modelStyle.getValue().match(/-(-[a-z0-9]+)+:/g) || []);
-    properties = properties.sort();
+    let blackList: string[] = [];
+    blackList = blackList.concat(modelProps.getValue().match(/-(-[a-z0-9]+)+:/g) || []);
+    blackList = blackList.concat(model.getValue().match(/var\(-(-[a-z0-9]+)+\)/g) || []);
+    blackList.forEach((item, index) => {
+      blackList[index] = item.replace('var(', '').replace(')', '').replace(':', '');
+    });
+    blackList = [...new Set(blackList)];
 
     const suggestions: languages.CompletionItem[] = [];
-    properties.forEach((property) => {
+    whiteList.forEach((property) => {
       property = property.replace(':', '');
-      suggestions.push({
-        insertText: property,
-        label: property,
-        kind: languages.CompletionItemKind.Property,
-        range: null,
-        // range: {
-        //   endColumn: position.column,
-        //   endLineNumber: position.lineNumber,
-        //   startColumn: position.column,
-        //   startLineNumber: position.lineNumber,
-        // },
-      });
+      if (blackList.includes(property) === false) {
+        suggestions.push({
+          insertText: property,
+          label: property,
+          kind: languages.CompletionItemKind.Property,
+          range: null,
+          // range: {
+          //   endColumn: position.column,
+          //   endLineNumber: position.lineNumber,
+          //   startColumn: position.column,
+          //   startLineNumber: position.lineNumber,
+          // },
+        });
+      }
     });
 
     return {
@@ -75,23 +79,25 @@ languages.registerCompletionItemProvider('css', new CssProvider());
 
 export const EditorComponent: Component<Props> = (props: Props) => {
   const [getShow, setShow] = createSignal<boolean>(false);
+  const [getRerenderEditor, setRerenderEditor] = createSignal<boolean>(false);
 
   setInterval(() => {
     setShow(() => true);
+    setRerenderEditor(() => true);
   }, 500);
 
   const PreviewComponent = () => components[props.tagName] || <div>not prepared yet</div>;
 
   const renderPropsEditor = (ref: HTMLElement) => {
-    createCssStyleEditor(modelProps, ref, 'GLOBAL', props.theme, setShow);
+    createCssStyleEditor(modelProps, ref, 'GLOBAL', props.theme, setRerenderEditor);
   };
 
   const renderStyleEditor = (ref: HTMLElement) => {
-    createCssStyleEditor(modelStyle, ref, props.tagName, props.theme, setShow);
+    createCssStyleEditor(modelStyle, ref, props.tagName, props.theme, setRerenderEditor);
   };
 
   return (
-    <div class="grid grid-cols-3 gap-2 items-center content-center">
+    <div class="grid grid-cols-3 gap-2 content-center">
       {getShow() && (
         <>
           <div class="grid gap-1 grid-rows-[min-content]">
@@ -119,9 +125,11 @@ export const EditorComponent: Component<Props> = (props: Props) => {
           }}
         ></div> */}
           </div>
-          <div class="col-span-2" data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
-            <PreviewComponent />
-          </div>
+          {getRerenderEditor() && (
+            <div class="col-span-2 p-4" data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
+              <PreviewComponent />
+            </div>
+          )}
         </>
       )}
     </div>
