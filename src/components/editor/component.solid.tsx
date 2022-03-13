@@ -1,5 +1,4 @@
 import { editor, Uri, languages, Position } from 'monaco-editor';
-import {} from 'monaco-editor/esm/metadata';
 import { Component, createSignal } from 'solid-js';
 
 import { createCssEditor as createCssStyleEditor } from './css-style.editor';
