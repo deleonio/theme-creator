@@ -471,6 +471,11 @@ export const components: Record<string, Component> = {
         _heading="Überschrift für diese Linkgroup"
         _links="[{'_label':'Link nur Text','_href':'https://www.w3.org'}, {'_label':'Link mit Icon','_href':'https://www.w3.org','_icon':'home'},{'_label':'Link nur Icon','_href':'https://www.w3.org','_icon':'home','_iconOnly':'true'},{'_label':'Link ohne Unterstrich','_href':'https://www.w3.org','_underline':'false'}]"
       ></KolLinkGroup>
+      <KolLinkGroup
+        _heading="Horizontale Linkgroup"
+        _links="[{'_label':'Link nur Text','_href':'https://www.w3.org'}, {'_label':'Link mit Icon','_href':'https://www.w3.org','_icon':'home'},{'_label':'Link nur Icon','_href':'https://www.w3.org','_icon':'home','_iconOnly':'true'},{'_label':'Link ohne Unterstrich','_href':'https://www.w3.org','_underline':'false'}]"
+        _orientation="horizontal"
+      ></KolLinkGroup>
     </div>
   ),
   'KOL-LINK': () => (
@@ -515,6 +520,12 @@ export const components: Record<string, Component> = {
         _has-compact-button
         _links="[{'_label':'Startseite','_href':'startseite'},{'_label':'Über uns','_href':'ueberuns'},{'_label':'Bereiche','_href':'bereiche','_children':[{'_label':'1. Unterpunkt','_href':'unterpunkt1'},{'_label':'2. Unterpunkt','_href':'unterpunkt2'},{'_label':'3. Unterpunkt','_href':'unterpunkt3'}]}]"
       ></KolNav>
+    </div>
+  ),
+  'KOL-PAGINATION': () => (
+    <div class="grid grid-cols-1 gap-2">
+      <KolPagination _count={10} _page={6}></KolPagination>
+      <KolPagination _boundaryCount={2} _count={10} _page={6}></KolPagination>
     </div>
   ),
   'KOL-PROGRESS': () => (
