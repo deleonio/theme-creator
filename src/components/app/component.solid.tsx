@@ -210,8 +210,8 @@ export const AppComponent: Component = () => {
   return (
     <div class="font-sans grid gap-2" data-theme="mapz">
       {/* <InputComponent /> */}
-      <div class="grid gap-2 grid-cols-3 justify-items-center items-end mapz">
-        <div class="w-full grid gap-2 grid-cols-2 justify-items-center items-end">
+      <div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end mapz">
+        <div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
           <KolInputText class="w-full" _list={getList()} _value={getTheme()} _on={onTheme} _type="search">
             Theme
           </KolInputText>
@@ -224,69 +224,67 @@ export const AppComponent: Component = () => {
             _checked={getPropsStyle()}
             _type="switch"
           >
-            <span>
-              Global-Properties /
-              <br />
-              Component-Style
-            </span>
+            Global-Properties / Component-Style
           </KolInputCheckbox>
         </div>
-        <KolButton
-          _label="Komponenten-Übersicht"
-          _on={{
-            onClick: (event) => {
-              event.preventDefault();
-              setShow('overview');
-            },
-          }}
-        ></KolButton>
-        <div class="flex gap-2 items-end">
+        <div class="w-full grid gap-2 md:grid-cols-2 md:col-span-2 justify-items-center items-end">
           <KolButton
-            _label="Zurück"
-            _icon="arrow-left"
-            _iconOnly
+            _label="Komponenten-Übersicht"
             _on={{
               onClick: (event) => {
                 event.preventDefault();
-                const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
-                if (index > 0) {
-                  setComponent(() => TAG_NAMES[index - 1].toUpperCase());
-                  localStorage.setItem('kolibri-component', getComponent());
-                }
+                setShow('overview');
               },
             }}
-            _tooltipAlign="bottom"
           ></KolButton>
-          <KolSelect
-            _list={TAG_NAME_LIST}
-            _on={{
-              onChange: (_event, value) => {
-                setComponent((value as string[])[0]);
-                localStorage.setItem('kolibri-component', getComponent());
-              },
-            }}
-            ref={(el) => {
-              select = el;
-            }}
-          >
-            Komponenten
-          </KolSelect>
-          <KolButton
-            _label="Weiter"
-            _icon="arrow-right"
-            _iconOnly
-            _on={{
-              onClick: (event) => {
-                event.preventDefault();
-                const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
-                if (index < TAG_NAMES.length - 1) {
-                  setComponent(() => TAG_NAMES[index + 1].toUpperCase());
+          <div class="flex gap-2 items-end">
+            <KolButton
+              _label="Zurück"
+              _icon="arrow-left"
+              _iconOnly
+              _on={{
+                onClick: (event) => {
+                  event.preventDefault();
+                  const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
+                  if (index > 0) {
+                    setComponent(() => TAG_NAMES[index - 1].toUpperCase());
+                    localStorage.setItem('kolibri-component', getComponent());
+                  }
+                },
+              }}
+              _tooltipAlign="bottom"
+            ></KolButton>
+            <KolSelect
+              _list={TAG_NAME_LIST}
+              _on={{
+                onChange: (_event, value) => {
+                  setComponent((value as string[])[0]);
                   localStorage.setItem('kolibri-component', getComponent());
-                }
-              },
-            }}
-            _tooltipAlign="bottom"
-          ></KolButton>
+                },
+              }}
+              ref={(el) => {
+                select = el;
+              }}
+            >
+              Komponenten
+            </KolSelect>
+            <KolButton
+              _label="Weiter"
+              _icon="arrow-right"
+              _iconOnly
+              _on={{
+                onClick: (event) => {
+                  event.preventDefault();
+                  const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
+                  if (index < TAG_NAMES.length - 1) {
+                    setComponent(() => TAG_NAMES[index + 1].toUpperCase());
+                    localStorage.setItem('kolibri-component', getComponent());
+                  }
+                },
+              }}
+              _tooltipAlign="bottom"
+            ></KolButton>
+          </div>
         </div>
       </div>
       <Switch
@@ -299,10 +297,20 @@ export const AppComponent: Component = () => {
                 <code class="text-lg border-1 rounded px-1">Command + S</code>, um die Änderungen zu übernehmen und zu
                 speichern.
               </div>
-              <div class="flex gap-2">
-                <KolButton _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
-                <KolButton _label="Theme herunterladen" _on={onClickDownload}></KolButton>
-                <KolButton _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
+              <div class="flex gap-2 flex-wrap">
+                <KolButton
+                  class="w-full sm:w-auto"
+                  _label="Theme erstellen"
+                  _on={onClickCreate}
+                  _variant="primary"
+                ></KolButton>
+                <KolButton class="w-full sm:w-auto" _label="Theme herunterladen" _on={onClickDownload}></KolButton>
+                <KolButton
+                  class="w-full sm:w-auto"
+                  _label="Alle Änderungen verwerfen"
+                  _on={onClickClear}
+                  _variant="danger"
+                ></KolButton>
               </div>
               <div class="flex gap-2">
                 <KolInputFile _on={onChangeUpload}>Theme laden</KolInputFile>
