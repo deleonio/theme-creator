@@ -1,5 +1,5 @@
 import { editor, Uri, languages, Position } from 'monaco-editor';
-import { Component, createSignal } from 'solid-js';
+import { Component, createEffect, createSignal } from 'solid-js';
 
 import { createCssEditor as createCssStyleEditor } from './css-style.editor';
 import { components } from './store';
@@ -40,20 +40,27 @@ class CssProvider implements languages.CompletionItemProvider {
       };
     }
 
-    const whiteList = [...new Set(modelProps.getValue().match(/-(-[a-z0-9]+)+:/g) || [])];
+    let whiteList: string[] = [];
+    whiteList = whiteList.concat(modelProps.getValue().match(/-(-[a-z0-9]+)+:/g) || []);
+    whiteList.forEach((item, index) => {
+      whiteList[index] = item.replace(':', '');
+    });
+    whiteList = [...new Set(whiteList)];
     whiteList.sort();
+    console.log('whiteList', whiteList);
 
     let blackList: string[] = [];
-    blackList = blackList.concat(modelProps.getValue().match(/-(-[a-z0-9]+)+:/g) || []);
+    blackList = blackList.concat(model.getValue().match(/-(-[a-z0-9]+)+:/g) || []);
     blackList = blackList.concat(model.getValue().match(/var\(-(-[a-z0-9]+)+\)/g) || []);
     blackList.forEach((item, index) => {
-      blackList[index] = item.replace('var(', '').replace(')', '').replace(':', '');
+      blackList[index] = item.replace(':', '').replace('var(', '').replace(')', '');
     });
     blackList = [...new Set(blackList)];
+    blackList.sort();
+    console.log('blackList', blackList);
 
     const suggestions: languages.CompletionItem[] = [];
     whiteList.forEach((property) => {
-      property = property.replace(':', '');
       if (blackList.includes(property) === false) {
         suggestions.push({
           insertText: property,
@@ -89,19 +96,20 @@ export const EditorComponent: Component<Props> = (props: Props) => {
 
   const PreviewComponent = () => components[props.tagName] || <div>not prepared yet</div>;
 
-  const renderEditor = (ref: HTMLElement) => {
-    if (props.propsStyle === true) {
-      createCssStyleEditor(modelStyle, ref, props.tagName, props.theme, setRerenderEditor);
-    } else {
-      createCssStyleEditor(modelProps, ref, 'GLOBAL', props.theme, setRerenderEditor);
-    }
+  const renderPropsEditor = (ref: HTMLElement) => {
+    console.log(ref);
+    createCssStyleEditor(modelProps, ref, 'GLOBAL', props.theme, setRerenderEditor);
+  };
+  const renderStyleEditor = (ref: HTMLElement) => {
+    console.log(ref);
+    createCssStyleEditor(modelStyle, ref, props.tagName, props.theme, setRerenderEditor);
   };
 
   return (
     <div class="grid grid-cols-3 gap-2 content-center">
       {getShow() && (
         <>
-          <div class="grid gap-1 grid-rows-[min-content]">
+          <div class="grid">
             {/* <KolButtonGroup>
               <KolButton
                 _label="CSS-Properties"
@@ -116,7 +124,20 @@ export const EditorComponent: Component<Props> = (props: Props) => {
                 }}
               ></KolButton>
             </KolButtonGroup> */}
-            <div ref={renderEditor} class="h-70vh"></div>
+            <div
+              ref={renderPropsEditor}
+              classList={{
+                'h-70vh': props.propsStyle === false,
+                'hidden ': props.propsStyle === true,
+              }}
+            ></div>
+            <div
+              ref={renderStyleEditor}
+              classList={{
+                'h-70vh': props.propsStyle === true,
+                'hidden ': props.propsStyle === false,
+              }}
+            ></div>
             {/* <div
           ref={(ref) => createHtmlEditor(ref, props.component)}
           style={{

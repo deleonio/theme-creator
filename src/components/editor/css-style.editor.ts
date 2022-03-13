@@ -40,6 +40,7 @@ export const createCssEditor = (
       lineNumbers: 'on',
       formatOnPaste: true,
       formatOnType: true,
+      automaticLayout: true,
     });
     vs.setModel(model);
 

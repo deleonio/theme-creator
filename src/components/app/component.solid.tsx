@@ -96,7 +96,7 @@ export const AppComponent: Component = () => {
   const [getComponent, setComponent] = createSignal(localStorage.getItem('kolibri-component') || 'KOL-BUTTON');
   const [getShow, setShow] = createSignal<Page>('editor');
   const [getValue, setValue] = createSignal('');
-  const [getPropsStyle, setPropsStyle] = createSignal(true);
+  const [getPropsStyle, setPropsStyle] = createSignal(false);
 
   let select: HTMLElement;
 
@@ -212,7 +212,7 @@ export const AppComponent: Component = () => {
       {/* <InputComponent /> */}
       <div class="grid gap-2 grid-cols-3 justify-items-center items-end mapz">
         <div class="w-full grid gap-2 grid-cols-2 justify-items-center items-end">
-          <KolInputText class="w-full" _list={getList()} _value={getTheme()} _on={onTheme} _type="text">
+          <KolInputText class="w-full" _list={getList()} _value={getTheme()} _on={onTheme} _type="search">
             Theme
           </KolInputText>
           <KolInputCheckbox
