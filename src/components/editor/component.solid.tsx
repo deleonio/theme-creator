@@ -124,20 +124,22 @@ export const EditorComponent: Component<Props> = (props: Props) => {
                 }}
               ></KolButton>
             </KolButtonGroup> */}
-            <div
-              ref={renderPropsEditor}
-              classList={{
-                'h-70vh': props.propsStyle === false,
-                'hidden ': props.propsStyle === true,
-              }}
-            ></div>
-            <div
-              ref={renderStyleEditor}
-              classList={{
-                'h-70vh': props.propsStyle === true,
-                'hidden ': props.propsStyle === false,
-              }}
-            ></div>
+            <div class="h-70vh overflow-hidden">
+              <div
+                classList={{
+                  'w-full h-full': props.propsStyle === false,
+                  'hidden ': props.propsStyle === true,
+                }}
+                ref={renderPropsEditor}
+              ></div>
+              <div
+                classList={{
+                  'w-full h-full': props.propsStyle === true,
+                  'hidden ': props.propsStyle === false,
+                }}
+                ref={renderStyleEditor}
+              ></div>
+            </div>
             {/* <div
           ref={(ref) => createHtmlEditor(ref, props.component)}
           style={{
