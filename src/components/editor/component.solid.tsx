@@ -97,11 +97,9 @@ export const EditorComponent: Component<Props> = (props: Props) => {
   const PreviewComponent = () => components[props.tagName] || <div>not prepared yet</div>;
 
   const renderPropsEditor = (ref: HTMLElement) => {
-    console.log(ref);
     createCssStyleEditor(modelProps, ref, 'GLOBAL', props.theme, setRerenderEditor);
   };
   const renderStyleEditor = (ref: HTMLElement) => {
-    console.log(ref);
     createCssStyleEditor(modelStyle, ref, props.tagName, props.theme, setRerenderEditor);
   };
 
