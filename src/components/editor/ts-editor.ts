@@ -25,6 +25,7 @@ KoliBriDevHelper.patchTheme('${theme}', ${code}); `,
       lineNumbers: 'on',
       formatOnPaste: true,
       formatOnType: true,
+      automaticLayout: true,
     });
   }, 0);
 };

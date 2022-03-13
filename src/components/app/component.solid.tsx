@@ -328,7 +328,7 @@ export const AppComponent: Component = () => {
           </div>
         </Match>
         <Match when={getShow() === 'result'}>
-          <div class="grid grid-cols-2 gap-2 mapz">
+          <div class="grid gap-2 p-4 mapz">
             <div>
               <KolHeading>Theming</KolHeading>
               <KolAlert _type="info">
