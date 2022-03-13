@@ -1,4 +1,4 @@
-import { editor, Uri, languages, CancellationToken, Position } from 'monaco-editor';
+import { editor, Uri, languages, Position } from 'monaco-editor';
 import {} from 'monaco-editor/esm/metadata';
 import { Component, createSignal } from 'solid-js';
 
@@ -19,34 +19,11 @@ const modelProps = editor.createModel('', 'css', uriProps);
 const uriStyle = Uri.parse('style.css');
 const modelStyle = editor.createModel('', 'css', uriStyle);
 
-const getAreaInfo = (text: string) => {
-  // opening for strings, comments and CDATA
-  const items = ['"', "'", '<!--', '<![CDATA['];
-  let isCompletionAvailable = true;
-  // remove all comments, strings and CDATA
-  text = text.replace(/"([^"\\]*(\\.[^"\\]*)*)"|'([^'\\]*(\\.[^'\\]*)*)'|<!--([\s\S])*?-->|<!\[CDATA\[(.*?)\]\]>/g, '');
-  for (let i = 0; i < items.length; i++) {
-    const itemIdx = text.indexOf(items[i]);
-    if (itemIdx > -1) {
-      // we are inside one of unavailable areas, so we remove that area
-      // from our clear text
-      text = text.substring(0, itemIdx);
-      // and the completion is not available
-      isCompletionAvailable = false;
-    }
-  }
-  return {
-    isCompletionAvailable: isCompletionAvailable,
-    clearedText: text,
-  };
-};
 class CssProvider implements languages.CompletionItemProvider {
   public triggerCharacters?: string[] | undefined;
   public provideCompletionItems(
     model: editor.ITextModel,
-    position: Position,
-    context: languages.CompletionContext,
-    token: CancellationToken
+    position: Position
   ): languages.ProviderResult<languages.CompletionList> {
     const matches = model
       .getValueInRange({
@@ -115,7 +92,7 @@ export const EditorComponent: Component<Props> = (props: Props) => {
   };
 
   return (
-    <div class="grid grid-cols-2 gap-2 items-center content-center">
+    <div class="grid grid-cols-3 gap-2 items-center content-center">
       {getShow() && (
         <>
           <div class="grid gap-1 grid-rows-[min-content]">
@@ -143,7 +120,7 @@ export const EditorComponent: Component<Props> = (props: Props) => {
           }}
         ></div> */}
           </div>
-          <div data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
+          <div class="col-span-2" data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
             <PreviewComponent />
           </div>
         </>
