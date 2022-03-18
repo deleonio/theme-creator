@@ -31,9 +31,9 @@ export const TAG_NAMES: string[] = [
 
   'kol-breadcrumb',
   'kol-details',
-  'kol-form',
+  // 'kol-form',
   // 'kol-input-adapter-leanup',
-  'kol-kolibri',
+  // 'kol-kolibri',
   'kol-link-group',
   // 'kol-logo',
   'kol-modal',
@@ -44,4 +44,5 @@ export const TAG_NAMES: string[] = [
   'kol-table',
   'kol-tabs',
   'kol-toast',
+  'kol-tooltip',
 ];

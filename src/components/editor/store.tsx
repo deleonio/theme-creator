@@ -27,6 +27,7 @@ import {
   KolLogo,
   KolModal,
   KolNav,
+  KolPagination,
   KolProgress,
   KolSelect,
   KolSpin,
@@ -35,6 +36,7 @@ import {
   KolTextarea,
   KolVersion,
 } from '@kolibri/solid';
+import { SelectOption } from '@kolibri/lib';
 
 export const baseCss = `:host button.normal {
     background-color: rgb(105, 11, 85);
@@ -47,10 +49,11 @@ export const selectedComponent = 'KOL-BUTTON';
 
 const activeElement = null;
 
-const STATUS_OPTIONS = [
+const STATUS_OPTIONS: SelectOption<string>[] = [
   {
     label: '- Keine Auswahl',
-    value: null,
+    value: '',
+    disabled: true,
   },
   {
     label: 'Herr',
@@ -65,6 +68,8 @@ const STATUS_OPTIONS = [
     value: 'Firma',
   },
 ];
+
+const ERROR_MSG = 'Ich bin eine Fehlermeldung!';
 
 export const components: Record<string, Component> = {
   'KOL-ABBR': () => (
@@ -125,14 +130,31 @@ export const components: Record<string, Component> = {
   'KOL-ALERT': () => (
     <>
       <div class="grid grid-cols-1 gap-2">
-        <KolAlert _level={1} _heading="Erfolgsmeldung" _type="success"></KolAlert>
-        <KolAlert _level={1} _heading="Information" _type="info"></KolAlert>
-        <KolAlert _level={1} _heading="Fehlermeldung" _type="error"></KolAlert>
-        <KolAlert _level={1} _heading="Warnmeldung" _type="warning"></KolAlert>
+        <KolAlert _level={1} _heading="Erfolg" _type="success"></KolAlert>
+        <KolAlert _level={2} _heading="Information" _type="info"></KolAlert>
+        <KolAlert _level={3} _heading="Fehler" _type="error"></KolAlert>
+        <KolAlert _level={4} _heading="Warnung" _type="warning"></KolAlert>
+        <KolAlert _level={5} _heading="Erfolg" _type="success">
+          Text des Hinweis.
+        </KolAlert>
+        <KolAlert _level={6} _heading="Information" _type="info">
+          Text des Hinweis.
+        </KolAlert>
+        <KolAlert _type="success">Text des Hinweis.</KolAlert>
+        <KolAlert _type="info">Text des Hinweis.</KolAlert>
+        <KolAlert _type="error">Text des Hinweis.</KolAlert>
+        <KolAlert _type="warning">Text des Hinweis.</KolAlert>
       </div>
     </>
   ),
-  'KOL-BADGE': () => <KolBadge _label="Test"></KolBadge>,
+  'KOL-BADGE': () => (
+    <div class="flex flex-wrap gap-2">
+      <KolBadge _label="Text" _color="#000"></KolBadge>
+      <KolBadge _label="Text" _color="#f00" _icon="tree"></KolBadge>
+      <KolBadge _label="Text" _color="#ff0" _icon="tree" _iconAlign="right"></KolBadge>
+      <KolBadge _label="Text" _color="#f0f" _icon="tree" _iconOnly></KolBadge>
+    </div>
+  ),
   'KOL-BREADCRUMB': () => (
     <>
       <KolBreadcrumb
@@ -146,7 +168,15 @@ export const components: Record<string, Component> = {
       <KolBreadcrumb
         _ariaLabel="Breadcrumb aus Text-Links"
         _links={[
-          { _label: 'Startseite', _icon: 'home', _iconOnly: true, _href: '#/' },
+          { _label: 'Startseite', _icon: 'home', _href: '#/' },
+          { _label: 'Unterseite der Startseite mit sehr langem Link-Test', _href: '#/unterseite' },
+          { _label: 'Unterseite der Unterseite', _href: '#/unterseite/unterseite' },
+        ]}
+      ></KolBreadcrumb>
+      <KolBreadcrumb
+        _ariaLabel="Breadcrumb aus Text-Links"
+        _links={[
+          { _ariaLabel: 'Startseite', _label: 'Startseite', _icon: 'home', _iconOnly: true, _href: '#/' },
           { _label: 'Unterseite der Startseite mit sehr langem Link-Test', _href: '#/unterseite' },
           { _label: 'Unterseite der Unterseite', _href: '#/unterseite/unterseite' },
         ]}
@@ -294,7 +324,7 @@ export const components: Record<string, Component> = {
         <KolInputCheckbox _id="anrede" _name="anrede" _required _type="checkbox">
           Nicht ausgewählt
         </KolInputCheckbox>
-        <KolInputCheckbox _checked _id="anrede" _name="anrede" _type="checkbox">
+        <KolInputCheckbox _checked _id="anrede" _name="anrede" _type="checkbox" _error={ERROR_MSG}>
           Ausgewählt
         </KolInputCheckbox>
         <KolInputCheckbox _id="anrede" _indeterminate _name="anrede" _type="checkbox">
@@ -302,7 +332,7 @@ export const components: Record<string, Component> = {
         </KolInputCheckbox>
       </div>
       <div class="grid gap-2">
-        <KolInputCheckbox _id="anrede" _name="anrede" _type="switch">
+        <KolInputCheckbox _id="anrede" _name="anrede" _type="switch" _error={ERROR_MSG}>
           Nicht ausgewählt
         </KolInputCheckbox>
         <KolInputCheckbox _checked _id="anrede" _name="anrede" _type="switch">
@@ -316,10 +346,10 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-COLOR': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputColor _id="farbe" _name="farbe" _required _value="#ff0000">
+      <KolInputColor _id="farbe" _name="farbe" _value="#ff0000">
         Farbe
       </KolInputColor>
-      <KolInputColor _id="farbe" _name="farbe" _list="['#000000','#ff0000', '#0000ff','#00ff00']">
+      <KolInputColor _id="farbe" _name="farbe" _list="['#000000','#ff0000', '#0000ff','#00ff00']" _error={ERROR_MSG}>
         Farbe
       </KolInputColor>
       <KolInputColor _disabled _id="farbe" _name="farbe" _value="#ff0000">
@@ -329,7 +359,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-EMAIL': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputEmail _id="email" _name="email" _required _value="test@mail.de">
+      <KolInputEmail _id="email" _name="email" _required _value="test@mail.de" _error={ERROR_MSG}>
         E-Mail
       </KolInputEmail>
       <KolInputEmail _id="email" _name="email" _list="['test1@mail.de', 'test2@mail.de', 'test3@mail.de']">
@@ -348,7 +378,7 @@ export const components: Record<string, Component> = {
       <KolInputFile _id="file" _name="file" _required>
         Datei hochladen
       </KolInputFile>
-      <KolInputFile _id="file" _multiple _name="file">
+      <KolInputFile _id="file" _multiple _name="file" _error={ERROR_MSG}>
         Datei hochladen (Multiple)
       </KolInputFile>
       <KolInputFile _disabled _id="file" _name="file">
@@ -370,7 +400,7 @@ export const components: Record<string, Component> = {
       <KolInputNumber _id="time" _name="time" _type="datetime-local">
         Local-Datetime (Standard)
       </KolInputNumber>
-      <KolInputNumber _id="time" _name="time" _step={1} _type="datetime-local">
+      <KolInputNumber _id="time" _name="time" _step={1} _type="datetime-local" _error={ERROR_MSG}>
         Local-Datetime (mit Sekunden)
       </KolInputNumber>
       <KolInputNumber _id="month" _name="month" _type="month">
@@ -398,7 +428,7 @@ export const components: Record<string, Component> = {
       <KolInputPassword _id="password" _name="password" _required>
         Passwort
       </KolInputPassword>
-      <KolInputPassword _disabled _id="password" _name="password">
+      <KolInputPassword _disabled _id="password" _name="password" _error={ERROR_MSG}>
         Passwort (Disabled)
       </KolInputPassword>
       <KolInputPassword _id="password" _name="password" _read-only>
@@ -410,6 +440,7 @@ export const components: Record<string, Component> = {
     <div class="grid grid-cols-1 gap-2">
       <KolInputRadio
         _id="anrede"
+        _error={ERROR_MSG}
         _name="anrede"
         _list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
       >
@@ -419,10 +450,10 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-RANGE': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolInputRange _id="range" _min={0} _max={50} _name="range" _required>
+      <KolInputRange _id="range" _min={0} _max={50} _name="range">
         Schieberegler
       </KolInputRange>
-      <KolInputRange _id="range" _min={0} _max={50} _name="range" _step={10}>
+      <KolInputRange _id="range" _min={0} _max={50} _name="range" _step={10} _error={ERROR_MSG}>
         Schieberegler
       </KolInputRange>
       <KolInputRange _disabled _id="range" _min={0} _max={50} _name="range">
@@ -438,14 +469,7 @@ export const components: Record<string, Component> = {
       <KolInputText _placeholder="Placeholder" _type="search">
         Suche (search)
       </KolInputText>
-      <KolInputText
-        _id="vorname"
-        _name="vorname"
-        _placeholder="Placeholder"
-        _error="Fehlermeldung"
-        _touched
-        _type="url"
-      >
+      <KolInputText _id="vorname" _name="vorname" _placeholder="Placeholder" _error={ERROR_MSG} _touched _type="url">
         URL (url)
       </KolInputText>
       <KolInputText _placeholder="Placeholder" _type="tel">
@@ -479,13 +503,19 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-LINK': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid justify-items-center gap-4">
+      <KolLink _href="https://www.w3.org" _icon="home" _iconOnly _ariaLabel="Home"></KolLink>
+      <KolLink _href="https://www.w3.org">Normaler Link</KolLink>
       <KolLink _href="https://www.w3.org" _icon="home" _iconAlign="left">
-        Dies ist ein Link
+        Normaler Link mit Icon links
       </KolLink>
       <KolLink _href="https://www.w3.org" _icon="home" _iconAlign="right">
-        Dies ist ein Link
+        Normaler Link mit Icon rechts
       </KolLink>
+      <KolLink _href="https://www.w3.org" _target="w3c">
+        Externer Link
+      </KolLink>
+      <KolLink _href="/">Besuchter Link</KolLink>
     </div>
   ),
   'KOL-LOGO': () => (
@@ -530,23 +560,23 @@ export const components: Record<string, Component> = {
   ),
   'KOL-PROGRESS': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolProgress _max={1000} _type="bar" _value={100}></KolProgress>
-      <KolProgress _max={1000} _type="cycle" _value={100}></KolProgress>
+      <KolProgress _max={100} _type="bar" _unit="Meter" _value={10}></KolProgress>
+      <KolProgress _max={100} _type="cycle" _value={10}></KolProgress>
     </div>
   ),
   'KOL-SELECT': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolSelect _id="anrede" _name="anrede" _list={STATUS_OPTIONS}>
+      <KolSelect _list={STATUS_OPTIONS} _error={ERROR_MSG} _touched>
         Anrede
       </KolSelect>
-      <KolSelect _id="anrede" _name="anrede" _list={STATUS_OPTIONS} _multiple>
+      <KolSelect _list={STATUS_OPTIONS} _multiple _required _error={ERROR_MSG}>
         Anrede
       </KolSelect>
     </div>
   ),
   'KOL-SPIN': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolSpin _show>Anrede</KolSpin>
+      <KolSpin _show></KolSpin>
     </div>
   ),
   'KOL-TABLE': () => (
@@ -628,7 +658,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-TEXTAREA': () => (
     <div class="grid grid-cols-1 gap-2">
-      <KolTextarea _id="text" _name="text" _required>
+      <KolTextarea _id="text" _name="text" _required _error={ERROR_MSG}>
         Ihre Nachricht
       </KolTextarea>
       <KolTextarea _disabled _id="text" _name="text">
