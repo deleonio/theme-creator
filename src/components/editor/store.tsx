@@ -71,6 +71,8 @@ const STATUS_OPTIONS: SelectOption<string>[] = [
 
 const ERROR_MSG = 'Ich bin eine Fehlermeldung!';
 
+const LONG_TEXT = `Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu erstellen. Es hat nicht nur 5 Jahrhunderte überlebt, sondern auch in Spruch in die elektronische Schriftbearbeitung geschafft (bemerke, nahezu unverändert). Bekannt wurde es 1960, mit dem erscheinen von "Letraset", welches Passagen von Lorem Ipsum enhielt, so wie Desktop Software wie "Aldus PageMaker" - ebenfalls mit Lorem Ipsum.`;
+
 export const components: Record<string, Component> = {
   'KOL-ABBR': () => (
     <>
@@ -109,20 +111,23 @@ export const components: Record<string, Component> = {
   'KOL-ACCORDION': () => (
     <>
       <div class="grid grid-cols-1 gap-2">
-        <KolAccordion _level={1} _heading="Überschrift Accordion 1">
-          <div slot="content">
-            <p>Inhalt Accordion 1</p>
-          </div>
+        <KolAccordion _level={1} _heading="Überschrift Accordion 1" _open>
+          <div slot="content">{LONG_TEXT}</div>
         </KolAccordion>
-        <KolAccordion _level={1} _heading="Überschrift Accordion 2">
-          <div slot="content">
-            <p>Inhalt Accordion 2</p>
-          </div>
+        <KolAccordion _level={2} _heading="Überschrift Accordion 2">
+          <div slot="content">{LONG_TEXT}</div>
         </KolAccordion>
-        <KolAccordion _level={1} _heading="Überschrift Accordion 3">
-          <div slot="content">
-            <p>Inhalt Accordion 3</p>
-          </div>
+        <KolAccordion _level={3} _heading="Überschrift Accordion 3">
+          <div slot="content">{LONG_TEXT}</div>
+        </KolAccordion>
+        <KolAccordion _level={4} _heading="Überschrift Accordion 4" _open>
+          <div slot="content">{LONG_TEXT}</div>
+        </KolAccordion>
+        <KolAccordion _level={5} _heading="Überschrift Accordion 5">
+          <div slot="content">{LONG_TEXT}</div>
+        </KolAccordion>
+        <KolAccordion _level={6} _heading="Überschrift Accordion 6">
+          <div slot="content">{LONG_TEXT}</div>
         </KolAccordion>
       </div>
     </>
