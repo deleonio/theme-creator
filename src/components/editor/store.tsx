@@ -52,6 +52,16 @@ const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
 
 const activeElement = null;
 
+type Zeiten = {
+  stadtteil: string;
+  zeiten: string;
+  montag: string;
+  dienstag: string;
+  mittwoch: string;
+  donnerstag: string;
+  freitag: string;
+};
+
 const STATUS_OPTIONS: SelectOption<string>[] = [
   {
     label: '- Keine Auswahl',
@@ -592,7 +602,94 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-TABLE': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-8">
+      <KolTable
+        _caption="Öffnungszeiten"
+        _data={
+          [
+            {
+              stadtteil: 'Brackel',
+              montag: '08:00 - 12:00<br/>14:00 - 16:00',
+              dienstag: '08:00 - 12:00<br/>14:00 - 15:00',
+              mittwoch: '08:00 - 12:00<br/>14:00 - 15:00',
+              donnerstag: '08:00 - 12:00<br/>14:00 - 18:00',
+              freitag: '08:00 - 12:00',
+            },
+            {
+              stadtteil: 'Dorstfeld',
+              montag: '09:00 - 12:00<br/>14:00 - 16:00',
+              dienstag: '09:00 - 12:00<br/>14:00 - 15:00',
+              mittwoch: '09:00 - 12:00<br/>14:00 - 15:00',
+              donnerstag: '09:00 - 12:00<br/>14:00 - 18:00',
+              freitag: '09:00 - 12:00',
+            },
+            {
+              stadtteil: 'Aplerbeck',
+              montag: '08:00 - 12:00<br/>14:00 - 16:00',
+              dienstag: '08:00 - 12:00<br/>14:00 - 15:00',
+              mittwoch: '08:00 - 12:00<br/>14:00 - 15:00',
+              donnerstag: '08:00 - 12:00<br/>14:00 - 18:00',
+              freitag: '08:00 - 12:00',
+            },
+            {
+              stadtteil: 'Innenstadt Ost',
+              montag: '07:00 - 12:00<br/>14:00 - 16:00',
+              dienstag: '07:00 - 12:00<br/>14:00 - 15:00',
+              mittwoch: '07:00 - 12:00<br/>14:00 - 15:00',
+              donnerstag: '07:00 - 12:00<br/>14:00 - 18:00',
+              freitag: '07:00 - 12:00<br/>13:00 - 16:00',
+            },
+            {
+              stadtteil: 'Innenstadt West',
+              montag: '07:00 - 12:00<br/>14:00 - 16:00',
+              dienstag: '07:00 - 12:00<br/>14:00 - 15:00',
+              mittwoch: '07:00 - 12:00<br/>14:00 - 15:00',
+              donnerstag: '07:00 - 12:00<br/>14:00 - 18:00',
+              freitag: '07:00 - 12:00<br/>13:00 - 16:00',
+              /*render: (el, data) => {
+                  el.innerHTML = `<kol-badge _color="#ff0000" _label="NIX"></kol-badge>`;
+                },*/
+            },
+          ] as Zeiten[]
+        }
+        _headers={{
+          horizontal: [
+            [
+              { label: '', asTd: true },
+              { label: 'Tag', colSpan: 5 },
+            ],
+            [
+              {
+                label: 'Stadtteil',
+                key: 'stadtteil',
+                textAlign: 'left',
+                sort: (data: Zeiten[]) => {
+                  return data.sort((first, second) => {
+                    if (first.stadtteil < second.stadtteil) {
+                      return -1;
+                    }
+                    if (first.stadtteil > second.stadtteil) {
+                      return 1;
+                    }
+                    return 0;
+                  });
+                },
+              },
+              { label: 'Montag', key: 'montag', textAlign: 'center' },
+              { label: 'Dienstag', key: 'dienstag', textAlign: 'center' },
+              { label: 'Mittwoch', key: 'mittwoch', textAlign: 'center' },
+              { label: 'Donnerstag', key: 'donnerstag', textAlign: 'center' },
+              { label: 'Freitag', key: 'freitag', textAlign: 'center' },
+            ],
+          ],
+        }}
+        _minWidth="50em"
+        _pagination
+        style={{
+          display: 'inline-grid',
+          width: '100%',
+        }}
+      ></KolTable>
       <KolTable
         _caption="Öffnungszeiten"
         _data={[
