@@ -22,7 +22,7 @@ KoliBriDevHelper.patchTheme('bmf', {
   'KOL-HEADING':
     'h1,h2,h3,h4,h5,h6 {line-height: 1.5em;margin: 0;padding: 0;}h1 {font-size: 1.5rem;}h2 {font-size: 1.4rem;}h3 {font-size: 1.3rem;}h4 {font-size: 1.2rem;}h5 {font-size: 1.1rem;}h6 {font-size: 1rem;}',
   'KOL-BADGE':
-    'span {font-style: normal;font-weight: 700;font-size: 0.875em;line-height: 1.25em;align-items: center;letter-spacing: 0.09375em;text-transform: uppercase;border-radius: 0.3125em;padding: 0.25em 0.75em;}',
+    'span {font-style: normal;font-weight: 700;font-size: 0.875em;line-height: 1.25em;align-items: center;letter-spacing: 0.09375em;text-transform: uppercase;border-radius: 0.3125em;padding: 0.25rem 0.75rem;}',
   'KOL-BUTTON-GROUP': 'div {display: flex;flex-wrap: wrap;gap: 0.5em;}',
   'KOL-INDENTED-TEXT':
     ':host > div {width: 100%;border-left-style: solid;border-left-width: 0.5em;border-left-color: var(--border-default);padding: 0.5em;}',
