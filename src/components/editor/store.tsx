@@ -47,6 +47,9 @@ export const baseCss = `:host button.normal {
 
 export const selectedComponent = 'KOL-BUTTON';
 
+// https://css-tricks.com/snippets/javascript/random-hex-color/
+const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
+
 const activeElement = null;
 
 const STATUS_OPTIONS: SelectOption<string>[] = [
@@ -154,10 +157,14 @@ export const components: Record<string, Component> = {
   ),
   'KOL-BADGE': () => (
     <div class="flex flex-wrap gap-2">
-      <KolBadge _label="Text" _color="#000"></KolBadge>
-      <KolBadge _label="Text" _color="#f00" _icon="tree"></KolBadge>
-      <KolBadge _label="Text" _color="#ff0" _icon="tree" _iconAlign="right"></KolBadge>
-      <KolBadge _label="Text" _color="#f0f" _icon="tree" _iconOnly></KolBadge>
+      {new Array(10).fill(null).map(() => (
+        <>
+          <KolBadge _label="Text" _color={`#${randomColor()}`}></KolBadge>
+          <KolBadge _label="Text" _color={`#${randomColor()}`} _icon="tree"></KolBadge>
+          <KolBadge _label="Text" _color={`#${randomColor()}`} _icon="tree" _iconAlign="right"></KolBadge>
+          <KolBadge _label="Text" _color={`#${randomColor()}`} _icon="tree" _iconOnly></KolBadge>
+        </>
+      ))}
     </div>
   ),
   'KOL-BREADCRUMB': () => (
