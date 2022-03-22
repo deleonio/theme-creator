@@ -534,6 +534,9 @@ export const components: Record<string, Component> = {
       <KolLink _href="https://www.w3.org" _icon="home" _iconAlign="right">
         Normaler Link mit Icon rechts
       </KolLink>
+      <KolLink _href="https://www.w3.org" _icon="home" _iconOnly>
+        Nur Icon-Link
+      </KolLink>
       <KolLink _href="https://www.w3.org" _target="w3c">
         Externer Link
       </KolLink>
@@ -566,11 +569,201 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-NAV': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="col-12 d-grid gap-2">
       <KolNav
-        _compact={false}
+        _ariaLabel="Navigation mit sinnvoller Breite"
+        _links={[
+          {
+            _label: '1 Navigationspunkt mit sehr langem Link-Test',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _target: 'asdasd',
+          },
+          {
+            _label:
+              '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+            _href: '#abc',
+            _icon: 'woodpecker',
+          },
+          {
+            _active: true,
+            _label: '3 Navigationspunkt',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _children: [
+              { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
+              { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+              {
+                _active: true,
+                _label: '3.3 Navigationspunkt',
+                _href: '#abc',
+                _children: [
+                  { _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
+                  { _label: '3.3.2 Navigationspunkt', _href: '#abc' },
+                ],
+              },
+              {
+                _label: '3.4 Navigationspunkt',
+                _href: '#abc',
+                _children: [
+                  { _label: '3.4.1 Navigationspunkt', _href: '#abc' },
+                  { _label: '3.4.2 Navigationspunkt', _href: '#abc' },
+                ],
+              },
+              { _label: '3.5 Navigationspunkt', _href: '#abc' },
+            ],
+          },
+          { _label: '4 Navigationspunkt', _href: '#abc' },
+        ]}
+        _orientation="horizontal"
+      ></KolNav>
+      <KolNav
+        class="font-80"
+        style="display: inline-flex"
+        _ariaLabel="Navigation mit sinnvoller Breite"
+        _links={[
+          {
+            _label: '1 Navigationspunkt mit sehr langem Link-Test',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _iconOnly: true,
+            _target: 'asdasd',
+          },
+          {
+            _label:
+              '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _iconOnly: true,
+          },
+          {
+            _active: true,
+            _label: '3 Navigationspunkt',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _iconOnly: true,
+            _children: [
+              { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
+              { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+              {
+                _active: true,
+                _label: '3.3 Navigationspunkt',
+                _href: '#abc',
+                _children: [
+                  { _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
+                  { _label: '3.3.2 Navigationspunkt', _href: '#abc' },
+                ],
+              },
+              {
+                _label: '3.4 Navigationspunkt',
+                _href: '#abc',
+                _children: [
+                  { _label: '3.4.1 Navigationspunkt', _href: '#abc' },
+                  { _label: '3.4.2 Navigationspunkt', _href: '#abc' },
+                ],
+              },
+              { _label: '3.5 Navigationspunkt', _href: '#abc' },
+            ],
+          },
+          { _label: '4 Navigationspunkt', _href: '#abc', _iconOnly: true },
+        ]}
+        _orientation="horizontal"
+      ></KolNav>
+      <KolNav
+        class="font-80 max-width"
+        _ariaLabel="Navigation in der Breite beschränkt"
         _has-compact-button
-        _links="[{'_label':'Startseite','_href':'startseite'},{'_label':'Über uns','_href':'ueberuns'},{'_label':'Bereiche','_href':'bereiche','_children':[{'_label':'1. Unterpunkt','_href':'unterpunkt1'},{'_label':'2. Unterpunkt','_href':'unterpunkt2'},{'_label':'3. Unterpunkt','_href':'unterpunkt3'}]}]"
+        _links={[
+          {
+            _label: '1 Navigationspunkt mit sehr langem Link-Test',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _target: 'asdasd',
+          },
+          {
+            _label:
+              '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+            _href: '#abc',
+            _icon: 'woodpecker',
+          },
+          {
+            _active: true,
+            _label: '3 Navigationspunkt',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _children: [
+              { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
+              { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+              {
+                _active: true,
+                _label: '3.3 Navigationspunkt',
+                _href: '#abc',
+                _children: [
+                  { _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
+                  { _label: '3.3.2 Navigationspunkt', _href: '#abc' },
+                ],
+              },
+              {
+                _label: '3.4 Navigationspunkt',
+                _href: '#abc',
+                _children: [
+                  { _label: '3.4.1 Navigationspunkt', _href: '#abc' },
+                  { _label: '3.4.2 Navigationspunkt', _href: '#abc' },
+                ],
+              },
+              { _label: '3.5 Navigationspunkt', _href: '#abc' },
+            ],
+          },
+          { _label: '4 Navigationspunkt', _href: '#abc' },
+        ]}
+      ></KolNav>
+      <KolNav
+        class="font-60 max-width"
+        _ariaLabel="Navigation initial eingeklappt"
+        _compact
+        _links={[
+          {
+            _label: '1 Navigationspunkt mit sehr langem Link-Test',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _target: 'asdasd',
+          },
+          {
+            _label:
+              '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+            _href: '#abc',
+            _icon: 'woodpecker',
+          },
+          {
+            _active: true,
+            _label: '3 Navigationspunkt',
+            _href: '#abc',
+            _icon: 'woodpecker',
+            _children: [
+              { _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
+              { _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+              {
+                _active: true,
+                _label: '3.3 Navigationspunkt',
+                _href: '#abc',
+                _children: [
+                  { _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
+                  { _label: '3.3.2 Navigationspunkt', _href: '#abc' },
+                ],
+              },
+              {
+                _label: '3.4 Navigationspunkt',
+                _href: '#abc',
+                _children: [
+                  { _label: '3.4.1 Navigationspunkt', _href: '#abc' },
+                  { _label: '3.4.2 Navigationspunkt', _href: '#abc' },
+                ],
+              },
+              { _label: '3.5 Navigationspunkt', _href: '#abc' },
+            ],
+          },
+          { _label: '4 Navigationspunkt', _href: '#abc' },
+        ]}
       ></KolNav>
     </div>
   ),
