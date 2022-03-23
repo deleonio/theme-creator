@@ -89,35 +89,37 @@ const LONG_TEXT = `Lorem Ipsum ist ein einfacher Demo-Text für die Print- und S
 export const components: Record<string, Component> = {
   'KOL-ABBR': () => (
     <>
-      <div class="grid gap-2">
-        <p>
-          Ich bin eine{' '}
-          <KolAbbr _title="Ausführliche Beschreibung" _align="top">
-            ABB
-          </KolAbbr>{' '}
-          mit Tooltip oben
-        </p>
-        <p>
-          Ich bin eine{' '}
-          <KolAbbr _title="Ausführliche Beschreibung" _align="right">
-            ABB
-          </KolAbbr>{' '}
-          mit Tooltip rechts
-        </p>
-        <p>
-          Ich bin eine{' '}
-          <KolAbbr _title="Ausführliche Beschreibung" _align="bottom">
-            ABB
-          </KolAbbr>{' '}
-          mit Tooltip unten
-        </p>
-        <p>
-          Ich bin eine{' '}
-          <KolAbbr _title="Ausführliche Beschreibung" _align="left">
-            ABB
-          </KolAbbr>{' '}
-          mit Tooltip links
-        </p>
+      <div class="grid grid-cols-1">
+        <div class="grid gap-2">
+          <p>
+            Ich bin eine{' '}
+            <KolAbbr _title="Ausführliche Beschreibung" _align="top">
+              ABB
+            </KolAbbr>{' '}
+            mit Tooltip oben
+          </p>
+          <p>
+            Ich bin eine{' '}
+            <KolAbbr _title="Ausführliche Beschreibung" _align="right">
+              ABB
+            </KolAbbr>{' '}
+            mit Tooltip rechts
+          </p>
+          <p>
+            Ich bin eine{' '}
+            <KolAbbr _title="Ausführliche Beschreibung" _align="bottom">
+              ABB
+            </KolAbbr>{' '}
+            mit Tooltip unten
+          </p>
+          <p>
+            Ich bin eine{' '}
+            <KolAbbr _title="Ausführliche Beschreibung" _align="left">
+              ABB
+            </KolAbbr>{' '}
+            mit Tooltip links
+          </p>
+        </div>
       </div>
     </>
   ),
@@ -276,25 +278,74 @@ export const components: Record<string, Component> = {
   ),
   'KOL-BUTTON-GROUP': () => (
     <div class="grid grid-cols-1 gap-2">
-      <div class="grid gap-2">
-        <KolButtonGroup>
-          <KolButton _label="Klick mich!" _variant="primary"></KolButton>
-          <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
-          <KolButton _label="Klick mich!" _variant="normal"></KolButton>
-          <KolButton _label="Klick mich!"></KolButton>
-          <KolButton _label="Klick mich!" _variant="danger"></KolButton>
-          <KolButton _label="Klick mich!" _variant="ghost"></KolButton>
-          <KolButton _label="Klick mich!" _disabled></KolButton>
-        </KolButtonGroup>
-      </div>
+      {new Array(6).fill(null).map(() => (
+        <>
+          <div class="grid gap-2">
+            <KolButtonGroup>
+              <KolButton _label="Klick mich!" _variant="primary"></KolButton>
+              <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
+              <KolButton _label="Klick mich!" _variant="normal"></KolButton>
+              <KolButton _label="Klick mich!"></KolButton>
+              <KolButton _label="Klick mich!" _variant="danger"></KolButton>
+              <KolButton _label="Klick mich!" _variant="ghost"></KolButton>
+              <KolButton _label="Klick mich!" _disabled></KolButton>
+            </KolButtonGroup>
+          </div>
+        </>
+      ))}
     </div>
   ),
   'KOL-CARD': () => (
-    <div class="grid grid-cols-1 gap-2">
-      <KolCard _hasFooter _headline="Überschrift der Card" _level={1}>
-        <div slot="content">Inhalt der Card</div>
-        <div slot="footer">Fußbereich der Card</div>
-      </KolCard>
+    <div class="grid gap-2">
+      <div class="grid grid-cols-3 gap-2">
+        <KolCard _hasFooter _headline="Überschrift von Card 1" _level={1}>
+          <div slot="content">Inhalt Card 1</div>
+          <div slot="footer">Fußbereich der Card 1</div>
+        </KolCard>
+        <KolCard _hasFooter _headline="Überschrift von Card 2" _level={1}>
+          <div slot="content">
+            Inhalt Card 2<br />
+            Inhalt Card 2
+          </div>
+          <div slot="footer">Fußbereich der Card 2</div>
+        </KolCard>
+        <KolCard _hasFooter _headline="Überschrift von Card 3" _level={1}>
+          <div slot="content">
+            Inhalt Card 3<br />
+            Inhalt Card 3<br />
+            Inhalt Card 3<br />
+            Inhalt Card 3<br />
+            Inhalt Card 3
+          </div>
+          <div slot="footer">Fußbereich der Card 3</div>
+        </KolCard>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <KolCard _hasFooter _headline="Überschrift von Card 1 H1" _level={1}>
+          <div slot="content">Inhalt der Card</div>
+          <div slot="footer">Fußbereich der Card</div>
+        </KolCard>
+        <KolCard _hasFooter _headline="Überschrift von Card 2 H2" _level={2}>
+          <div slot="content">Inhalt der Card</div>
+          <div slot="footer">Fußbereich der Card</div>
+        </KolCard>
+        <KolCard _hasFooter _headline="Überschrift von Card 3 H3" _level={3}>
+          <div slot="content">Inhalt der Card</div>
+          <div slot="footer">Fußbereich der Card</div>
+        </KolCard>
+        <KolCard _hasFooter _headline="Überschrift von Card 4 H4" _level={4}>
+          <div slot="content">Inhalt der Card</div>
+          <div slot="footer">Fußbereich der Card</div>
+        </KolCard>
+        <KolCard _hasFooter _headline="Überschrift von Card 5 H5" _level={5}>
+          <div slot="content">Inhalt der Card</div>
+          <div slot="footer">Fußbereich der Card</div>
+        </KolCard>
+        <KolCard _hasFooter _headline="Überschrift von Card 6 H6" _level={6}>
+          <div slot="content">Inhalt der Card</div>
+          <div slot="footer">Fußbereich der Card</div>
+        </KolCard>
+      </div>
     </div>
   ),
   'KOL-DETAILS': () => (
@@ -305,13 +356,15 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-HEADING': () => (
-    <div class="grid grid-cols-1 gap-2">
-      <KolHeading _level={1}>H1-Überschrift</KolHeading>
-      <KolHeading _level={2}>H2-Überschrift</KolHeading>
-      <KolHeading _level={3}>H3-Überschrift</KolHeading>
-      <KolHeading _level={4}>H4-Überschrift</KolHeading>
-      <KolHeading _level={5}>H5-Überschrift</KolHeading>
-      <KolHeading _level={6}>H6-Überschrift</KolHeading>
+    <div class="grid grid-cols-2">
+      <div class="grid gap-2">
+        <KolHeading _level={1}>H1-Überschrift</KolHeading>
+        <KolHeading _level={2}>H2-Überschrift</KolHeading>
+        <KolHeading _level={3}>H3-Überschrift</KolHeading>
+        <KolHeading _level={4}>H4-Überschrift</KolHeading>
+        <KolHeading _level={5}>H5-Überschrift</KolHeading>
+        <KolHeading _level={6}>H6-Überschrift</KolHeading>
+      </div>
     </div>
   ),
   'KOL-ICON-FONT-AWESOME': () => (
@@ -329,15 +382,23 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INDENTED-TEXT': () => (
-    <div class="grid grid-cols-1 gap-2">
-      <KolIndentedText>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-        takimata sanctus est Lorem ipsum dolor sit amet.
-      </KolIndentedText>
+    <div>
+      <div class="grid gap-2">
+        {new Array(1).fill(null).map(() => (
+          <>
+            <div class="grid grid-cols-1 gap-2">
+              <KolIndentedText>
+                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
+                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              </KolIndentedText>
+            </div>
+          </>
+        ))}
+      </div>
     </div>
   ),
   'KOL-INPUT-CHECKBOX': () => (
@@ -947,15 +1008,21 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-TABS': () => (
-    <div class="grid grid-cols-1 gap-2">
-      <KolTabs
-        _selected={1}
-        _tabs={[{ _label: 'Nicht ausgewählt' }, { _label: 'Ausgewählt' }, { _label: 'Nicht ausgewählt' }]}
-      >
-        <div slot="tab-0">Inhalte von Tab 1</div>
-        <div slot="tab-1">Inhalte von Tab 2</div>
-        <div slot="tab-2">Inhalte von Tab 3</div>
-      </KolTabs>
+    <div>
+      {new Array(1).fill(null).map(() => (
+        <>
+          <div class="grid grid-cols-1 gap-2">
+            <KolTabs
+              _selected={1}
+              _tabs={[{ _label: 'Nicht ausgewählt' }, { _label: 'Ausgewählt' }, { _label: 'Nicht ausgewählt' }]}
+            >
+              <div slot="tab-0">Inhalte von Tab 1</div>
+              <div slot="tab-1">Inhalte von Tab 2</div>
+              <div slot="tab-2">Inhalte von Tab 3</div>
+            </KolTabs>
+          </div>
+        </>
+      ))}
     </div>
   ),
   'KOL-TEXTAREA': () => (
@@ -980,10 +1047,16 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-VERSION': () => (
-    <div class="flex gap-2">
-      <KolVersion _version="1.0.0"></KolVersion>
-      <KolVersion _version="2.0.0"></KolVersion>
-      <KolVersion _version="3.0.0"></KolVersion>
+    <div class="grid gap-4">
+      {new Array(1).fill(null).map(() => (
+        <>
+          <div class="flex gap-2">
+            <KolVersion _version="1.0.0"></KolVersion>
+            <KolVersion _version="2.0.0"></KolVersion>
+            <KolVersion _version="3.0.0"></KolVersion>
+          </div>
+        </>
+      ))}
     </div>
   ),
 };
