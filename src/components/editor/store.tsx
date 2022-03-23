@@ -167,6 +167,39 @@ export const components: Record<string, Component> = {
   ),
   'KOL-BADGE': () => (
     <div class="flex flex-wrap gap-2">
+      <KolBadge
+        _label="Text"
+        _color={{
+          backgroundColor: `#000`,
+          color: `#fff`,
+        }}
+      ></KolBadge>
+      <KolBadge
+        _label="Text"
+        _color={{
+          backgroundColor: `#ddd`,
+          color: `#222`,
+        }}
+        _icon="tree"
+      ></KolBadge>
+      <KolBadge
+        _label="Text"
+        _color={{
+          backgroundColor: `#ff0`,
+          color: `#860`,
+        }}
+        _icon="tree"
+        _iconAlign="right"
+      ></KolBadge>
+      <KolBadge
+        _label="Text"
+        _color={{
+          backgroundColor: `#333`,
+          color: `#888`,
+        }}
+        _icon="tree"
+        _iconOnly
+      ></KolBadge>
       {new Array(10).fill(null).map(() => (
         <>
           <KolBadge _label="Text" _color={`#${randomColor()}`}></KolBadge>
