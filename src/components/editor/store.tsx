@@ -300,14 +300,14 @@ export const components: Record<string, Component> = {
       <div class="grid grid-cols-3 gap-2">
         <KolCard _hasFooter _headline="Überschrift von Card 1" _level={1}>
           <div slot="content">Inhalt Card 1</div>
-          <div slot="footer">Fußbereich der Card</div>
+          <div slot="footer">Fußbereich der Card 1</div>
         </KolCard>
         <KolCard _hasFooter _headline="Überschrift von Card 2" _level={1}>
           <div slot="content">
             Inhalt Card 2<br />
             Inhalt Card 2
           </div>
-          <div slot="footer">Fußbereich der Card</div>
+          <div slot="footer">Fußbereich der Card 2</div>
         </KolCard>
         <KolCard _hasFooter _headline="Überschrift von Card 3" _level={1}>
           <div slot="content">
@@ -317,7 +317,7 @@ export const components: Record<string, Component> = {
             Inhalt Card 3<br />
             Inhalt Card 3
           </div>
-          <div slot="footer">Fußbereich der Card</div>
+          <div slot="footer">Fußbereich der Card 3</div>
         </KolCard>
       </div>
       <div class="grid grid-cols-3 gap-2">
