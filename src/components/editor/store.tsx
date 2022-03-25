@@ -625,11 +625,22 @@ export const components: Record<string, Component> = {
     <div class="grid grid-cols-1 gap-2">
       <KolLinkGroup
         _heading="Überschrift für diese Linkgroup"
-        _links="[{'_label':'Link nur Text','_href':'https://www.w3.org'}, {'_label':'Link mit Icon','_href':'https://www.w3.org','_icon':'home'},{'_label':'Link nur Icon','_href':'https://www.w3.org','_icon':'home','_iconOnly':'true'},{'_label':'Link ohne Unterstrich','_href':'https://www.w3.org','_underline':'false'}]"
+        _links={[
+          { _label: 'Link nur Text', _href: 'https://www.w3.org' },
+          { _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
+          { _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
+          { _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+        ]}
+        _orientation="vertical"
       ></KolLinkGroup>
       <KolLinkGroup
         _heading="Horizontale Linkgroup"
-        _links="[{'_label':'Link nur Text','_href':'https://www.w3.org'}, {'_label':'Link mit Icon','_href':'https://www.w3.org','_icon':'home'},{'_label':'Link nur Icon','_href':'https://www.w3.org','_icon':'home','_iconOnly':'true'},{'_label':'Link ohne Unterstrich','_href':'https://www.w3.org','_underline':'false'}]"
+        _links={[
+          { _label: 'Link nur Text', _href: 'https://www.w3.org' },
+          { _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
+          { _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
+          { _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+        ]}
         _orientation="horizontal"
       ></KolLinkGroup>
     </div>
