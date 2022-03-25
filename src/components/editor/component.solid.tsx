@@ -104,10 +104,10 @@ export const EditorComponent: Component<Props> = (props: Props) => {
   };
 
   return (
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2 content-center">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
       {getShow() && (
         <>
-          <div class="grid">
+          <div class="grid h-full">
             {/* <KolButtonGroup>
               <KolButton
                 _label="CSS-Properties"
@@ -148,7 +148,7 @@ export const EditorComponent: Component<Props> = (props: Props) => {
           </div>
           {getRerenderEditor() && (
             <div
-              class="lg:col-span-2 p-4 border-1 border-gray-300"
+              class="lg:col-span-2 p-4 border-1 border-gray-300 overflow-auto"
               data-theme={props.theme}
               data-theme-cache="false"
               data-theme-reset="true"

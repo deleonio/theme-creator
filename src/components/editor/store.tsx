@@ -671,7 +671,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-NAV': () => (
-    <div class="col-12 d-grid gap-2">
+    <div class="col-12 grid gap-2">
       <KolNav
         _ariaLabel="Navigation mit sinnvoller Breite"
         _links={[
@@ -1080,11 +1080,15 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-TOOLTIP': () => (
-    <div class="flex gap-2">
+    <div class="grid justify-center gap-4">
       <KolButton _icon="simple-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary"></KolButton>
       <KolButton _icon="simple-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary"></KolButton>
       <KolButton _icon="simple-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal"></KolButton>
       <KolButton _icon="simple-right" _iconOnly _label="rechts" _tooltip-align="right" _variant="danger"></KolButton>
+      <KolLink class="text-center" _ariaLabel="unten" _icon="simple-down" _iconOnly _tooltip-align="bottom"></KolLink>
+      <KolLink class="text-center" _ariaLabel="oben" _icon="simple-up" _iconOnly _tooltip-align="top"></KolLink>
+      <KolLink class="text-center" _ariaLabel="links" _icon="simple-left" _iconOnly _tooltip-align="left"></KolLink>
+      <KolLink class="text-center" _ariaLabel="rechts" _icon="simple-right" _iconOnly _tooltip-align="right"></KolLink>
     </div>
   ),
   'KOL-VERSION': () => (
