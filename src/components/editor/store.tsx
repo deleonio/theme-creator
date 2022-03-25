@@ -562,6 +562,27 @@ export const components: Record<string, Component> = {
       >
         Anrede
       </KolInputRadio>
+      <KolInputRadio
+        _id="anrede"
+        _required
+        _error={ERROR_MSG}
+        _name="anrede2"
+        _value="Firma"
+        _list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+      >
+        Anrede
+      </KolInputRadio>
+      <KolInputRadio
+        _id="anrede"
+        _disabled
+        _touched
+        _error={ERROR_MSG}
+        _name="anrede3"
+        _value="Firma"
+        _list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+      >
+        Anrede
+      </KolInputRadio>
     </div>
   ),
   'KOL-INPUT-RANGE': () => (
