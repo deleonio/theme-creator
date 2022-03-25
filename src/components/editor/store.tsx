@@ -170,6 +170,14 @@ export const components: Record<string, Component> = {
   'KOL-BADGE': () => (
     <div class="flex flex-wrap gap-2">
       <KolBadge
+        _label="Greta"
+        _color={{
+          backgroundColor: `#CCDEDA`,
+          color: `#005C45`,
+        }}
+      ></KolBadge>
+      <KolBadge _label="Greta" _color={`#CCDEDA`}></KolBadge>
+      <KolBadge
         _label="Text"
         _color={{
           backgroundColor: `#000`,
