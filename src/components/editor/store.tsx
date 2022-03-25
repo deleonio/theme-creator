@@ -337,56 +337,43 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-CARD': () => (
-    <div class="grid gap-2">
-      <div class="grid grid-cols-3 gap-2">
-        <KolCard _hasFooter _headline="Überschrift von Card 1" _level={1}>
-          <div slot="content">Inhalt Card 1</div>
-          <div slot="footer">Fußbereich der Card 1</div>
-        </KolCard>
-        <KolCard _hasFooter _headline="Überschrift von Card 2" _level={1}>
-          <div slot="content">
-            Inhalt Card 2<br />
-            Inhalt Card 2
-          </div>
-          <div slot="footer">Fußbereich der Card 2</div>
-        </KolCard>
-        <KolCard _hasFooter _headline="Überschrift von Card 3" _level={1}>
-          <div slot="content">
-            Inhalt Card 3<br />
-            Inhalt Card 3<br />
-            Inhalt Card 3<br />
-            Inhalt Card 3<br />
-            Inhalt Card 3
-          </div>
-          <div slot="footer">Fußbereich der Card 3</div>
-        </KolCard>
-      </div>
-      <div class="grid grid-cols-3 gap-2">
-        <KolCard _hasFooter _headline="Überschrift von Card 1 H1" _level={1}>
-          <div slot="content">Inhalt der Card</div>
-          <div slot="footer">Fußbereich der Card</div>
-        </KolCard>
-        <KolCard _hasFooter _headline="Überschrift von Card 2 H2" _level={2}>
-          <div slot="content">Inhalt der Card</div>
-          <div slot="footer">Fußbereich der Card</div>
-        </KolCard>
-        <KolCard _hasFooter _headline="Überschrift von Card 3 H3" _level={3}>
-          <div slot="content">Inhalt der Card</div>
-          <div slot="footer">Fußbereich der Card</div>
-        </KolCard>
-        <KolCard _hasFooter _headline="Überschrift von Card 4 H4" _level={4}>
-          <div slot="content">Inhalt der Card</div>
-          <div slot="footer">Fußbereich der Card</div>
-        </KolCard>
-        <KolCard _hasFooter _headline="Überschrift von Card 5 H5" _level={5}>
-          <div slot="content">Inhalt der Card</div>
-          <div slot="footer">Fußbereich der Card</div>
-        </KolCard>
-        <KolCard _hasFooter _headline="Überschrift von Card 6 H6" _level={6}>
-          <div slot="content">Inhalt der Card</div>
-          <div slot="footer">Fußbereich der Card</div>
-        </KolCard>
-      </div>
+    <div class="grid xl:grid-cols-2 2xl:grid-cols-3 gap-2">
+      <KolCard _hasFooter _headline="H1-Überschrift der Card" _level={1}>
+        <div slot="content">Inhalt der Card</div>
+        <div slot="footer">Fußbereich der Card</div>
+      </KolCard>
+      <KolCard _hasFooter _headline="H2-Überschrift der Card" _level={2}>
+        <div slot="content">Inhalt der Card</div>
+        <div slot="footer">Fußbereich der Card</div>
+      </KolCard>
+      <KolCard _hasFooter _headline="H3-Überschrift der Card" _level={3}>
+        <div slot="content">Inhalt der Card</div>
+        <div slot="footer">
+          <KolButtonGroup>
+            <KolButton _label="Speichern" _variant="primary"></KolButton>
+            <KolButton _label="Abbrechen" _variant="secondary"></KolButton>
+            <KolButton _label="Löschen" _variant="danger"></KolButton>
+          </KolButtonGroup>
+        </div>
+      </KolCard>
+      <KolCard _hasFooter _headline="H4-Überschrift der Card" _level={4}>
+        <div slot="content">Inhalt der Card</div>
+        <div slot="footer">Fußbereich der Card</div>
+      </KolCard>
+      <KolCard _hasFooter _headline="H5-Überschrift der Card" _level={5}>
+        <div slot="content">Inhalt der Card</div>
+        <div slot="footer">Fußbereich der Card</div>
+      </KolCard>
+      <KolCard _hasFooter _headline="H6-Überschrift der Card" _level={6}>
+        <div slot="content">Inhalt der Card</div>
+        <div slot="footer">
+          <KolButtonGroup>
+            <KolButton _label="Speichern" _variant="primary"></KolButton>
+            <KolButton _label="Abbrechen" _variant="secondary"></KolButton>
+            <KolButton _label="Löschen" _variant="danger"></KolButton>
+          </KolButtonGroup>
+        </div>
+      </KolCard>
     </div>
   ),
   'KOL-DETAILS': () => (
@@ -566,6 +553,27 @@ export const components: Record<string, Component> = {
         _id="anrede"
         _error={ERROR_MSG}
         _name="anrede"
+        _list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+      >
+        Anrede
+      </KolInputRadio>
+      <KolInputRadio
+        _id="anrede"
+        _required
+        _error={ERROR_MSG}
+        _name="anrede2"
+        _value="Firma"
+        _list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
+      >
+        Anrede
+      </KolInputRadio>
+      <KolInputRadio
+        _id="anrede"
+        _disabled
+        _touched
+        _error={ERROR_MSG}
+        _name="anrede3"
+        _value="Firma"
         _list="[{'label':'Frau','value':'Frau'},{'label':'Herr','value':'Herr'},{'label':'Firma','value':'Firma'}]"
       >
         Anrede
