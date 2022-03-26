@@ -104,47 +104,24 @@ export const EditorComponent: Component<Props> = (props: Props) => {
   };
 
   return (
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-2 h-70vh">
       {getShow() && (
         <>
           <div class="grid h-full">
-            {/* <KolButtonGroup>
-              <KolButton
-                _label="CSS-Properties"
-                _on={{
-                  onClick: () => {},
-                }}
-              ></KolButton>
-              <KolButton
-                _label="CSS-Style"
-                _on={{
-                  onClick: () => {},
-                }}
-              ></KolButton>
-            </KolButtonGroup> */}
-            <div class="h-70vh overflow-hidden">
-              <div
-                classList={{
-                  'w-full h-full': props.propsStyle === false,
-                  'hidden ': props.propsStyle === true,
-                }}
-                ref={renderPropsEditor}
-              ></div>
-              <div
-                classList={{
-                  'w-full h-full': props.propsStyle === true,
-                  'hidden ': props.propsStyle === false,
-                }}
-                ref={renderStyleEditor}
-              ></div>
-            </div>
-            {/* <div
-          ref={(ref) => createHtmlEditor(ref, props.component)}
-          style={{
-            height: '33%',
-            width: '100%',
-          }}
-        ></div> */}
+            <div
+              classList={{
+                'w-full h-full': props.propsStyle === false,
+                'hidden ': props.propsStyle === true,
+              }}
+              ref={renderPropsEditor}
+            ></div>
+            <div
+              classList={{
+                'w-full h-full': props.propsStyle === true,
+                'hidden ': props.propsStyle === false,
+              }}
+              ref={renderStyleEditor}
+            ></div>
           </div>
           {getRerenderEditor() && (
             <div
