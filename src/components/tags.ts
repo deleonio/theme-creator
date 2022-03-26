@@ -10,7 +10,6 @@ export const TAG_NAMES: string[] = [
   'kol-accordion',
   'kol-alert',
   'kol-card',
-  // 'kol-tooltip', no shadow dom
   'kol-version',
 
   'kol-abbr',
@@ -31,12 +30,12 @@ export const TAG_NAMES: string[] = [
 
   'kol-breadcrumb',
   'kol-details',
-  // 'kol-form',
-  // 'kol-input-adapter-leanup',
-  // 'kol-kolibri',
+  // 'kol-form', // not customizable
+  // 'kol-input-adapter-leanup', // not customizable
+  // 'kol-kolibri', // not customizable
   'kol-link-group',
-  // 'kol-logo',
-  'kol-modal',
+  // 'kol-logo', // not customizable
+  // 'kol-modal', // not customizable
   'kol-nav',
   'kol-progress',
   'kol-skip-nav',

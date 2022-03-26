@@ -30,10 +30,12 @@ import {
   KolPagination,
   KolProgress,
   KolSelect,
+  KolSkipNav,
   KolSpin,
   KolTable,
   KolTabs,
   KolTextarea,
+  KolToast,
   KolVersion,
 } from '@kolibri/solid';
 import { SelectOption } from '@kolibri/lib';
@@ -88,110 +90,104 @@ const LONG_TEXT = `Lorem Ipsum ist ein einfacher Demo-Text für die Print- und S
 
 export const components: Record<string, Component> = {
   'KOL-ABBR': () => (
-    <>
-      <div class="grid grid-cols-1">
-        <div class="grid gap-6">
-          <p>
-            Ich bin eine{' '}
-            <KolAbbr _title="Ausführliche Beschreibung" _align="top">
-              ABB
-            </KolAbbr>{' '}
-            mit Tooltip oben
-          </p>
-          <p>
-            Ich bin eine{' '}
-            <KolAbbr _title="Ausführliche Beschreibung" _align="right">
-              ABB
-            </KolAbbr>{' '}
-            mit Tooltip rechts
-          </p>
-          <p>
-            Ich bin eine{' '}
-            <KolAbbr _title="Ausführliche Beschreibung" _align="bottom">
-              ABB
-            </KolAbbr>{' '}
-            mit Tooltip unten
-          </p>
-          <p>
-            Ich bin eine{' '}
-            <KolAbbr _title="Ausführliche Beschreibung" _align="left">
-              ABB
-            </KolAbbr>{' '}
-            mit Tooltip links
-          </p>
-        </div>
+    <div class="grid grid-cols-1">
+      <div class="grid gap-6">
+        <p>
+          Ich bin eine{' '}
+          <KolAbbr _title="Ausführliche Beschreibung" _align="top">
+            ABB
+          </KolAbbr>{' '}
+          mit Tooltip oben
+        </p>
+        <p>
+          Ich bin eine{' '}
+          <KolAbbr _title="Ausführliche Beschreibung" _align="right">
+            ABB
+          </KolAbbr>{' '}
+          mit Tooltip rechts
+        </p>
+        <p>
+          Ich bin eine{' '}
+          <KolAbbr _title="Ausführliche Beschreibung" _align="bottom">
+            ABB
+          </KolAbbr>{' '}
+          mit Tooltip unten
+        </p>
+        <p>
+          Ich bin eine{' '}
+          <KolAbbr _title="Ausführliche Beschreibung" _align="left">
+            ABB
+          </KolAbbr>{' '}
+          mit Tooltip links
+        </p>
       </div>
-    </>
+    </div>
   ),
   'KOL-ACCORDION': () => (
-    <>
-      <div class="grid grid-cols-1 gap-6">
-        <KolAccordion _level={1} _heading="Überschrift Accordion 1" _open>
-          <div slot="content">{LONG_TEXT}</div>
-        </KolAccordion>
-        <KolAccordion _level={2} _heading="Überschrift Accordion 2">
-          <div slot="content">{LONG_TEXT}</div>
-        </KolAccordion>
-        <KolAccordion _level={3} _heading="Überschrift Accordion 3">
-          <div slot="content">{LONG_TEXT}</div>
-        </KolAccordion>
-        <KolAccordion _level={4} _heading="Überschrift Accordion 4" _open>
-          <div slot="content">{LONG_TEXT}</div>
-        </KolAccordion>
-        <KolAccordion _level={5} _heading="Überschrift Accordion 5">
-          <div slot="content">{LONG_TEXT}</div>
-        </KolAccordion>
-        <KolAccordion _level={6} _heading="Überschrift Accordion 6">
-          <div slot="content">{LONG_TEXT}</div>
-        </KolAccordion>
-      </div>
-    </>
+    <div class="grid grid-cols-1 gap-6">
+      <KolAccordion _level={1} _heading="Überschrift Accordion 1" _open>
+        <div slot="content">{LONG_TEXT}</div>
+      </KolAccordion>
+      <KolAccordion _level={2} _heading="Überschrift Accordion 2">
+        <div slot="content">{LONG_TEXT}</div>
+      </KolAccordion>
+      <KolAccordion _level={3} _heading="Überschrift Accordion 3">
+        <div slot="content">{LONG_TEXT}</div>
+      </KolAccordion>
+      <KolAccordion _level={4} _heading="Überschrift Accordion 4" _open>
+        <div slot="content">{LONG_TEXT}</div>
+      </KolAccordion>
+      <KolAccordion _level={5} _heading="Überschrift Accordion 5">
+        <div slot="content">{LONG_TEXT}</div>
+      </KolAccordion>
+      <KolAccordion _level={6} _heading="Überschrift Accordion 6">
+        <div slot="content">{LONG_TEXT}</div>
+      </KolAccordion>
+    </div>
   ),
   'KOL-ALERT': () => (
-    <>
-      <div class="grid grid-cols-1 gap-6">
-        <KolAlert _type="error" _heading="Fehler" _level={3}>
-          Hier wird der Fehler näher beschrieben.
-        </KolAlert>
-        <KolAlert _type="info" _heading="Hinweis" _level={4}>
-          Hier wird der Hinweis näher beschrieben.
-        </KolAlert>
-        <KolAlert _type="success" _heading="Erfolg" _level={5}>
-          Hier wird der Erfolg näher beschrieben.
-        </KolAlert>
-        <KolAlert _type="warning" _heading="Warnung" _level={6}>
-          Hier wird die Warnung näher beschrieben.
-        </KolAlert>
-        <KolAlert _type="error">Hier wird der Fehler kurz beschrieben.</KolAlert>
-        <KolAlert _type="info">Hier wird der Hinweis kurz beschrieben.</KolAlert>
-        <KolAlert _type="success">Hier wird der Erfolg kurz beschrieben.</KolAlert>
-        <KolAlert _type="warning">Hier wird die Warnung kurz beschrieben.</KolAlert>
-        <KolAlert _type="error" _heading="Fehler" _level={3} _variant="card-icon">
-          Hier wird der Fehler näher beschrieben.
-        </KolAlert>
-        <KolAlert _type="info" _heading="Hinweis" _level={4} _variant="card-icon">
-          Hier wird der Hinweis näher beschrieben.
-        </KolAlert>
-        <KolAlert _type="success" _heading="Erfolg" _level={5} _variant="card-icon">
-          Hier wird der Erfolg näher beschrieben.
-        </KolAlert>
-        <KolAlert _type="warning" _heading="Warnung" _level={6} _variant="card-icon">
-          Hier wird die Warnung näher beschrieben.
-        </KolAlert>
-        <KolAlert _type="error" _variant="card-icon">
-          Hier wird der Fehler kurz beschrieben.
-        </KolAlert>
-        <KolAlert _type="info" _variant="card-icon">
-          Hier wird der Hinweis kurz beschrieben.
-        </KolAlert>
-        <KolAlert _type="success" _variant="card-icon">
-          Hier wird der Erfolg kurz beschrieben.
-        </KolAlert>
-        <KolAlert _type="warning" _variant="card-icon">
-          Hier wird die Warnung kurz beschrieben.
-        </KolAlert>
-      </div>
-    </>
+    <div class="grid grid-cols-1 gap-6">
+      <KolAlert _type="error" _heading="Fehler" _level={3}>
+        Hier wird der Fehler näher beschrieben.
+      </KolAlert>
+      <KolAlert _type="info" _heading="Hinweis" _level={4}>
+        Hier wird der Hinweis näher beschrieben.
+      </KolAlert>
+      <KolAlert _type="success" _heading="Erfolg" _level={5}>
+        Hier wird der Erfolg näher beschrieben.
+      </KolAlert>
+      <KolAlert _type="warning" _heading="Warnung" _level={6}>
+        Hier wird die Warnung näher beschrieben.
+      </KolAlert>
+      <KolAlert _type="error">Hier wird der Fehler kurz beschrieben.</KolAlert>
+      <KolAlert _type="info">Hier wird der Hinweis kurz beschrieben.</KolAlert>
+      <KolAlert _type="success">Hier wird der Erfolg kurz beschrieben.</KolAlert>
+      <KolAlert _type="warning">Hier wird die Warnung kurz beschrieben.</KolAlert>
+      <KolAlert _type="error" _heading="Fehler" _level={3} _variant="card-icon">
+        Hier wird der Fehler näher beschrieben.
+      </KolAlert>
+      <KolAlert _type="info" _heading="Hinweis" _level={4} _variant="card-icon">
+        Hier wird der Hinweis näher beschrieben.
+      </KolAlert>
+      <KolAlert _type="success" _heading="Erfolg" _level={5} _variant="card-icon">
+        Hier wird der Erfolg näher beschrieben.
+      </KolAlert>
+      <KolAlert _type="warning" _heading="Warnung" _level={6} _variant="card-icon">
+        Hier wird die Warnung näher beschrieben.
+      </KolAlert>
+      <KolAlert _type="error" _variant="card-icon">
+        Hier wird der Fehler kurz beschrieben.
+      </KolAlert>
+      <KolAlert _type="info" _variant="card-icon">
+        Hier wird der Hinweis kurz beschrieben.
+      </KolAlert>
+      <KolAlert _type="success" _variant="card-icon">
+        Hier wird der Erfolg kurz beschrieben.
+      </KolAlert>
+      <KolAlert _type="warning" _variant="card-icon">
+        Hier wird die Warnung kurz beschrieben.
+      </KolAlert>
+    </div>
   ),
   'KOL-BADGE': () => (
     <div class="flex flex-wrap gap-6">
@@ -247,7 +243,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-BREADCRUMB': () => (
-    <>
+    <div class="grid grid-cols-1 gap-6">
       <KolBreadcrumb
         _ariaLabel="Breadcrumb aus Text-Links"
         _links={[
@@ -272,7 +268,7 @@ export const components: Record<string, Component> = {
           { _label: 'Unterseite der Unterseite', _href: '#/unterseite/unterseite' },
         ]}
       ></KolBreadcrumb>
-    </>
+    </div>
   ),
   'KOL-BUTTON': () => (
     <div class="grid grid-cols-3 items-center justify-items-center gap-6">
@@ -681,6 +677,22 @@ export const components: Record<string, Component> = {
         Externer Link
       </KolLink>
       <KolLink _href="/">Besuchter Link</KolLink>
+      <KolIndentedText>
+        <p>
+          <b>Links sind unsichtbar geschalten</b>
+          <br />
+          Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
+        </p>
+      </KolIndentedText>
+      <KolSkipNav
+        _ariaLabel="Skip-Nav"
+        _links={[
+          { _label: 'Link nur Text', _href: 'https://www.w3.org' },
+          { _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
+          { _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
+          { _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+        ]}
+      ></KolSkipNav>
     </div>
   ),
   'KOL-LOGO': () => (
@@ -1112,6 +1124,81 @@ export const components: Record<string, Component> = {
       <KolTextarea _id="text" _name="text" _read-only>
         Ihre Nachricht (Readonly)
       </KolTextarea>
+    </div>
+  ),
+  'KOL-SKIP-NAV': () => (
+    <div class="grid grid-cols-1 gap-6">
+      <KolIndentedText>
+        <p>
+          <b>Links sind unsichtbar geschalten</b>
+          <br />
+          Um die Links zu sehen, am besten einmal in diesen Bereich klicken und Tab-Taste drücken.
+        </p>
+      </KolIndentedText>
+      <KolSkipNav
+        _ariaLabel="Skip-Nav"
+        _links={[
+          { _label: 'Link nur Text', _href: 'https://www.w3.org' },
+          { _label: 'Link mit Icon', _href: 'https://www.w3.org', _icon: 'home' },
+          { _label: 'Link nur Icon', _href: 'https://www.w3.org', _icon: 'home', _iconOnly: 'true' },
+          { _label: 'Link ohne Unterstrich', _href: 'https://www.w3.org', _underline: 'false' },
+        ]}
+      ></KolSkipNav>
+    </div>
+  ),
+  'KOL-TOAST': () => (
+    <div
+      class="grid grid-cols-1 gap-6"
+      ref={(elm) => {
+        if (elm instanceof HTMLElement) {
+          const toasts = elm.querySelectorAll('kol-toast');
+          toasts.forEach((toast) => toast.setAttribute('_show', 'false'));
+          if (toasts.length > 0) {
+            toasts[0].setAttribute('_show', 'true');
+          }
+        }
+      }}
+    >
+      <KolToast _type="error" _heading="Fehler" _level={3}>
+        Hier wird der Fehler näher beschrieben.
+      </KolToast>
+      <KolToast _type="info" _heading="Hinweis" _level={4}>
+        Hier wird der Hinweis näher beschrieben.
+      </KolToast>
+      <KolToast _type="success" _heading="Erfolg" _level={5}>
+        Hier wird der Erfolg näher beschrieben.
+      </KolToast>
+      <KolToast _type="warning" _heading="Warnung" _level={6}>
+        Hier wird die Warnung näher beschrieben.
+      </KolToast>
+      <KolToast _type="error">Hier wird der Fehler kurz beschrieben.</KolToast>
+      <KolToast _type="info">Hier wird der Hinweis kurz beschrieben.</KolToast>
+      <KolToast _type="success">Hier wird der Erfolg kurz beschrieben.</KolToast>
+      <KolToast _type="warning">Hier wird die Warnung kurz beschrieben.</KolToast>
+      <KolToast _type="error" _heading="Fehler" _level={3} _variant="card-icon">
+        Hier wird der Fehler näher beschrieben.
+      </KolToast>
+      <KolToast _type="info" _heading="Hinweis" _level={4} _variant="card-icon">
+        Hier wird der Hinweis näher beschrieben.
+      </KolToast>
+      <KolToast _type="success" _heading="Erfolg" _level={5} _variant="card-icon">
+        Hier wird der Erfolg näher beschrieben.
+      </KolToast>
+      <KolToast _type="warning" _heading="Warnung" _level={6} _variant="card-icon">
+        Hier wird die Warnung näher beschrieben.
+      </KolToast>
+      <KolToast _type="error" _variant="card-icon">
+        Hier wird der Fehler kurz beschrieben.
+      </KolToast>
+      <KolToast _type="info" _variant="card-icon">
+        Hier wird der Hinweis kurz beschrieben.
+      </KolToast>
+      <KolToast _type="success" _variant="card-icon">
+        Hier wird der Erfolg kurz beschrieben.
+      </KolToast>
+      <KolToast _type="warning" _variant="card-icon">
+        Hier wird die Warnung kurz beschrieben.
+      </KolToast>
     </div>
   ),
   'KOL-TOOLTIP': () => (

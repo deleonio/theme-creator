@@ -42,44 +42,7 @@ type Page = 'editor' | 'result' | 'overview';
 const TAG_NAME_LIST: SelectOption<string>[] = [];
 TAG_NAMES.forEach((tagName) => {
   TAG_NAME_LIST.push({
-    label:
-      tagName === 'kol-abbr' ||
-      tagName === 'kol-accordion' ||
-      tagName === 'kol-alert' ||
-      tagName === 'kol-badge' ||
-      tagName === 'kol-breadcrumb' ||
-      tagName === 'kol-button' ||
-      tagName === 'kol-button-group' ||
-      tagName === 'kol-card' ||
-      tagName === 'kol-details' ||
-      tagName === 'kol-heading' ||
-      tagName === 'kol-icon-font-awesome' ||
-      tagName === 'kol-icon-icofont' ||
-      tagName === 'kol-indented-text' ||
-      tagName === 'kol-input-checkbox' ||
-      tagName === 'kol-input-color' ||
-      tagName === 'kol-input-email' ||
-      tagName === 'kol-input-file' ||
-      tagName === 'kol-input-number' ||
-      tagName === 'kol-input-password' ||
-      tagName === 'kol-input-range' ||
-      tagName === 'kol-input-radio' ||
-      tagName === 'kol-input-text' ||
-      tagName === 'kol-link' ||
-      tagName === 'kol-link-group' ||
-      tagName === 'kol-logo' ||
-      tagName === 'kol-modal' ||
-      tagName === 'kol-nav' ||
-      tagName === 'kol-progress' ||
-      tagName === 'kol-select' ||
-      tagName === 'kol-spin' ||
-      tagName === 'kol-table' ||
-      tagName === 'kol-tabs' ||
-      tagName === 'kol-textarea' ||
-      tagName === 'kol-tooltip' ||
-      tagName === 'kol-version'
-        ? tagName
-        : `${tagName} (not prepared yet)`,
+    label: tagName,
     value: tagName.toLocaleUpperCase(),
   });
 });
