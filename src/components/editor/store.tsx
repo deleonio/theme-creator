@@ -90,7 +90,7 @@ export const components: Record<string, Component> = {
   'KOL-ABBR': () => (
     <>
       <div class="grid grid-cols-1">
-        <div class="grid gap-2">
+        <div class="grid gap-6">
           <p>
             Ich bin eine{' '}
             <KolAbbr _title="Ausführliche Beschreibung" _align="top">
@@ -125,7 +125,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-ACCORDION': () => (
     <>
-      <div class="grid grid-cols-1 gap-2">
+      <div class="grid grid-cols-1 gap-6">
         <KolAccordion _level={1} _heading="Überschrift Accordion 1" _open>
           <div slot="content">{LONG_TEXT}</div>
         </KolAccordion>
@@ -149,26 +149,52 @@ export const components: Record<string, Component> = {
   ),
   'KOL-ALERT': () => (
     <>
-      <div class="grid grid-cols-1 gap-2">
-        <KolAlert _level={1} _heading="Erfolg" _type="success"></KolAlert>
-        <KolAlert _level={2} _heading="Information" _type="info"></KolAlert>
-        <KolAlert _level={3} _heading="Fehler" _type="error"></KolAlert>
-        <KolAlert _level={4} _heading="Warnung" _type="warning"></KolAlert>
-        <KolAlert _level={5} _heading="Erfolg" _type="success">
-          Text des Hinweis.
+      <div class="grid grid-cols-1 gap-6">
+        <KolAlert _type="error" _heading="Fehler" _level={3}>
+          Hier wird der Fehler näher beschrieben.
         </KolAlert>
-        <KolAlert _level={6} _heading="Information" _type="info">
-          Text des Hinweis.
+        <KolAlert _type="info" _heading="Hinweis" _level={4}>
+          Hier wird der Hinweis näher beschrieben.
         </KolAlert>
-        <KolAlert _type="success">Text des Hinweis.</KolAlert>
-        <KolAlert _type="info">Text des Hinweis.</KolAlert>
-        <KolAlert _type="error">Text des Hinweis.</KolAlert>
-        <KolAlert _type="warning">Text des Hinweis.</KolAlert>
+        <KolAlert _type="success" _heading="Erfolg" _level={5}>
+          Hier wird der Erfolg näher beschrieben.
+        </KolAlert>
+        <KolAlert _type="warning" _heading="Warnung" _level={6}>
+          Hier wird die Warnung näher beschrieben.
+        </KolAlert>
+        <KolAlert _type="error">Hier wird der Fehler kurz beschrieben.</KolAlert>
+        <KolAlert _type="info">Hier wird der Hinweis kurz beschrieben.</KolAlert>
+        <KolAlert _type="success">Hier wird der Erfolg kurz beschrieben.</KolAlert>
+        <KolAlert _type="warning">Hier wird die Warnung kurz beschrieben.</KolAlert>
+        <KolAlert _type="error" _heading="Fehler" _level={3} _variant="card-icon">
+          Hier wird der Fehler näher beschrieben.
+        </KolAlert>
+        <KolAlert _type="info" _heading="Hinweis" _level={4} _variant="card-icon">
+          Hier wird der Hinweis näher beschrieben.
+        </KolAlert>
+        <KolAlert _type="success" _heading="Erfolg" _level={5} _variant="card-icon">
+          Hier wird der Erfolg näher beschrieben.
+        </KolAlert>
+        <KolAlert _type="warning" _heading="Warnung" _level={6} _variant="card-icon">
+          Hier wird die Warnung näher beschrieben.
+        </KolAlert>
+        <KolAlert _type="error" _variant="card-icon">
+          Hier wird der Fehler kurz beschrieben.
+        </KolAlert>
+        <KolAlert _type="info" _variant="card-icon">
+          Hier wird der Hinweis kurz beschrieben.
+        </KolAlert>
+        <KolAlert _type="success" _variant="card-icon">
+          Hier wird der Erfolg kurz beschrieben.
+        </KolAlert>
+        <KolAlert _type="warning" _variant="card-icon">
+          Hier wird die Warnung kurz beschrieben.
+        </KolAlert>
       </div>
     </>
   ),
   'KOL-BADGE': () => (
-    <div class="flex flex-wrap gap-2">
+    <div class="flex flex-wrap gap-6">
       <KolBadge
         _label="Greta"
         _color={{
@@ -249,22 +275,22 @@ export const components: Record<string, Component> = {
     </>
   ),
   'KOL-BUTTON': () => (
-    <div class="grid grid-cols-3 items-center justify-items-center gap-2">
-      <div class="grid gap-2">
+    <div class="grid grid-cols-3 items-center justify-items-center gap-6">
+      <div class="grid gap-6">
         <KolButton _label="Klick mich!" _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
         <KolButton _label="Klick mich!" _variant="normal"></KolButton>
         <KolButton _label="Klick mich!" _variant="danger"></KolButton>
         <KolButton _label="Klick mich!" _variant="ghost"></KolButton>
       </div>
-      <div class="grid gap-2">
+      <div class="grid gap-6">
         <KolButton _label="Klick mich!" _icon="home" _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _variant="secondary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _variant="normal"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _variant="danger"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _variant="ghost"></KolButton>
       </div>
-      <div class="grid gap-2">
+      <div class="grid gap-6">
         <KolButton
           _label="Klick mich!"
           _icon="home"
@@ -301,14 +327,14 @@ export const components: Record<string, Component> = {
           style="width: 120px"
         ></KolButton>
       </div>
-      <div class="grid gap-2">
+      <div class="grid gap-6">
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top"></KolButton>
       </div>
-      <div class="grid gap-2">
+      <div class="grid gap-6">
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="secondary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="normal"></KolButton>
@@ -318,26 +344,27 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-BUTTON-GROUP': () => (
-    <div class="grid grid-cols-1 gap-2">
-      {new Array(6).fill(null).map(() => (
-        <>
-          <div class="grid gap-2">
-            <KolButtonGroup>
-              <KolButton _label="Klick mich!" _variant="primary"></KolButton>
-              <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
-              <KolButton _label="Klick mich!" _variant="normal"></KolButton>
-              <KolButton _label="Klick mich!"></KolButton>
-              <KolButton _label="Klick mich!" _variant="danger"></KolButton>
-              <KolButton _label="Klick mich!" _variant="ghost"></KolButton>
-              <KolButton _label="Klick mich!" _disabled></KolButton>
-            </KolButtonGroup>
-          </div>
-        </>
-      ))}
+    <div class="grid gap-6">
+      <KolButtonGroup>
+        <KolButton _label="Klick mich!" _variant="primary"></KolButton>
+        <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
+        <KolButton _label="Klick mich!" _variant="normal"></KolButton>
+        <KolButton _label="Klick mich!" _variant="danger"></KolButton>
+        <KolButton _label="Klick mich!" _variant="ghost"></KolButton>
+        <KolButton _label="Klick mich!" _disabled></KolButton>
+      </KolButtonGroup>
+      <KolButtonGroup>
+        <KolButton _label="Klick mich!" _variant="primary"></KolButton>
+        <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
+        <KolButton _label="Klick mich!" _variant="normal"></KolButton>
+        <KolButton _label="Klick mich!" _icon="trash" _iconOnly _variant="danger"></KolButton>
+        <KolButton _label="Klick mich!" _icon="info" _iconOnly _variant="ghost"></KolButton>
+        <KolButton _label="Klick mich!" _icon="lock" _iconOnly _disabled></KolButton>
+      </KolButtonGroup>
     </div>
   ),
   'KOL-CARD': () => (
-    <div class="grid xl:grid-cols-2 2xl:grid-cols-3 gap-2">
+    <div class="grid xl:grid-cols-2 2xl:grid-cols-3 gap-6">
       <KolCard _hasFooter _headline="H1-Überschrift der Card" _level={1}>
         <div slot="content">Inhalt der Card</div>
         <div slot="footer">Fußbereich der Card</div>
@@ -377,7 +404,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-DETAILS': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolDetails _open _summary="Ihre Überschrift">
         Inhalt der Details-Komponente
       </KolDetails>
@@ -385,7 +412,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-HEADING': () => (
     <div class="grid grid-cols-2">
-      <div class="grid gap-2">
+      <div class="grid gap-6">
         <KolHeading _level={1}>H1-Überschrift</KolHeading>
         <KolHeading _level={2}>H2-Überschrift</KolHeading>
         <KolHeading _level={3}>H3-Überschrift</KolHeading>
@@ -396,42 +423,34 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-ICON-FONT-AWESOME': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolIconFontAwesome _prefix="fas" _icon="home"></KolIconFontAwesome>
       <KolIconFontAwesome _prefix="fas" _icon="envelope"></KolIconFontAwesome>
       <KolIconFontAwesome _prefix="fas" _icon="phone"></KolIconFontAwesome>
     </div>
   ),
   'KOL-ICON-ICOFONT': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolIconIcofont _icon="home"></KolIconIcofont>
       <KolIconIcofont _icon="envelope"></KolIconIcofont>
       <KolIconIcofont _icon="phone"></KolIconIcofont>
     </div>
   ),
   'KOL-INDENTED-TEXT': () => (
-    <div>
-      <div class="grid gap-2">
-        {new Array(1).fill(null).map(() => (
-          <>
-            <div class="grid grid-cols-1 gap-2">
-              <KolIndentedText>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
-                ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum
-                dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-                clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-              </KolIndentedText>
-            </div>
-          </>
-        ))}
-      </div>
+    <div class="grid grid-cols-1 gap-6">
+      <KolIndentedText>
+        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
+        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
+        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
+        diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+        takimata sanctus est Lorem ipsum dolor sit amet.
+      </KolIndentedText>
     </div>
   ),
   'KOL-INPUT-CHECKBOX': () => (
-    <div class="grid grid-cols-1 gap-2">
-      <div class="grid gap-2">
+    <div class="grid grid-cols-1 gap-6">
+      <div class="grid gap-6">
         <KolInputCheckbox _id="anrede" _name="anrede" _required _type="checkbox">
           Nicht ausgewählt
         </KolInputCheckbox>
@@ -442,7 +461,7 @@ export const components: Record<string, Component> = {
           Unbestimmt (Indeterminate)
         </KolInputCheckbox>
       </div>
-      <div class="grid gap-2">
+      <div class="grid gap-6">
         <KolInputCheckbox _id="anrede" _name="anrede" _type="switch" _error={ERROR_MSG}>
           Nicht ausgewählt
         </KolInputCheckbox>
@@ -456,7 +475,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-COLOR': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolInputColor _id="farbe" _name="farbe" _value="#ff0000">
         Farbe
       </KolInputColor>
@@ -469,7 +488,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-EMAIL': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolInputEmail _id="email" _name="email" _required _value="test@mail.de" _error={ERROR_MSG}>
         E-Mail
       </KolInputEmail>
@@ -485,7 +504,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-FILE': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolInputFile _id="file" _name="file" _required>
         Datei hochladen
       </KolInputFile>
@@ -498,7 +517,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-NUMBER': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolInputNumber _id="number" _name="number" _required _type="number">
         Zahleneingabe
       </KolInputNumber>
@@ -535,7 +554,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-PASSWORD': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolInputPassword _id="password" _name="password" _required>
         Passwort
       </KolInputPassword>
@@ -548,7 +567,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-RADIO': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolInputRadio
         _id="anrede"
         _error={ERROR_MSG}
@@ -581,7 +600,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-RANGE': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolInputRange _id="range" _min={0} _max={50} _name="range">
         Schieberegler
       </KolInputRange>
@@ -594,7 +613,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-TEXT': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolInputText _placeholder="Placeholder" _required _type="text">
         Vorname (text)
       </KolInputText>
@@ -622,7 +641,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-LINK-GROUP': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolLinkGroup
         _heading="Überschrift für diese Linkgroup"
         _links={[
@@ -646,7 +665,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-LINK': () => (
-    <div class="grid justify-items-center gap-4">
+    <div class="grid justify-items-center gap-6">
       <KolLink _href="https://www.w3.org" _icon="home" _iconOnly _ariaLabel="Home"></KolLink>
       <KolLink _href="https://www.w3.org">Normaler Link</KolLink>
       <KolLink _href="https://www.w3.org" _icon="home" _iconAlign="left">
@@ -665,14 +684,14 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-LOGO': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolLogo _abbr="BReg"></KolLogo>
       <KolLogo _abbr="BMF"></KolLogo>
       <KolLogo _abbr="BMG"></KolLogo>
     </div>
   ),
   'KOL-MODAL': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolModal _active-element={activeElement} _width="80%">
         <div>
           <div>Ich bin ein Modal</div>
@@ -690,7 +709,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-NAV': () => (
-    <div class="col-12 grid gap-2">
+    <div class="col-12 grid gap-6">
       <KolNav
         _ariaLabel="Navigation mit sinnvoller Breite"
         _links={[
@@ -889,19 +908,19 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-PAGINATION': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolPagination _count={10} _page={6}></KolPagination>
       <KolPagination _boundaryCount={2} _count={10} _page={6}></KolPagination>
     </div>
   ),
   'KOL-PROGRESS': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolProgress _max={100} _type="bar" _unit="Meter" _value={10}></KolProgress>
       <KolProgress _max={100} _type="cycle" _value={10}></KolProgress>
     </div>
   ),
   'KOL-SELECT': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolSelect _list={STATUS_OPTIONS} _error={ERROR_MSG} _touched>
         Anrede
       </KolSelect>
@@ -911,12 +930,12 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-SPIN': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolSpin _show></KolSpin>
     </div>
   ),
   'KOL-TABLE': () => (
-    <div class="grid grid-cols-1 gap-8">
+    <div class="grid grid-cols-1 gap-6">
       <KolTable
         _caption="Öffnungszeiten"
         _data={
@@ -1068,26 +1087,23 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-TABS': () => (
-    <div>
-      {new Array(1).fill(null).map(() => (
-        <>
-          <div class="grid grid-cols-1 gap-2">
-            <KolTabs
-              _selected={1}
-              _tabs={[{ _label: 'Nicht ausgewählt' }, { _label: 'Ausgewählt' }, { _label: 'Nicht ausgewählt' }]}
-            >
-              <div slot="tab-0">Inhalte von Tab 1</div>
-              <div slot="tab-1">Inhalte von Tab 2</div>
-              <div slot="tab-2">Inhalte von Tab 3</div>
-            </KolTabs>
-          </div>
-        </>
-      ))}
+    <div class="grid grid-cols-1 gap-6">
+      <KolTabs
+        _selected={1}
+        _tabs={[{ _label: 'Nicht ausgewählt' }, { _label: 'Ausgewählt' }, { _label: 'Nicht ausgewählt' }]}
+      >
+        <div slot="tab-0">Inhalte von Tab 1</div>
+        <div slot="tab-1">Inhalte von Tab 2</div>
+        <div slot="tab-2">Inhalte von Tab 3</div>
+      </KolTabs>
     </div>
   ),
   'KOL-TEXTAREA': () => (
-    <div class="grid grid-cols-1 gap-2">
+    <div class="grid grid-cols-1 gap-6">
       <KolTextarea _id="text" _name="text" _required _error={ERROR_MSG}>
+        Ihre Nachricht
+      </KolTextarea>
+      <KolTextarea _id="text" _resize="none" _rows={10} _name="text" _required _error={ERROR_MSG}>
         Ihre Nachricht
       </KolTextarea>
       <KolTextarea _disabled _id="text" _name="text">
@@ -1099,7 +1115,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-TOOLTIP': () => (
-    <div class="grid justify-center gap-4">
+    <div class="grid justify-center gap-6">
       <KolButton _icon="simple-down" _iconOnly _label="unten" _tooltip-align="bottom" _variant="primary"></KolButton>
       <KolButton _icon="simple-up" _iconOnly _label="oben" _tooltip-align="top" _variant="secondary"></KolButton>
       <KolButton _icon="simple-left" _iconOnly _label="links" _tooltip-align="left" _variant="normal"></KolButton>
@@ -1111,16 +1127,8 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-VERSION': () => (
-    <div class="grid gap-4">
-      {new Array(1).fill(null).map(() => (
-        <>
-          <div class="flex gap-2">
-            <KolVersion _version="1.0.0"></KolVersion>
-            <KolVersion _version="2.0.0"></KolVersion>
-            <KolVersion _version="3.0.0"></KolVersion>
-          </div>
-        </>
-      ))}
+    <div class="grid gap-6">
+      <KolVersion _version="1.0.0"></KolVersion>
     </div>
   ),
 };
