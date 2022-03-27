@@ -12,7 +12,7 @@
     "reinstall:kolibri": "rm -rf node_modules/@kolibri && npm update @kolibri/lib @kolibri/solid",
     "remove": "git clean -f -d -X",
     "update": "ncu -t minor -u && npm install && ncu",
-    "build": "cross-env NODE_ENV=development webpack",
+    "build": "rm -rf dist && cross-env NODE_ENV=development webpack",
     "start": "npm run serve -- --open",
     "serve": "cross-env NODE_ENV=development webpack serve --devtool=source-map --no-hot",
     "preview": "vite preview",
