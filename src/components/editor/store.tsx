@@ -91,7 +91,7 @@ const LONG_TEXT = `Lorem Ipsum ist ein einfacher Demo-Text für die Print- und S
 export const components: Record<string, Component> = {
   'KOL-ABBR': () => (
     <div class="grid grid-cols-1">
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <p>
           Ich bin eine{' '}
           <KolAbbr _title="Ausführliche Beschreibung" _align="top">
@@ -272,21 +272,21 @@ export const components: Record<string, Component> = {
   ),
   'KOL-BUTTON': () => (
     <div class="grid grid-cols-3 items-center justify-items-center gap-6">
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <KolButton _label="Klick mich!" _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
         <KolButton _label="Klick mich!" _variant="normal"></KolButton>
         <KolButton _label="Klick mich!" _variant="danger"></KolButton>
         <KolButton _label="Klick mich!" _variant="ghost"></KolButton>
       </div>
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <KolButton _label="Klick mich!" _icon="home" _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _variant="secondary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _variant="normal"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _variant="danger"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _variant="ghost"></KolButton>
       </div>
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <KolButton
           _label="Klick mich!"
           _icon="home"
@@ -323,14 +323,14 @@ export const components: Record<string, Component> = {
           style="width: 120px"
         ></KolButton>
       </div>
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top"></KolButton>
       </div>
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="secondary"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="normal"></KolButton>
@@ -340,7 +340,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-BUTTON-GROUP': () => (
-    <div class="grid gap-6">
+    <div class="grid gap-6 text-center">
       <KolButtonGroup>
         <KolButton _label="Klick mich!" _variant="primary"></KolButton>
         <KolButton _label="Klick mich!" _variant="secondary"></KolButton>
@@ -408,7 +408,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-HEADING': () => (
     <div class="grid grid-cols-2">
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <KolHeading _level={1}>H1-Überschrift</KolHeading>
         <KolHeading _level={2}>H2-Überschrift</KolHeading>
         <KolHeading _level={3}>H3-Überschrift</KolHeading>
@@ -446,7 +446,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-CHECKBOX': () => (
     <div class="grid grid-cols-1 gap-6">
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <KolInputCheckbox _id="anrede" _name="anrede" _required _type="checkbox">
           Nicht ausgewählt
         </KolInputCheckbox>
@@ -457,7 +457,7 @@ export const components: Record<string, Component> = {
           Unbestimmt (Indeterminate)
         </KolInputCheckbox>
       </div>
-      <div class="grid gap-6">
+      <div class="grid gap-6 text-center">
         <KolInputCheckbox _id="anrede" _name="anrede" _type="switch" _error={ERROR_MSG}>
           Nicht ausgewählt
         </KolInputCheckbox>
@@ -1214,7 +1214,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-VERSION': () => (
-    <div class="grid gap-6">
+    <div class="grid gap-6 text-center">
       <KolVersion _version="1.0.0"></KolVersion>
     </div>
   ),
