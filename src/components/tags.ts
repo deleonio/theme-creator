@@ -1,5 +1,5 @@
 export const TAG_NAMES: string[] = [
-  // 'kol-icon', no shadow dom
+  'kol-icon',
 
   // 'kol-icon-font-awesome', no shadow dom
   // 'kol-icon-icofont', no shadow dom

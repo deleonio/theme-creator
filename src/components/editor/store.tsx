@@ -10,7 +10,7 @@ import {
   KolCard,
   KolDetails,
   KolHeading,
-  KolIconFontAwesome,
+  KolIcon,
   KolIconIcofont,
   KolIndentedText,
   KolInputCheckbox,
@@ -418,18 +418,11 @@ export const components: Record<string, Component> = {
       </div>
     </div>
   ),
-  'KOL-ICON-FONT-AWESOME': () => (
+  'KOL-ICON': () => (
     <div class="grid grid-cols-1 gap-6">
-      <KolIconFontAwesome _prefix="fas" _icon="home"></KolIconFontAwesome>
-      <KolIconFontAwesome _prefix="fas" _icon="envelope"></KolIconFontAwesome>
-      <KolIconFontAwesome _prefix="fas" _icon="phone"></KolIconFontAwesome>
-    </div>
-  ),
-  'KOL-ICON-ICOFONT': () => (
-    <div class="grid grid-cols-1 gap-6">
-      <KolIconIcofont _icon="home"></KolIconIcofont>
-      <KolIconIcofont _icon="envelope"></KolIconIcofont>
-      <KolIconIcofont _icon="phone"></KolIconIcofont>
+      <KolIcon _icon="icofont-home"></KolIcon>
+      <KolIcon _icon="codicon codicon-bug"></KolIcon>
+      <KolIcon _icon="fa-solid fa-arrow-down-1-9"></KolIcon>
     </div>
   ),
   'KOL-INDENTED-TEXT': () => (
