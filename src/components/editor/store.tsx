@@ -337,6 +337,19 @@ export const components: Record<string, Component> = {
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="danger"></KolButton>
         <KolButton _label="Klick mich!" _icon="home" _disabled _variant="ghost"></KolButton>
       </div>
+      <div class="grid gap-6 text-center">
+        <KolButton
+          _label="Klick mich!"
+          _icon={{
+            left: 'icofont-arrow-left',
+          }}
+          _variant="primary"
+        ></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _variant="secondary"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _variant="normal"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _variant="danger"></KolButton>
+        <KolButton _label="Klick mich!" _icon="home" _variant="ghost"></KolButton>
+      </div>
     </div>
   ),
   'KOL-BUTTON-GROUP': () => (
