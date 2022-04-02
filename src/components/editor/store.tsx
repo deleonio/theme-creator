@@ -342,13 +342,52 @@ export const components: Record<string, Component> = {
           _label="Klick mich!"
           _icon={{
             left: 'icofont-arrow-left',
+            right: 'icofont-arrow-right',
+            top: 'icofont-arrow-up',
+            bottom: 'icofont-arrow-down',
           }}
           _variant="primary"
         ></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _variant="secondary"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _variant="normal"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _variant="danger"></KolButton>
-        <KolButton _label="Klick mich!" _icon="home" _variant="ghost"></KolButton>
+        <KolButton
+          _label="Klick mich!"
+          _icon={{
+            left: 'icofont-arrow-left',
+            right: 'icofont-arrow-right',
+            top: 'icofont-arrow-up',
+            bottom: 'icofont-arrow-down',
+          }}
+          _variant="secondary"
+        ></KolButton>
+        <KolButton
+          _label="Klick mich!"
+          _icon={{
+            left: 'icofont-arrow-left',
+            right: 'icofont-arrow-right',
+            top: 'icofont-arrow-up',
+            bottom: 'icofont-arrow-down',
+          }}
+          _variant="normal"
+        ></KolButton>
+        <KolButton
+          _label="Klick mich!"
+          _icon={{
+            left: 'icofont-arrow-left',
+            right: 'icofont-arrow-right',
+            top: 'icofont-arrow-up',
+            bottom: 'icofont-arrow-down',
+          }}
+          _variant="danger"
+        ></KolButton>
+        <KolButton
+          _label="Klick mich!"
+          _icon={{
+            left: 'icofont-arrow-left',
+            right: 'icofont-arrow-right',
+            top: 'icofont-arrow-up',
+            bottom: 'icofont-arrow-down',
+          }}
+          _variant="ghost"
+        ></KolButton>
       </div>
     </div>
   ),
