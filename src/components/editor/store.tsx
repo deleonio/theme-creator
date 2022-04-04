@@ -1147,10 +1147,20 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-TABS': () => (
-    <div class="grid justify-center gap-6">
+    <div class="grid gap-6">
       <KolTabs
         _selected={1}
-        _tabs={[{ _label: 'Nicht ausgewählt' }, { _label: 'Ausgewählt' }, { _label: 'Nicht ausgewählt' }]}
+        _tabs={[
+          { _label: 'Nicht ausgewählt' },
+          {
+            _label: 'Ausgewählt',
+            _on: {
+              onCreate: () => {},
+              onClose: true,
+            },
+          },
+          { _label: 'Nicht ausgewählt' },
+        ]}
       >
         <div slot="tab-0">Inhalte von Tab 1</div>
         <div slot="tab-1">Inhalte von Tab 2</div>
