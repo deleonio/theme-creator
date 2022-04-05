@@ -11,7 +11,6 @@ import {
   KolDetails,
   KolHeading,
   KolIcon,
-  KolIconIcofont,
   KolIndentedText,
   KolInputCheckbox,
   KolInputColor,
@@ -146,7 +145,7 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-ALERT': () => (
-    <div class="grid justify-center gap-6">
+    <div class="grid justify-center bg-red-100 gap-6">
       <KolAlert _type="error" _heading="Fehler" _level={3}>
         Hier wird der Fehler näher beschrieben.
       </KolAlert>
@@ -533,7 +532,12 @@ export const components: Record<string, Component> = {
       <KolInputEmail _id="email" _name="email" _required _value="test@mail.de" _error={ERROR_MSG}>
         E-Mail
       </KolInputEmail>
-      <KolInputEmail _id="email" _name="email" _list="['test1@mail.de', 'test2@mail.de', 'test3@mail.de']">
+      <KolInputEmail
+        _id="email"
+        _name="email"
+        _placeholder="elke@mustermann.de"
+        _list="['test1@mail.de', 'test2@mail.de', 'test3@mail.de']"
+      >
         E-Mail (Liste)
       </KolInputEmail>
       <KolInputEmail _disabled _id="email" _name="email" _value="test@mail.de">
@@ -654,7 +658,42 @@ export const components: Record<string, Component> = {
     </div>
   ),
   'KOL-INPUT-TEXT': () => (
-    <div class="grid justify-center gap-6">
+    <div class="grid justify-center gap-6 bg-red-100">
+      <KolInputText
+        _error="Fehler"
+        _placeholder="Mit Icons"
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+        _hideLabel
+        _required
+        _touched
+        _type="search"
+      >
+        Suche
+      </KolInputText>
+      <KolInputText
+        _error="Fehler"
+        _placeholder="Mit Icons"
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+        _hideLabel
+        _touched
+        _type="search"
+      >
+        Suche
+      </KolInputText>
       <KolInputText _placeholder="Placeholder" _required _type="text">
         Vorname (text)
       </KolInputText>
