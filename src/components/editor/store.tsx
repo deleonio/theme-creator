@@ -516,7 +516,21 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-COLOR': () => (
     <div class="grid justify-center gap-6">
-      <KolInputColor _id="farbe" _name="farbe" _value="#ff0000">
+      <KolInputColor
+        _id="farbe"
+        _name="farbe"
+        _value="#ff0000"
+        _error={ERROR_MSG}
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+        _touched
+      >
         Farbe
       </KolInputColor>
       <KolInputColor _id="farbe" _name="farbe" _list="['#000000','#ff0000', '#0000ff','#00ff00']" _error={ERROR_MSG}>
@@ -537,6 +551,16 @@ export const components: Record<string, Component> = {
         _name="email"
         _placeholder="elke@mustermann.de"
         _list="['test1@mail.de', 'test2@mail.de', 'test3@mail.de']"
+        _error={ERROR_MSG}
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+        _touched
       >
         E-Mail (Liste)
       </KolInputEmail>
@@ -550,7 +574,21 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-FILE': () => (
     <div class="grid justify-center gap-6">
-      <KolInputFile _id="file" _name="file" _required>
+      <KolInputFile
+        _id="file"
+        _name="file"
+        _required
+        _error={ERROR_MSG}
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+        _touched
+      >
         Datei hochladen
       </KolInputFile>
       <KolInputFile _id="file" _multiple _name="file" _error={ERROR_MSG}>
@@ -563,7 +601,23 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-NUMBER': () => (
     <div class="grid justify-center gap-6">
-      <KolInputNumber _id="number" _name="number" _required _type="number">
+      <KolInputNumber
+        _id="number"
+        _name="number"
+        _required
+        _type="number"
+        _error={ERROR_MSG}
+        _placeholder="Mit Icons"
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+        _touched
+      >
         Zahleneingabe
       </KolInputNumber>
       <KolInputNumber _id="number" _max={10} _min={-10} _name="number" _step={2} _type="number">
@@ -600,7 +654,22 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-PASSWORD': () => (
     <div class="grid justify-center gap-6">
-      <KolInputPassword _id="password" _name="password" _required>
+      <KolInputPassword
+        _id="password"
+        _name="password"
+        _required
+        _error={ERROR_MSG}
+        _placeholder="Mit Icons"
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+        _touched
+      >
         Passwort
       </KolInputPassword>
       <KolInputPassword _disabled _id="password" _name="password" _error={ERROR_MSG}>
@@ -646,7 +715,22 @@ export const components: Record<string, Component> = {
   ),
   'KOL-INPUT-RANGE': () => (
     <div class="grid justify-center gap-6">
-      <KolInputRange _id="range" _min={0} _max={50} _name="range">
+      <KolInputRange
+        _id="range"
+        _min={0}
+        _max={50}
+        _name="range"
+        _error={ERROR_MSG}
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+        _touched
+      >
         Schieberegler
       </KolInputRange>
       <KolInputRange _id="range" _min={0} _max={50} _name="range" _step={10} _error={ERROR_MSG}>
@@ -660,7 +744,7 @@ export const components: Record<string, Component> = {
   'KOL-INPUT-TEXT': () => (
     <div class="grid justify-center gap-6 bg-red-100">
       <KolInputText
-        _error="Fehler"
+        _error={ERROR_MSG}
         _placeholder="Mit Icons"
         _icon={{
           left: {
@@ -678,7 +762,7 @@ export const components: Record<string, Component> = {
         Suche
       </KolInputText>
       <KolInputText
-        _error="Fehler"
+        _error={ERROR_MSG}
         _placeholder="Mit Icons"
         _icon={{
           left: {
@@ -1020,7 +1104,19 @@ export const components: Record<string, Component> = {
   ),
   'KOL-SELECT': () => (
     <div class="grid justify-center gap-6">
-      <KolSelect _list={STATUS_OPTIONS} _error={ERROR_MSG} _touched>
+      <KolSelect
+        _list={STATUS_OPTIONS}
+        _error={ERROR_MSG}
+        _touched
+        _icon={{
+          left: {
+            icon: 'icofont-home',
+          },
+          right: {
+            icon: 'icofont-home',
+          },
+        }}
+      >
         Anrede
       </KolSelect>
       <KolSelect _list={STATUS_OPTIONS} _multiple _required _error={ERROR_MSG}>
@@ -1209,7 +1305,7 @@ export const components: Record<string, Component> = {
   ),
   'KOL-TEXTAREA': () => (
     <div class="grid justify-center gap-6">
-      <KolTextarea _id="text" _name="text" _required _error={ERROR_MSG}>
+      <KolTextarea _id="text" _name="text" _required _error={ERROR_MSG} _placeholder="Mit Icons" _touched>
         Ihre Nachricht
       </KolTextarea>
       <KolTextarea _id="text" _resize="none" _rows={10} _name="text" _required _error={ERROR_MSG}>
