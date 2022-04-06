@@ -413,21 +413,21 @@ export const components: Record<string, Component> = {
   'KOL-CARD': () => (
     <div class="grid xl:grid-cols-2 2xl:grid-cols-3 gap-6">
       <KolCard _hasFooter _headline="H1-Überschrift der Card" _level={1}>
-        <div slot="content">Inhalt der Card</div>
+        <div slot="content">
+          Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der
+          Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben.
+        </div>
         <div slot="footer">Fußbereich der Card</div>
       </KolCard>
-      <KolCard _hasFooter _headline="H2-Überschrift der Card" _level={2}>
+      <KolCard _headline="H2-Überschrift der Card" _level={2}>
         <div slot="content">Inhalt der Card</div>
-        <div slot="footer">Fußbereich der Card</div>
       </KolCard>
       <KolCard _hasFooter _headline="H3-Überschrift der Card" _level={3}>
-        <div slot="content">Inhalt der Card</div>
-        <div slot="footer">
-          <KolButtonGroup>
-            <KolButton _label="Speichern" _variant="primary"></KolButton>
-            <KolButton _label="Abbrechen" _variant="secondary"></KolButton>
-            <KolButton _label="Löschen" _variant="danger"></KolButton>
-          </KolButtonGroup>
+        <div slot="header">Fußbereich der Card</div>
+        <div slot="content">
+          Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der
+          Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier
+          wird der Fehler näher beschrieben.
         </div>
       </KolCard>
       <KolCard _hasFooter _headline="H4-Überschrift der Card" _level={4}>
