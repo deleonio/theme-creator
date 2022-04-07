@@ -422,7 +422,7 @@ export const components: Record<string, Component> = {
       <KolCard _headline="H2-Überschrift der Card" _level={2}>
         <div slot="content">Inhalt der Card</div>
       </KolCard>
-      <KolCard _hasFooter _headline="H3-Überschrift der Card" _level={3}>
+      <KolCard _headline="H3-Überschrift der Card" _level={3}>
         <div slot="header">Fußbereich der Card</div>
         <div slot="content">
           Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der

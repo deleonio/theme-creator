@@ -104,10 +104,10 @@ export const EditorComponent: Component<Props> = (props: Props) => {
   };
 
   return (
-    <div class="grid md:grid-cols-2 gap-2 h-70vh">
+    <div class="grid md:grid-cols-2 gap-2">
       {getShow() && (
         <>
-          <div class="grid h-full">
+          <div class="grid h-70vh">
             <div class="overflow-hidden">
               <div
                 classList={{
@@ -126,13 +126,15 @@ export const EditorComponent: Component<Props> = (props: Props) => {
             </div>
           </div>
           {getRerenderEditor() && (
-            <div
-              class="p-4 border-1 border-gray-300 overflow-auto"
-              data-theme={props.theme}
-              data-theme-cache="false"
-              data-theme-reset="true"
-            >
-              <PreviewComponent />
+            <div class="h-70vh" data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
+              <div
+                class="p-4 overflow-auto w-full h-full"
+                data-theme={props.theme}
+                data-theme-cache="false"
+                data-theme-reset="true"
+              >
+                <PreviewComponent />
+              </div>
             </div>
           )}
         </>
