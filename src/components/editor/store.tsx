@@ -670,7 +670,18 @@ export const components: Record<string, Component> = {
             icon: 'icofont-home',
           },
         }}
-        _smartButton={{}}
+        _smartButton={{
+          _icon: {
+            left: {
+              icon: 'icofont-eye',
+            },
+          },
+          _iconOnly: true,
+          _label: 'Passwort anzeigen',
+          _on: {
+            onClick: () => {},
+          },
+        }}
         _touched
       >
         Passwort
@@ -759,6 +770,18 @@ export const components: Record<string, Component> = {
         }}
         _hideLabel
         _required
+        _smartButton={{
+          _icon: {
+            left: {
+              icon: 'icofont-eye',
+            },
+          },
+          _iconOnly: true,
+          _label: 'Passwort anzeigen',
+          _on: {
+            onClick: () => {},
+          },
+        }}
         _touched
         _type="search"
       >
@@ -1367,34 +1390,10 @@ export const components: Record<string, Component> = {
       <KolToast _type="warning" _heading="Warnung" _level={6}>
         Hier wird die Warnung näher beschrieben.
       </KolToast>
-      <KolToast _type="error">Hier wird der Fehler kurz beschrieben.</KolToast>
+      {/* <KolToast _type="error">Hier wird der Fehler kurz beschrieben.</KolToast>
       <KolToast _type="info">Hier wird der Hinweis kurz beschrieben.</KolToast>
       <KolToast _type="success">Hier wird der Erfolg kurz beschrieben.</KolToast>
-      <KolToast _type="warning">Hier wird die Warnung kurz beschrieben.</KolToast>
-      <KolToast _type="error" _heading="Fehler" _level={3} _variant="card-icon">
-        Hier wird der Fehler näher beschrieben.
-      </KolToast>
-      <KolToast _type="info" _heading="Hinweis" _level={4} _variant="card-icon">
-        Hier wird der Hinweis näher beschrieben.
-      </KolToast>
-      <KolToast _type="success" _heading="Erfolg" _level={5} _variant="card-icon">
-        Hier wird der Erfolg näher beschrieben.
-      </KolToast>
-      <KolToast _type="warning" _heading="Warnung" _level={6} _variant="card-icon">
-        Hier wird die Warnung näher beschrieben.
-      </KolToast>
-      <KolToast _type="error" _variant="card-icon">
-        Hier wird der Fehler kurz beschrieben.
-      </KolToast>
-      <KolToast _type="info" _variant="card-icon">
-        Hier wird der Hinweis kurz beschrieben.
-      </KolToast>
-      <KolToast _type="success" _variant="card-icon">
-        Hier wird der Erfolg kurz beschrieben.
-      </KolToast>
-      <KolToast _type="warning" _variant="card-icon">
-        Hier wird die Warnung kurz beschrieben.
-      </KolToast>
+      <KolToast _type="warning">Hier wird die Warnung kurz beschrieben.</KolToast> */}
     </div>
   ),
   'KOL-TOOLTIP': () => (

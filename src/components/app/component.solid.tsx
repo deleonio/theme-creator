@@ -9,6 +9,7 @@ import {
   KolLink,
   KolInputFile,
   KolInputCheckbox,
+  KolInputPassword,
 } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@kolibri/lib';
