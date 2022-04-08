@@ -191,14 +191,6 @@ export const components: Record<string, Component> = {
   'KOL-BADGE': () => (
     <div class="flex flex-wrap gap-6">
       <KolBadge
-        _label="Greta"
-        _color={{
-          backgroundColor: `#CCDEDA`,
-          color: `#005C45`,
-        }}
-      ></KolBadge>
-      <KolBadge _label="Greta" _color={`#CCDEDA`}></KolBadge>
-      <KolBadge
         _label="Text"
         _color={{
           backgroundColor: `#000`,
@@ -239,6 +231,16 @@ export const components: Record<string, Component> = {
           <KolBadge _label="Text" _color={`#${randomColor()}`} _icon="tree" _iconOnly></KolBadge>
         </>
       ))}
+      <div style="max-width: 100px">
+        <KolBadge
+          _label="Ein Badge mit sehr viel Text sieht z.B. so aus!"
+          _color={{
+            backgroundColor: `#CCDEDA`,
+            color: `#005C45`,
+          }}
+        ></KolBadge>
+        <KolBadge _label="Ein Badge mit sehr viel Text sieht z.B. so aus!" _color={`#CCDEDA`}></KolBadge>
+      </div>
     </div>
   ),
   'KOL-BREADCRUMB': () => (
@@ -668,6 +670,7 @@ export const components: Record<string, Component> = {
             icon: 'icofont-home',
           },
         }}
+        _smartButton={{}}
         _touched
       >
         Passwort
