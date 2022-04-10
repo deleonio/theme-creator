@@ -24,8 +24,8 @@
   "dependencies": {
     "@fontawesome/fontawesome-free-v5": "npm:@fortawesome/fontawesome-free@5.15.4",
     "@fontawesome/fontawesome-free-v6": "npm:@fortawesome/fontawesome-free@6.1.1",
-    "@kolibri/lib": "1.0.14-rc.4",
-    "@kolibri/solid": "1.0.14-rc.4",
+    "@kolibri/lib": "1.0.14-rc.5",
+    "@kolibri/solid": "1.0.14-rc.5",
     "@vscode/codicons": "0.0.29",
     "monaco-editor": "0.33.0",
     "monaco-editor-webpack-plugin": "7.0.1",

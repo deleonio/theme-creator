@@ -761,11 +761,12 @@ export const components: Record<string, Component> = {
         _error={ERROR_MSG}
         _placeholder="Mit Icons"
         _icon={{
-          left: {
-            icon: 'icofont-home',
-          },
+          left: 'icofont-arrow-left',
           right: {
-            icon: 'icofont-home',
+            icon: 'icofont-arrow-right',
+            style: {
+              'font-size': '200%',
+            },
           },
         }}
         _hideLabel
