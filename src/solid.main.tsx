@@ -11,8 +11,8 @@ register(['bmf', 'itz', 'mapz'], defineCustomElements, {
     reset: true,
   },
 }).finally(() => {
-  const htmlDivElement: HTMLDivElement | null = document.querySelector('div#solid');
-  if (htmlDivElement instanceof HTMLDivElement) {
-    render(() => <AppComponent />, htmlDivElement);
+  const htmlElement: HTMLElement | null = document.querySelector<HTMLDivElement>('div#app');
+  if (htmlElement instanceof HTMLElement) {
+    render(() => <AppComponent />, htmlElement);
   }
 });
