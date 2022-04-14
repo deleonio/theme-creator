@@ -55,8 +55,8 @@ TAG_NAMES.forEach((tagName) => {
 // };
 
 export const AppComponent: Component = () => {
-  const [getTheme, setTheme] = createSignal(localStorage.getItem('kolibri-theme') || 'default');
-  const [getComponent, setComponent] = createSignal(localStorage.getItem('kolibri-component') || 'KOL-BUTTON');
+  const [getTheme, setTheme] = createSignal(sessionStorage.getItem('kolibri-theme') || 'default');
+  const [getComponent, setComponent] = createSignal(sessionStorage.getItem('kolibri-component') || 'KOL-BUTTON');
   const [getShow, setShow] = createSignal<Page>('editor');
   const [getValue, setValue] = createSignal('');
   const [getPropsStyle, setPropsStyle] = createSignal(false);
@@ -135,10 +135,10 @@ export const AppComponent: Component = () => {
 
   const onClickClear = {
     onClick: () => {
-      localStorage.removeItem('kolibri-component');
-      localStorage.removeItem('kolibri-props');
-      localStorage.removeItem('kolibri-theme');
-      localStorage.removeItem('kolibri-themes');
+      sessionStorage.removeItem('kolibri-component');
+      sessionStorage.removeItem('kolibri-props');
+      sessionStorage.removeItem('kolibri-theme');
+      sessionStorage.removeItem('kolibri-themes');
       window.location.reload();
     },
   };
@@ -149,7 +149,7 @@ export const AppComponent: Component = () => {
       clearTimeout(timeoutTheme);
       timeoutTheme = setTimeout(() => {
         clearTimeout(timeoutTheme);
-        localStorage.setItem('kolibri-theme', value as string);
+        sessionStorage.setItem('kolibri-theme', value as string);
         setTheme(value as string);
         setValue('');
         setShow('editor');
@@ -211,7 +211,7 @@ export const AppComponent: Component = () => {
                   const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
                   if (index > 0) {
                     setComponent(() => TAG_NAMES[index - 1].toUpperCase());
-                    localStorage.setItem('kolibri-component', getComponent());
+                    sessionStorage.setItem('kolibri-component', getComponent());
                   }
                 },
               }}
@@ -222,7 +222,7 @@ export const AppComponent: Component = () => {
               _on={{
                 onChange: (_event, value) => {
                   setComponent((value as string[])[0]);
-                  localStorage.setItem('kolibri-component', getComponent());
+                  sessionStorage.setItem('kolibri-component', getComponent());
                 },
               }}
               ref={(el) => {
@@ -241,7 +241,7 @@ export const AppComponent: Component = () => {
                   const index = TAG_NAMES.indexOf(getComponent().toLowerCase());
                   if (index < TAG_NAMES.length - 1) {
                     setComponent(() => TAG_NAMES[index + 1].toUpperCase());
-                    localStorage.setItem('kolibri-component', getComponent());
+                    sessionStorage.setItem('kolibri-component', getComponent());
                   }
                 },
               }}

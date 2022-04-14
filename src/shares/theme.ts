@@ -15,7 +15,7 @@ export const saveData = (content: string, fileName: string) => {
 export const restoreThemes = () => {
   let store: Record<string, Record<string, string>> = {};
   try {
-    store = JSON.parse(localStorage.getItem('kolibri-themes') || '{}') as Record<string, Record<string, string>>;
+    store = JSON.parse(sessionStorage.getItem('kolibri-themes') || '{}') as Record<string, Record<string, string>>;
   } catch (e) {}
   if (typeof store === 'object' && store !== null) {
     const themeNames = Object.getOwnPropertyNames(store);
@@ -34,6 +34,6 @@ export const storeThemes = () => {
     typeof window.KoliBri.Themes === 'object' &&
     window.KoliBri.Themes !== null
   ) {
-    localStorage.setItem('kolibri-themes', JSON.stringify(window.KoliBri.Themes));
+    sessionStorage.setItem('kolibri-themes', JSON.stringify(window.KoliBri.Themes));
   }
 };
