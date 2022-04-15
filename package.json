@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@leanup/stack": "1.3.11",
-    "@leanup/stack-solid": "1.3.10",
+    "@leanup/stack-solid": "1.3.11",
     "@leanup/stack-webpack": "1.3.11",
     "@unocss/preset-mini": "0.31.3",
     "@unocss/webpack": "0.31.3",
