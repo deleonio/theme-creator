@@ -496,7 +496,7 @@ export const components: Record<string, Component> = {
         <KolInputCheckbox _id="anrede" _name="anrede" _required _type="checkbox">
           Nicht ausgewählt
         </KolInputCheckbox>
-        <KolInputCheckbox _checked _id="anrede" _name="anrede" _type="checkbox" _error={ERROR_MSG}>
+        <KolInputCheckbox _checked _id="anrede" _name="anrede" _type="checkbox" _touched _error={ERROR_MSG}>
           Ausgewählt
         </KolInputCheckbox>
         <KolInputCheckbox _id="anrede" _indeterminate _name="anrede" _type="checkbox">
