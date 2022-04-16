@@ -24,6 +24,7 @@ export const TAG_NAMES: string[] = [
   'kol-input-number',
   'kol-input-password',
   'kol-input-radio',
+  'kol-input-range',
   'kol-input-text',
   'kol-link',
   'kol-select',

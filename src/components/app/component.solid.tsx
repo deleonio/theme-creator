@@ -9,7 +9,6 @@ import {
   KolLink,
   KolInputFile,
   KolInputCheckbox,
-  KolInputPassword,
 } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@kolibri/lib';
@@ -175,7 +174,7 @@ export const AppComponent: Component = () => {
       {/* <InputComponent /> */}
       <div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end mapz">
         <div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
-          <KolInputText class="w-full" _list={getList()} _value={getTheme()} _on={onTheme} _type="search">
+          <KolInputText class="w-full" _id="theme" _list={getList()} _value={getTheme()} _on={onTheme} _type="search">
             Theme
           </KolInputText>
           <KolInputCheckbox
