@@ -24,8 +24,8 @@
   "dependencies": {
     "@fontawesome/fontawesome-free-v5": "npm:@fortawesome/fontawesome-free@5.15.4",
     "@fontawesome/fontawesome-free-v6": "npm:@fortawesome/fontawesome-free@6.1.1",
-    "@kolibri/lib": "1.0.14-rc.8",
-    "@kolibri/solid": "1.0.14-rc.8",
+    "@kolibri/lib": "1.0.14-rc.9",
+    "@kolibri/solid": "1.0.14-rc.9",
     "@vscode/codicons": "0.0.29",
     "monaco-editor": "0.33.0",
     "monaco-editor-webpack-plugin": "7.0.1",
@@ -36,8 +36,8 @@
     "@leanup/stack": "1.3.11",
     "@leanup/stack-solid": "1.3.11",
     "@leanup/stack-webpack": "1.3.11",
-    "@unocss/preset-mini": "0.31.3",
-    "@unocss/webpack": "0.31.3",
+    "@unocss/preset-mini": "0.31.5",
+    "@unocss/webpack": "0.31.5",
     "npm-check-updates": "12.5.9",
     "typescript": "4.6.3"
   }
