@@ -22,22 +22,21 @@
     "pre-commit": "lint-staged"
   },
   "dependencies": {
-    "@fontawesome/fontawesome-free-v5": "npm:@fortawesome/fontawesome-free@5.15.4",
-    "@fontawesome/fontawesome-free-v6": "npm:@fortawesome/fontawesome-free@6.1.1",
-    "@kolibri/lib": "1.0.14-rc.9",
-    "@kolibri/solid": "1.0.14-rc.9",
+    "@fortawesome/fontawesome-free": "6.1.1",
+    "@kolibri/lib": "1.0.14-rc.10",
+    "@kolibri/solid": "1.0.14-rc.10",
     "@vscode/codicons": "0.0.29",
     "monaco-editor": "0.33.0",
     "monaco-editor-webpack-plugin": "7.0.1",
     "npm-check-updates": "12.5.9",
-    "solid-js": "1.3.16"
+    "solid-js": "1.3.17"
   },
   "devDependencies": {
     "@leanup/stack": "1.3.12",
     "@leanup/stack-solid": "1.3.12",
     "@leanup/stack-webpack": "1.3.12",
-    "@unocss/preset-mini": "0.31.13",
-    "@unocss/webpack": "0.31.13",
+    "@unocss/preset-mini": "0.31.15",
+    "@unocss/webpack": "0.31.15",
     "npm-check-updates": "12.5.9",
     "typescript": "4.6.3"
   }
