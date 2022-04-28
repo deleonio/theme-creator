@@ -93,28 +93,28 @@ export const components: Record<string, Component> = {
 			<div class="grid gap-6 text-center">
 				<p>
 					Ich bin eine{' '}
-					<KolAbbr _title="Ausführliche Beschreibung" _align="top">
+					<KolAbbr _title="Ausführliche Beschreibung" _tooltipAlign="top">
 						ABB
 					</KolAbbr>{' '}
 					mit Tooltip oben
 				</p>
 				<p>
 					Ich bin eine{' '}
-					<KolAbbr _title="Ausführliche Beschreibung" _align="right">
+					<KolAbbr _title="Ausführliche Beschreibung" _tooltipAlign="right">
 						ABB
 					</KolAbbr>{' '}
 					mit Tooltip rechts
 				</p>
 				<p>
 					Ich bin eine{' '}
-					<KolAbbr _title="Ausführliche Beschreibung" _align="bottom">
+					<KolAbbr _title="Ausführliche Beschreibung" _tooltipAlign="bottom">
 						ABB
 					</KolAbbr>{' '}
 					mit Tooltip unten
 				</p>
 				<p>
 					Ich bin eine{' '}
-					<KolAbbr _title="Ausführliche Beschreibung" _align="left">
+					<KolAbbr _title="Ausführliche Beschreibung" _tooltipAlign="left">
 						ABB
 					</KolAbbr>{' '}
 					mit Tooltip links
@@ -473,9 +473,9 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-ICON': () => (
 		<div class="grid justify-center gap-6">
-			<KolIcon _icon="icofont-home"></KolIcon>
-			<KolIcon _icon="codicon codicon-bug"></KolIcon>
-			<KolIcon _icon="fa-solid fa-arrow-down-1-9"></KolIcon>
+			<KolIcon _ariaLabel="" _icon="icofont-home"></KolIcon>
+			<KolIcon _ariaLabel="" _icon="codicon codicon-bug"></KolIcon>
+			<KolIcon _ariaLabel="" _icon="fa-solid fa-arrow-down-1-9"></KolIcon>
 		</div>
 	),
 	'KOL-INDENTED-TEXT': () => (
