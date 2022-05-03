@@ -38,6 +38,7 @@ import {
 	KolVersion,
 } from '@kolibri/solid';
 import { SelectOption } from '@kolibri/lib';
+import { DATA, Zeiten } from './data';
 
 export const baseCss = `:host button.normal {
     background-color: rgb(105, 11, 85);
@@ -52,16 +53,6 @@ export const selectedComponent = 'KOL-BUTTON';
 const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
 
 const activeElement = null;
-
-type Zeiten = {
-	stadtteil: string;
-	zeiten: string;
-	montag: string;
-	dienstag: string;
-	mittwoch: string;
-	donnerstag: string;
-	freitag: string;
-};
 
 const STATUS_OPTIONS: SelectOption<string>[] = [
 	{
@@ -162,28 +153,28 @@ export const components: Record<string, Component> = {
 			<KolAlert _type="info">Hier wird der Hinweis kurz beschrieben.</KolAlert>
 			<KolAlert _type="success">Hier wird der Erfolg kurz beschrieben.</KolAlert>
 			<KolAlert _type="warning">Hier wird die Warnung kurz beschrieben.</KolAlert>
-			<KolAlert _type="error" _heading="Fehler" _level={3} _variant="card-icon">
+			<KolAlert _type="error" _heading="Fehler" _level={3} _variant="card">
 				Hier wird der Fehler näher beschrieben.
 			</KolAlert>
-			<KolAlert _type="info" _heading="Hinweis" _level={4} _variant="card-icon">
+			<KolAlert _type="info" _heading="Hinweis" _level={4} _variant="card">
 				Hier wird der Hinweis näher beschrieben.
 			</KolAlert>
-			<KolAlert _type="success" _heading="Erfolg" _level={5} _variant="card-icon">
+			<KolAlert _type="success" _heading="Erfolg" _level={5} _variant="card">
 				Hier wird der Erfolg näher beschrieben.
 			</KolAlert>
-			<KolAlert _type="warning" _heading="Warnung" _level={6} _variant="card-icon">
+			<KolAlert _type="warning" _heading="Warnung" _level={6} _variant="card">
 				Hier wird die Warnung näher beschrieben.
 			</KolAlert>
-			<KolAlert _type="error" _variant="card-icon">
+			<KolAlert _type="error" _variant="card">
 				Hier wird der Fehler kurz beschrieben.
 			</KolAlert>
-			<KolAlert _type="info" _variant="card-icon">
+			<KolAlert _type="info" _variant="card">
 				Hier wird der Hinweis kurz beschrieben.
 			</KolAlert>
-			<KolAlert _type="success" _variant="card-icon">
+			<KolAlert _type="success" _variant="card">
 				Hier wird der Erfolg kurz beschrieben.
 			</KolAlert>
-			<KolAlert _type="warning" _variant="card-icon">
+			<KolAlert _type="warning" _variant="card">
 				Hier wird die Warnung kurz beschrieben.
 			</KolAlert>
 		</div>
@@ -288,41 +279,11 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Klick mich!" _icon="home" _variant="ghost"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center">
-				<KolButton
-					_label="Klick mich!"
-					_icon="home"
-					_iconAlign="right"
-					_variant="primary"
-					style="width: 120px"
-				></KolButton>
-				<KolButton
-					_label="Klick mich!"
-					_icon="home"
-					_iconAlign="right"
-					_variant="secondary"
-					style="width: 120px"
-				></KolButton>
-				<KolButton
-					_label="Klick mich!"
-					_icon="home"
-					_iconAlign="right"
-					_variant="normal"
-					style="width: 120px"
-				></KolButton>
-				<KolButton
-					_label="Klick mich!"
-					_icon="home"
-					_iconAlign="right"
-					_variant="danger"
-					style="width: 120px"
-				></KolButton>
-				<KolButton
-					_label="Klick mich!"
-					_icon="home"
-					_iconAlign="right"
-					_variant="ghost"
-					style="width: 120px"
-				></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="primary" style="width: 120px"></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="secondary" style="width: 120px"></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="normal" style="width: 120px"></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="danger" style="width: 120px"></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="ghost" style="width: 120px"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center">
 				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="primary"></KolButton>
@@ -416,8 +377,8 @@ export const components: Record<string, Component> = {
 		<div class="grid xl:grid-cols-2 2xl:grid-cols-3 gap-6">
 			<KolCard _hasFooter _headline="H1-Überschrift der Card" _level={1}>
 				<div slot="content">
-					Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der
-					Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben.
+					Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der
+					Fehler näher beschrieben. Hier wird der Fehler näher beschrieben.
 				</div>
 				<div slot="footer">Fußbereich der Card</div>
 			</KolCard>
@@ -427,9 +388,8 @@ export const components: Record<string, Component> = {
 			<KolCard _headline="H3-Überschrift der Card" _level={3}>
 				<div slot="header">Fußbereich der Card</div>
 				<div slot="content">
-					Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der
-					Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier
-					wird der Fehler näher beschrieben.
+					Inhalt der Card Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der
+					Fehler näher beschrieben. Hier wird der Fehler näher beschrieben. Hier wird der Fehler näher beschrieben.
 				</div>
 			</KolCard>
 			<KolCard _hasFooter _headline="H4-Überschrift der Card" _level={4}>
@@ -481,12 +441,10 @@ export const components: Record<string, Component> = {
 	'KOL-INDENTED-TEXT': () => (
 		<div class="grid justify-center gap-6">
 			<KolIndentedText>
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-				dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-				clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-				consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed
-				diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
-				takimata sanctus est Lorem ipsum dolor sit amet.
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
+				voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 			</KolIndentedText>
 		</div>
 	),
@@ -928,8 +886,7 @@ export const components: Record<string, Component> = {
 							_target: 'asdasd',
 						},
 						{
-							_label:
-								'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
 							_icon: 'woodpecker',
 						},
@@ -980,8 +937,7 @@ export const components: Record<string, Component> = {
 							_target: 'asdasd',
 						},
 						{
-							_label:
-								'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
 							_icon: 'woodpecker',
 							_iconOnly: true,
@@ -1033,8 +989,7 @@ export const components: Record<string, Component> = {
 							_target: 'asdasd',
 						},
 						{
-							_label:
-								'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
 							_icon: 'woodpecker',
 						},
@@ -1083,8 +1038,7 @@ export const components: Record<string, Component> = {
 							_target: 'asdasd',
 						},
 						{
-							_label:
-								'2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
 							_href: '#abc',
 							_icon: 'woodpecker',
 						},
@@ -1168,53 +1122,7 @@ export const components: Record<string, Component> = {
 		<div class="grid justify-center gap-6">
 			<KolTable
 				_caption="Öffnungszeiten"
-				_data={
-					[
-						{
-							stadtteil: 'Brackel',
-							montag: '08:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '08:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '08:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '08:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '08:00 - 12:00',
-						},
-						{
-							stadtteil: 'Dorstfeld',
-							montag: '09:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '09:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '09:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '09:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '09:00 - 12:00',
-						},
-						{
-							stadtteil: 'Aplerbeck',
-							montag: '08:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '08:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '08:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '08:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '08:00 - 12:00',
-						},
-						{
-							stadtteil: 'Innenstadt Ost',
-							montag: '07:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '07:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '07:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '07:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '07:00 - 12:00<br/>13:00 - 16:00',
-						},
-						{
-							stadtteil: 'Innenstadt West',
-							montag: '07:00 - 12:00<br/>14:00 - 16:00',
-							dienstag: '07:00 - 12:00<br/>14:00 - 15:00',
-							mittwoch: '07:00 - 12:00<br/>14:00 - 15:00',
-							donnerstag: '07:00 - 12:00<br/>14:00 - 18:00',
-							freitag: '07:00 - 12:00<br/>13:00 - 16:00',
-							/*render: (el, data) => {
-                  el.innerHTML = `<kol-badge _color="#ff0000" _label="NIX"></kol-badge>`;
-                },*/
-						},
-					] as Zeiten[]
-				}
+				_data={DATA}
 				_headers={{
 					horizontal: [
 						[
