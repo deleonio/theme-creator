@@ -35,8 +35,8 @@
 		"@leanup/stack": "1.3.13",
 		"@leanup/stack-solid": "1.3.13",
 		"@leanup/stack-webpack": "1.3.13",
-		"@unocss/preset-mini": "0.32.8",
-		"@unocss/webpack": "0.32.8",
+		"@unocss/preset-mini": "0.32.9",
+		"@unocss/webpack": "0.32.9",
 		"npm-check-updates": "12.5.11",
 		"typescript": "4.6.4"
 	}
