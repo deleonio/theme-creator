@@ -1,15 +1,6 @@
 import { Component, createEffect, createSignal, Match, Switch } from 'solid-js';
 
-import {
-	KolInputText,
-	KolSelect,
-	KolButton,
-	KolHeading,
-	KolAlert,
-	KolLink,
-	KolInputFile,
-	KolInputCheckbox,
-} from '@kolibri/solid';
+import { KolInputText, KolSelect, KolButton, KolHeading, KolAlert, KolLink, KolInputFile, KolInputCheckbox } from '@kolibri/solid';
 import { EditorComponent } from '../editor/component.solid';
 import { KoliBriDevHelper, SelectOption } from '@kolibri/lib';
 import { createTsEditor } from '../editor/ts-editor';
@@ -54,7 +45,7 @@ TAG_NAMES.forEach((tagName) => {
 // };
 
 export const AppComponent: Component = () => {
-	const [getTheme, setTheme] = createSignal(sessionStorage.getItem('kolibri-theme') || 'default');
+	const [getTheme, setTheme] = createSignal(sessionStorage.getItem('kolibri-theme') || 'demo');
 	const [getComponent, setComponent] = createSignal(sessionStorage.getItem('kolibri-component') || 'KOL-BUTTON');
 	const [getShow, setShow] = createSignal<Page>('editor');
 	const [getValue, setValue] = createSignal('');
@@ -103,10 +94,7 @@ export const AppComponent: Component = () => {
 	const onClickDownload = {
 		onClick: () => {
 			renderJsonString(getTheme());
-			saveData(
-				format(getValue(), { parser: 'json', plugins: [parserBabel] }),
-				`kolibri-theme-${getTheme()}-${new Date().toISOString()}.json`
-			);
+			saveData(format(getValue(), { parser: 'json', plugins: [parserBabel] }), `kolibri-theme-${getTheme()}-${new Date().toISOString()}.json`);
 		},
 	};
 
@@ -157,12 +145,7 @@ export const AppComponent: Component = () => {
 	};
 
 	const getList = (): string[] => {
-		if (
-			typeof window.KoliBri === 'object' &&
-			window.KoliBri !== null &&
-			typeof window.KoliBri.Themes === 'object' &&
-			window.KoliBri.Themes !== null
-		) {
+		if (typeof window.KoliBri === 'object' && window.KoliBri !== null && typeof window.KoliBri.Themes === 'object' && window.KoliBri.Themes !== null) {
 			return Object.getOwnPropertyNames(window.KoliBri.Themes);
 		} else {
 			return [];
@@ -174,7 +157,7 @@ export const AppComponent: Component = () => {
 			{/* <InputComponent /> */}
 			<div class="grid gap-2 lg:grid-cols-3 justify-items-center items-end mapz">
 				<div class="w-full grid gap-2 xl:grid-cols-2 justify-items-center items-end">
-					<KolInputText class="w-full" _id="theme" _list={getList()} _value={getTheme()} _on={onTheme} _type="search">
+					<KolInputText class="w-full" _id="theme" title={getList().join(',')} _value={getTheme()} _on={onTheme} _type="search">
 						Theme
 					</KolInputText>
 					<KolInputCheckbox
@@ -255,24 +238,13 @@ export const AppComponent: Component = () => {
 						<EditorComponent propsStyle={getPropsStyle()} tagName={getComponent()} theme={getTheme()}></EditorComponent>
 						<div class="grid gap-2 mapz">
 							<div class="mt-4">
-								Drücke entweder <code class="text-lg border-1 rounded px-1">Strg + S</code> oder{' '}
-								<code class="text-lg border-1 rounded px-1">Command + S</code>, um die Änderungen zu übernehmen und zu
-								speichern.
+								Drücke entweder <code class="text-lg border-1 rounded px-1">Strg + S</code> oder <code class="text-lg border-1 rounded px-1">Command + S</code>,
+								um die Änderungen zu übernehmen und zu speichern.
 							</div>
 							<div class="flex gap-2 flex-wrap">
-								<KolButton
-									class="w-full sm:w-auto"
-									_label="Theme erstellen"
-									_on={onClickCreate}
-									_variant="primary"
-								></KolButton>
+								<KolButton class="w-full sm:w-auto" _label="Theme erstellen" _on={onClickCreate} _variant="primary"></KolButton>
 								<KolButton class="w-full sm:w-auto" _label="Theme herunterladen" _on={onClickDownload}></KolButton>
-								<KolButton
-									class="w-full sm:w-auto"
-									_label="Alle Änderungen verwerfen"
-									_on={onClickClear}
-									_variant="danger"
-								></KolButton>
+								<KolButton class="w-full sm:w-auto" _label="Alle Änderungen verwerfen" _on={onClickClear} _variant="danger"></KolButton>
 							</div>
 							<div class="flex gap-2">
 								<KolInputFile _on={onChangeUpload}>Theme laden</KolInputFile>
@@ -294,17 +266,17 @@ export const AppComponent: Component = () => {
 						<div>
 							<KolHeading>Theming</KolHeading>
 							<KolAlert _type="info">
-								Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden
-								Sie sich gerne an <KolLink _href="mailto: ---@---.de">---@---.de</KolLink>
+								Das Theming ist noch in einem experimentellen Zustand. Für Hinweise oder Verbesserungsvorschläge wenden Sie sich gerne an{' '}
+								<KolLink _href="mailto: ---@---.de">---@---.de</KolLink>
 							</KolAlert>
 							<p>
-								Zum Gestalten der Komponenten werden sogenannte Themes verwendet. Jedes Theme beinhaltet
-								CSS-Definitionen, die jede Komponente individuell stylt.
+								Zum Gestalten der Komponenten werden sogenannte Themes verwendet. Jedes Theme beinhaltet CSS-Definitionen, die jede Komponente individuell
+								stylt.
 							</p>
 							<KolHeading>Theme einbinden</KolHeading>
 							<p>
-								Um ihr Theme ({getTheme()}) in ihre Anwendung einzubinden, müssen Sie einfach den Quellcode kopieren und
-								in z.B. die <code>main.ts</code> ihrer Anwendung einfügen.
+								Um ihr Theme ({getTheme()}) in ihre Anwendung einzubinden, müssen Sie einfach den Quellcode kopieren und in z.B. die <code>main.ts</code> ihrer
+								Anwendung einfügen.
 							</p>
 						</div>
 						<div
