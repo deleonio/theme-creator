@@ -21,10 +21,7 @@ const modelStyle = editor.createModel('', 'css', uriStyle);
 
 class CssProvider implements languages.CompletionItemProvider {
 	public triggerCharacters?: string[] | undefined;
-	public provideCompletionItems(
-		model: editor.ITextModel,
-		position: Position
-	): languages.ProviderResult<languages.CompletionList> {
+	public provideCompletionItems(model: editor.ITextModel, position: Position): languages.ProviderResult<languages.CompletionList> {
 		const matches = model
 			.getValueInRange({
 				startLineNumber: 1,
@@ -127,12 +124,7 @@ export const EditorComponent: Component<Props> = (props: Props) => {
 					</div>
 					{getRerenderEditor() && (
 						<div class="h-70vh" data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
-							<div
-								class="p-4 overflow-auto w-full h-full"
-								data-theme={props.theme}
-								data-theme-cache="false"
-								data-theme-reset="true"
-							>
+							<div class="p-4 overflow-auto w-auto h-full" data-theme={props.theme} data-theme-cache="false" data-theme-reset="true">
 								<PreviewComponent />
 							</div>
 						</div>
