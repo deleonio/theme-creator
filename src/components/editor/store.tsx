@@ -270,6 +270,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Klick mich!" _variant="normal"></KolButton>
 				<KolButton _label="Klick mich!" _variant="danger"></KolButton>
 				<KolButton _label="Klick mich!" _variant="ghost"></KolButton>
+				<KolButton _label="Klick mich!" _customClass="loading"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center">
 				<KolButton _label="Klick mich!" _icon="home" _variant="primary"></KolButton>
@@ -277,6 +278,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Klick mich!" _icon="home" _variant="normal"></KolButton>
 				<KolButton _label="Klick mich!" _icon="home" _variant="danger"></KolButton>
 				<KolButton _label="Klick mich!" _icon="home" _variant="ghost"></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _customClass="loading"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center">
 				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="primary" style="width: 120px"></KolButton>
@@ -284,6 +286,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="normal" style="width: 120px"></KolButton>
 				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="danger" style="width: 120px"></KolButton>
 				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="ghost" style="width: 120px"></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _customClass="loading" style="width: 120px"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center">
 				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="primary"></KolButton>
@@ -291,6 +294,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom"></KolButton>
 				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left"></KolButton>
 				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top"></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _iconOnly _customClass="loading" _tooltipAlign="top"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center">
 				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="primary"></KolButton>
@@ -298,6 +302,7 @@ export const components: Record<string, Component> = {
 				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="normal"></KolButton>
 				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="danger"></KolButton>
 				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="ghost"></KolButton>
+				<KolButton _label="Klick mich!" _icon="home" _disabled _customClass="loading"></KolButton>
 			</div>
 			<div class="grid gap-6 text-center">
 				<KolButton
@@ -349,6 +354,16 @@ export const components: Record<string, Component> = {
 						bottom: 'icofont-arrow-down',
 					}}
 					_variant="ghost"
+				></KolButton>
+				<KolButton
+					_label="Klick mich!"
+					_icon={{
+						left: 'icofont-arrow-left',
+						right: 'icofont-arrow-right',
+						top: 'icofont-arrow-up',
+						bottom: 'icofont-arrow-down',
+					}}
+					_customClass="loading"
 				></KolButton>
 			</div>
 		</div>
