@@ -429,8 +429,11 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-DETAILS': () => (
 		<div class="grid justify-center gap-6">
-			<KolDetails _open _summary="Ihre Überschrift">
-				Inhalt der Details-Komponente
+			<KolDetails _open _summary="Ihre Überschrift 1">
+				Inhalt der ersten Details-Komponente
+			</KolDetails>
+			<KolDetails _open _summary="Ihre Überschrift 2">
+				Inhalt der zweiten Details-Komponente
 			</KolDetails>
 		</div>
 	),
