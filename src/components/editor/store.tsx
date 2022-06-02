@@ -39,6 +39,7 @@ import {
 } from '@kolibri/solid';
 import { SelectOption } from '@kolibri/lib';
 import { DATA, Zeiten } from './data';
+import countries from 'world_countries_lists/data/countries/de/countries.json';
 
 export const baseCss = `:host button.normal {
     background-color: rgb(105, 11, 85);
@@ -60,19 +61,20 @@ const STATUS_OPTIONS: SelectOption<string>[] = [
 		value: '',
 		disabled: true,
 	},
-	{
-		label: 'Herr',
-		value: 'Herr',
-	},
-	{
-		label: 'Frau',
-		value: 'Frau',
-	},
-	{
-		label: 'Firma',
-		value: 'Firma',
-	},
 ];
+
+type Country = {
+	id: number;
+	alpha2: string;
+	alpha3: string;
+	name: string;
+};
+(countries as Country[]).forEach((country) =>
+	STATUS_OPTIONS.push({
+		label: country.name,
+		value: country.alpha2,
+	})
+);
 
 const ERROR_MSG = 'Ich bin eine Fehlermeldung!';
 
