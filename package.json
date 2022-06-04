@@ -23,12 +23,12 @@
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "6.1.1",
-		"@kolibri/lib": "1.0.16-rc.12",
-		"@kolibri/solid": "1.0.16-rc.12",
-		"@kolibri/theme-bmf": "1.0.16-rc.12",
-		"@kolibri/theme-bpa": "1.0.16-rc.12",
-		"@kolibri/theme-itzbund": "1.0.16-rc.12",
-		"@kolibri/theme-mapz": "1.0.16-rc.12",
+		"@kolibri/lib": "1.0.16-rc.13",
+		"@kolibri/solid": "1.0.16-rc.13",
+		"@kolibri/theme-bmf": "1.0.16-rc.13",
+		"@kolibri/theme-bpa": "1.0.16-rc.13",
+		"@kolibri/theme-itzbund": "1.0.16-rc.13",
+		"@kolibri/theme-mapz": "1.0.16-rc.13",
 		"@vscode/codicons": "0.0.30",
 		"monaco-editor": "0.33.0",
 		"monaco-editor-webpack-plugin": "7.0.1",
@@ -39,9 +39,9 @@
 		"@leanup/stack": "1.3.18",
 		"@leanup/stack-solid": "1.3.18",
 		"@leanup/stack-webpack": "1.3.18",
-		"@unocss/preset-mini": "0.37.2",
-		"@unocss/webpack": "0.37.2",
-		"npm-check-updates": "13.0.4",
-		"typescript": "4.7.2"
+		"@unocss/preset-mini": "0.37.3",
+		"@unocss/webpack": "0.37.3",
+		"npm-check-updates": "13.1.1",
+		"typescript": "4.7.3"
 	}
 }
