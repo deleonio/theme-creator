@@ -37,7 +37,7 @@ import {
 	KolToast,
 	KolVersion,
 } from '@kolibri/solid';
-import { SelectOption } from '@kolibri/lib';
+import { Bundesanstalt, SelectOption } from '@kolibri/lib';
 import { DATA, Zeiten } from './data';
 import countries from 'world_countries_lists/data/countries/de/countries.json';
 
@@ -401,6 +401,17 @@ export const components: Record<string, Component> = {
 			</KolCard>
 			<KolCard _headline="H2-Überschrift der Card" _level={2}>
 				<div slot="content">Inhalt der Card</div>
+			</KolCard>
+			<KolCard _headline="Bild in der Card" _hasFooter _level={2}>
+				<div slot="content">
+					<img alt="Einleitungsbild der Stadtverwaltung" class="w-full" src="http://placeimg.com/400/200/arch" />
+				</div>
+				<div slot="footer">
+					<KolButtonGroup>
+						<KolButton _label="Kaufen" _variant="primary"></KolButton>
+						<KolButton _label="Löschen" _icon={'trash'} _iconOnly _variant="danger"></KolButton>
+					</KolButtonGroup>
+				</div>
 			</KolCard>
 			<KolCard _headline="H3-Überschrift der Card" _level={3}>
 				<div slot="header">Fußbereich der Card</div>
@@ -850,6 +861,9 @@ export const components: Record<string, Component> = {
 				Externer Link
 			</KolLink>
 			<KolLink _href="/">Besuchter Link</KolLink>
+			<KolLink _href="#/" _useCase="image" _ariaLabel="Zurück zur Startseite">
+				<KolLogo class="inline-flex w-50" _org={Bundesanstalt['Informationstechnikzentrum Bund']}></KolLogo>
+			</KolLink>
 			<KolIndentedText>
 				<p>
 					<b>Links sind unsichtbar geschalten</b>
@@ -895,6 +909,104 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-NAV': () => (
 		<div class="col-12 grid gap-6">
+			<div class="inline-flex">
+				<KolNav
+					class="font-80 max-width"
+					_ariaLabel="Navigation in der Breite beschränkt"
+					_has-compact-button
+					_links={[
+						{
+							_label: '1 Navigationspunkt mit sehr langem Link-Test',
+							_href: '#abc',
+							_icon: 'woodpecker',
+							_target: 'asdasd',
+						},
+						{
+							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+							_href: '#abc',
+							_icon: 'woodpecker',
+						},
+						{
+							_active: true,
+							_label: '3 Navigationspunkt',
+							_href: '#abc',
+							_icon: 'woodpecker',
+							_children: [
+								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
+								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+								{
+									_active: true,
+									_label: '3.3 Navigationspunkt',
+									_href: '#abc',
+									_children: [
+										{ _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
+										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
+									],
+								},
+								{
+									_label: '3.4 Navigationspunkt',
+									_href: '#abc',
+									_children: [
+										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
+										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
+									],
+								},
+								{ _label: '3.5 Navigationspunkt', _href: '#abc' },
+							],
+						},
+						{ _label: '4 Navigationspunkt', _href: '#abc' },
+					]}
+				></KolNav>
+			</div>
+			<div class="inline-flex">
+				<KolNav
+					class="font-60 max-width"
+					_ariaLabel="Navigation initial eingeklappt"
+					_compact
+					_links={[
+						{
+							_label: '1 Navigationspunkt mit sehr langem Link-Test',
+							_href: '#abc',
+							_icon: 'woodpecker',
+							_target: 'asdasd',
+						},
+						{
+							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
+							_href: '#abc',
+							_icon: 'woodpecker',
+						},
+						{
+							_active: true,
+							_label: '3 Navigationspunkt',
+							_href: '#abc',
+							_icon: 'woodpecker',
+							_children: [
+								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
+								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
+								{
+									_active: true,
+									_label: '3.3 Navigationspunkt',
+									_href: '#abc',
+									_children: [
+										{ _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
+										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
+									],
+								},
+								{
+									_label: '3.4 Navigationspunkt',
+									_href: '#abc',
+									_children: [
+										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
+										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
+									],
+								},
+								{ _label: '3.5 Navigationspunkt', _href: '#abc' },
+							],
+						},
+						{ _label: '4 Navigationspunkt', _href: '#abc' },
+					]}
+				></KolNav>
+			</div>
 			<div class="inline-flex">
 				<KolNav
 					_ariaLabel="Navigation mit sinnvoller Breite"
@@ -994,104 +1106,6 @@ export const components: Record<string, Component> = {
 						{ _label: '4 Navigationspunkt', _href: '#abc', _iconOnly: true },
 					]}
 					_orientation="horizontal"
-				></KolNav>
-			</div>
-			<div class="inline-flex">
-				<KolNav
-					class="font-80 max-width"
-					_ariaLabel="Navigation in der Breite beschränkt"
-					_has-compact-button
-					_links={[
-						{
-							_label: '1 Navigationspunkt mit sehr langem Link-Test',
-							_href: '#abc',
-							_icon: 'woodpecker',
-							_target: 'asdasd',
-						},
-						{
-							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
-							_href: '#abc',
-							_icon: 'woodpecker',
-						},
-						{
-							_active: true,
-							_label: '3 Navigationspunkt',
-							_href: '#abc',
-							_icon: 'woodpecker',
-							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
-								{
-									_active: true,
-									_label: '3.3 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
-										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{
-									_label: '3.4 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{ _label: '3.5 Navigationspunkt', _href: '#abc' },
-							],
-						},
-						{ _label: '4 Navigationspunkt', _href: '#abc' },
-					]}
-				></KolNav>
-			</div>
-			<div class="inline-flex">
-				<KolNav
-					class="font-60 max-width"
-					_ariaLabel="Navigation initial eingeklappt"
-					_compact
-					_links={[
-						{
-							_label: '1 Navigationspunkt mit sehr langem Link-Test',
-							_href: '#abc',
-							_icon: 'woodpecker',
-							_target: 'asdasd',
-						},
-						{
-							_label: '2 Navigationspunkt und ich_bin_ein_echt_langes_zusammengesetztes_Worte_und_versuche_das_Layout_zu_brechen',
-							_href: '#abc',
-							_icon: 'woodpecker',
-						},
-						{
-							_active: true,
-							_label: '3 Navigationspunkt',
-							_href: '#abc',
-							_icon: 'woodpecker',
-							_children: [
-								{ _label: '3.1 Navigationspunkt', _href: '#abc', _icon: 'woodpecker' },
-								{ _label: '3.2 Navigationspunkt', _href: '#abc', _icon: 'woodpecker', _target: 'asdasd' },
-								{
-									_active: true,
-									_label: '3.3 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _active: true, _label: '3.3.1 Navigationspunkt (aktiv)', _href: '#abc' },
-										{ _label: '3.3.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{
-									_label: '3.4 Navigationspunkt',
-									_href: '#abc',
-									_children: [
-										{ _label: '3.4.1 Navigationspunkt', _href: '#abc' },
-										{ _label: '3.4.2 Navigationspunkt', _href: '#abc' },
-									],
-								},
-								{ _label: '3.5 Navigationspunkt', _href: '#abc' },
-							],
-						},
-						{ _label: '4 Navigationspunkt', _href: '#abc' },
-					]}
 				></KolNav>
 			</div>
 		</div>
