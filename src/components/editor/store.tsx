@@ -116,7 +116,7 @@ export const components: Record<string, Component> = {
 		</div>
 	),
 	'KOL-ACCORDION': () => (
-		<div class="grid justify-center gap-6">
+		<div class="grid justify-center gap-1">
 			<KolAccordion _level={1} _heading="Überschrift Accordion 1" _open>
 				<div slot="content">{LONG_TEXT}</div>
 			</KolAccordion>
@@ -134,6 +134,18 @@ export const components: Record<string, Component> = {
 			</KolAccordion>
 			<KolAccordion _level={6} _heading="Überschrift Accordion 6">
 				<div slot="content">{LONG_TEXT}</div>
+			</KolAccordion>
+			<KolAccordion class="bordered" _heading="Accordion #3 Header" _level={3}>
+				<p slot="header">
+					In den Accordion-Header kann auch noch was komplexeres eingefügt werden.
+					<KolButton class="not-used" _icon="ui-add" _label="Hinzufügen" _variant="secondary"></KolButton>
+				</p>
+				<p slot="content">
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Soluta pariatur laudantium saepe ipsa atque officia cupiditate repudiandae harum earum aut
+					doloribus autem libero exercitationem dolor ad, magni dignissimos ratione fuga. Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
+					perferendis qui animi nesciunt illo facere, doloribus sint cupiditate nihil dolorem voluptate ab esse! Ducimus ad est commodi molestias voluptas
+					reiciendis.
+				</p>
 			</KolAccordion>
 		</div>
 	),
@@ -499,7 +511,7 @@ export const components: Record<string, Component> = {
 				<KolInputCheckbox _checked _id="anrede" _name="anrede" _type="switch">
 					Ausgewählt
 				</KolInputCheckbox>
-				<KolInputCheckbox _id="anrede" _indeterminate _name="anrede" _type="switch">
+				<KolInputCheckbox _id="anrede" _disabled _indeterminate _name="anrede" _type="switch" _touched _error={ERROR_MSG}>
 					Unbestimmt (Indeterminate)
 				</KolInputCheckbox>
 			</div>
