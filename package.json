@@ -19,7 +19,8 @@
 		"test": "cross-env NODE_ENV=test mocha",
 		"prepare:husky": "husky install",
 		"commit-msg": "commitlint",
-		"pre-commit": "lint-staged"
+		"pre-commit": "lint-staged",
+		"git:commit": "git commit -a -m"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-free": "6.1.1",
