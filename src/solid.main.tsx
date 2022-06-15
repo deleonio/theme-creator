@@ -3,9 +3,9 @@ import { render } from 'solid-js/web';
 import { AppComponent } from './components/app/component.solid';
 import { defineCustomElements } from '@kolibri/lib/dist/loader';
 import { register } from '@kolibri/lib';
-import { Theme } from '@kolibri/themes';
+import { BMF, BPA, ITZBund, MAPZ } from '@kolibri/themes';
 
-register([Theme.BMF, Theme.BPA, Theme.ITZBund, Theme.MAPZ], defineCustomElements, {
+register([BMF, BPA, ITZBund, MAPZ], defineCustomElements, {
 	theme: {
 		detect: 'auto',
 	},
