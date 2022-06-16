@@ -278,49 +278,49 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-BUTTON': () => (
 		<div class="grid grid-cols-3 items-center justify-items-center gap-6">
-			<div class="grid gap-6 text-center">
-				<KolButton _label="Klick mich!" _variant="primary"></KolButton>
-				<KolButton _label="Klick mich!" _variant="secondary"></KolButton>
-				<KolButton _label="Klick mich!" _variant="normal"></KolButton>
-				<KolButton _label="Klick mich!" _variant="danger"></KolButton>
-				<KolButton _label="Klick mich!" _variant="ghost"></KolButton>
-				<KolButton _label="Klick mich!" _customClass="loading"></KolButton>
+			<div class="grid gap-6 text-center items-center justify-items-center">
+				<KolButton _label="Primary" _variant="primary"></KolButton>
+				<KolButton _label="Secondary" _variant="secondary"></KolButton>
+				<KolButton _label="Normal" _variant="normal"></KolButton>
+				<KolButton _label="Danger" _variant="danger"></KolButton>
+				<KolButton _label="Ghost" _variant="ghost"></KolButton>
+				<KolButton _label="Loading" _customClass="loading"></KolButton>
 			</div>
-			<div class="grid gap-6 text-center">
-				<KolButton _label="Klick mich!" _icon="home" _variant="primary"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _variant="secondary"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _variant="normal"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _variant="danger"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _variant="ghost"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _customClass="loading"></KolButton>
+			<div class="grid gap-6 text-center items-center justify-items-center">
+				<KolButton _label="Primary" _icon="home" _variant="primary"></KolButton>
+				<KolButton _label="Secondary" _icon="home" _variant="secondary"></KolButton>
+				<KolButton _label="Normal" _icon="home" _variant="normal"></KolButton>
+				<KolButton _label="Danger" _icon="home" _variant="danger"></KolButton>
+				<KolButton _label="Ghost" _icon="home" _variant="ghost"></KolButton>
+				<KolButton _label="Loading" _icon="home" _customClass="loading"></KolButton>
 			</div>
-			<div class="grid gap-6 text-center">
-				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="primary" style="width: 120px"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="secondary" style="width: 120px"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="normal" style="width: 120px"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="danger" style="width: 120px"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _variant="ghost" style="width: 120px"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconAlign="right" _customClass="loading" style="width: 120px"></KolButton>
+			<div class="grid gap-6 text-center items-center justify-items-center">
+				<KolButton _label="Primary" _icon="home" _iconAlign="right" _variant="primary" style="width: 120px"></KolButton>
+				<KolButton _label="Secondary" _icon="home" _iconAlign="right" _variant="secondary" style="width: 120px"></KolButton>
+				<KolButton _label="Normal" _icon="home" _iconAlign="right" _variant="normal" style="width: 120px"></KolButton>
+				<KolButton _label="Danger" _icon="home" _iconAlign="right" _variant="danger" style="width: 120px"></KolButton>
+				<KolButton _label="Ghost" _icon="home" _iconAlign="right" _variant="ghost" style="width: 120px"></KolButton>
+				<KolButton _label="Loading" _icon="home" _iconAlign="right" _customClass="loading" style="width: 120px"></KolButton>
 			</div>
-			<div class="grid gap-6 text-center">
-				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="primary"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _iconOnly _customClass="loading" _tooltipAlign="top"></KolButton>
+			<div class="grid gap-6 text-center items-center justify-items-center">
+				<KolButton _label="Primary" _icon="home" _iconOnly _variant="primary"></KolButton>
+				<KolButton _label="Secondary" _icon="home" _iconOnly _variant="secondary" _tooltipAlign="right"></KolButton>
+				<KolButton _label="Normal" _icon="home" _iconOnly _variant="normal" _tooltipAlign="bottom"></KolButton>
+				<KolButton _label="Danger" _icon="home" _iconOnly _variant="danger" _tooltipAlign="left"></KolButton>
+				<KolButton _label="Ghost" _icon="home" _iconOnly _variant="ghost" _tooltipAlign="top"></KolButton>
+				<KolButton _label="Loading" _icon="home" _iconOnly _customClass="loading" _tooltipAlign="top"></KolButton>
 			</div>
-			<div class="grid gap-6 text-center">
-				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="primary"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="secondary"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="normal"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="danger"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _disabled _variant="ghost"></KolButton>
-				<KolButton _label="Klick mich!" _icon="home" _disabled _customClass="loading"></KolButton>
+			<div class="grid gap-6 text-center items-center justify-items-center">
+				<KolButton _label="Primary" _icon="home" _disabled _variant="primary"></KolButton>
+				<KolButton _label="Secondary" _icon="home" _disabled _variant="secondary"></KolButton>
+				<KolButton _label="Normal" _icon="home" _disabled _variant="normal"></KolButton>
+				<KolButton _label="Danger" _icon="home" _disabled _variant="danger"></KolButton>
+				<KolButton _label="Ghost" _icon="home" _disabled _variant="ghost"></KolButton>
+				<KolButton _label="Loading" _icon="home" _disabled _customClass="loading"></KolButton>
 			</div>
-			<div class="grid gap-6 text-center">
+			<div class="grid gap-6 text-center items-center justify-items-center">
 				<KolButton
-					_label="Klick mich!"
+					_label="Primary"
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -330,7 +330,7 @@ export const components: Record<string, Component> = {
 					_variant="primary"
 				></KolButton>
 				<KolButton
-					_label="Klick mich!"
+					_label="Secondary"
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -340,7 +340,7 @@ export const components: Record<string, Component> = {
 					_variant="secondary"
 				></KolButton>
 				<KolButton
-					_label="Klick mich!"
+					_label="Normal"
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -350,7 +350,7 @@ export const components: Record<string, Component> = {
 					_variant="normal"
 				></KolButton>
 				<KolButton
-					_label="Klick mich!"
+					_label="Danger"
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -360,7 +360,7 @@ export const components: Record<string, Component> = {
 					_variant="danger"
 				></KolButton>
 				<KolButton
-					_label="Klick mich!"
+					_label="Ghost"
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -370,7 +370,7 @@ export const components: Record<string, Component> = {
 					_variant="ghost"
 				></KolButton>
 				<KolButton
-					_label="Klick mich!"
+					_label="Loading"
 					_icon={{
 						left: 'icofont-arrow-left',
 						right: 'icofont-arrow-right',
@@ -385,20 +385,20 @@ export const components: Record<string, Component> = {
 	'KOL-BUTTON-GROUP': () => (
 		<div class="grid gap-6 text-center">
 			<KolButtonGroup>
-				<KolButton _label="Klick mich!" _variant="primary"></KolButton>
-				<KolButton _label="Klick mich!" _variant="secondary"></KolButton>
-				<KolButton _label="Klick mich!" _variant="normal"></KolButton>
-				<KolButton _label="Klick mich!" _variant="danger"></KolButton>
-				<KolButton _label="Klick mich!" _variant="ghost"></KolButton>
-				<KolButton _label="Klick mich!" _disabled></KolButton>
+				<KolButton _label="Primary" _variant="primary"></KolButton>
+				<KolButton _label="Secondary" _variant="secondary"></KolButton>
+				<KolButton _label="Normal" _variant="normal"></KolButton>
+				<KolButton _label="Danger" _variant="danger"></KolButton>
+				<KolButton _label="Ghost" _variant="ghost"></KolButton>
+				<KolButton _label="Disabled" _disabled></KolButton>
 			</KolButtonGroup>
 			<KolButtonGroup>
-				<KolButton _label="Klick mich!" _variant="primary"></KolButton>
-				<KolButton _label="Klick mich!" _variant="secondary"></KolButton>
-				<KolButton _label="Klick mich!" _variant="normal"></KolButton>
-				<KolButton _label="Klick mich!" _icon="trash" _iconOnly _variant="danger"></KolButton>
-				<KolButton _label="Klick mich!" _icon="info" _iconOnly _variant="ghost"></KolButton>
-				<KolButton _label="Klick mich!" _icon="lock" _iconOnly _disabled></KolButton>
+				<KolButton _label="Primary" _variant="primary"></KolButton>
+				<KolButton _label="Secondary" _variant="secondary"></KolButton>
+				<KolButton _label="Normal" _variant="normal"></KolButton>
+				<KolButton _label="Danger" _icon="trash" _iconOnly _variant="danger"></KolButton>
+				<KolButton _label="Ghost" _icon="info" _iconOnly _variant="ghost"></KolButton>
+				<KolButton _label="Disabled" _icon="lock" _iconOnly _disabled></KolButton>
 			</KolButtonGroup>
 		</div>
 	),
