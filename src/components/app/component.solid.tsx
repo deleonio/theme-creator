@@ -51,6 +51,10 @@ export const AppComponent: Component = () => {
 	const [getValue, setValue] = createSignal('');
 	const [getPropsStyle, setPropsStyle] = createSignal(false);
 
+	const interval = setInterval(() => {
+		downloadTheme();
+	}, 300000);
+
 	let select: HTMLElement;
 
 	createEffect(() => {
@@ -91,10 +95,13 @@ export const AppComponent: Component = () => {
 		},
 	};
 
+	const downloadTheme = () =>
+		saveData(format(getValue(), { parser: 'json', plugins: [parserBabel] }), `kolibri-theme-${getTheme()}-${new Date().toISOString()}.json`);
+
 	const onClickDownload = {
 		onClick: () => {
 			renderJsonString(getTheme());
-			saveData(format(getValue(), { parser: 'json', plugins: [parserBabel] }), `kolibri-theme-${getTheme()}-${new Date().toISOString()}.json`);
+			downloadTheme();
 		},
 	};
 
