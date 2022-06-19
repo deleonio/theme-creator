@@ -28,12 +28,7 @@ export const restoreThemes = () => {
 };
 
 export const storeThemes = () => {
-	if (
-		typeof window.KoliBri === 'object' &&
-		window.KoliBri !== null &&
-		typeof window.KoliBri.Themes === 'object' &&
-		window.KoliBri.Themes !== null
-	) {
-		sessionStorage.setItem('kolibri-themes', JSON.stringify(window.KoliBri.Themes));
+	if (typeof window.A11yUi === 'object' && window.A11yUi !== null && typeof window.A11yUi.Themes === 'object' && window.A11yUi.Themes !== null) {
+		sessionStorage.setItem('kolibri-themes', JSON.stringify(window.A11yUi.Themes));
 	}
 };

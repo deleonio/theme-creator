@@ -67,20 +67,20 @@ export const AppComponent: Component = () => {
 
 	const renderJsonString = (theme: string): void => {
 		if (
-			typeof window.KoliBri === 'object' &&
-			window.KoliBri !== null &&
-			typeof window.KoliBri.Themes === 'object' &&
-			window.KoliBri.Themes !== null &&
-			typeof window.KoliBri.Themes[theme] === 'object' &&
-			window.KoliBri.Themes[theme] !== null &&
-			window.KoliBri.Themes[theme] !== undefined
+			typeof window.A11yUi === 'object' &&
+			window.A11yUi !== null &&
+			typeof window.A11yUi.Themes === 'object' &&
+			window.A11yUi.Themes !== null &&
+			typeof window.A11yUi.Themes[theme] === 'object' &&
+			window.A11yUi.Themes[theme] !== null &&
+			window.A11yUi.Themes[theme] !== undefined
 		) {
-			const styles = window.KoliBri.Themes[theme];
+			const styles = window.A11yUi.Themes[theme];
 			const keys = Object.getOwnPropertyNames(styles);
 			keys.forEach((key: string) => {
 				styles[key] = (styles[key] as string).replace(/( {2,}|\n|)/g, '');
 			});
-			setValue(JSON.stringify(window.KoliBri.Themes[theme]));
+			setValue(JSON.stringify(window.A11yUi.Themes[theme]));
 		}
 	};
 
@@ -152,8 +152,8 @@ export const AppComponent: Component = () => {
 	};
 
 	const getList = (): string[] => {
-		if (typeof window.KoliBri === 'object' && window.KoliBri !== null && typeof window.KoliBri.Themes === 'object' && window.KoliBri.Themes !== null) {
-			return Object.getOwnPropertyNames(window.KoliBri.Themes);
+		if (typeof window.A11yUi === 'object' && window.A11yUi !== null && typeof window.A11yUi.Themes === 'object' && window.A11yUi.Themes !== null) {
+			return Object.getOwnPropertyNames(window.A11yUi.Themes);
 		} else {
 			return [];
 		}

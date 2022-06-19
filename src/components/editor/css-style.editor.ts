@@ -9,27 +9,21 @@ import { storeThemes } from '../../shares/theme';
  * - https://www.npmjs.com/package/clean-css
  * - https://www.npmjs.com/package/monaco-editor
  */
-export const createCssEditor = (
-	model: editor.ITextModel,
-	ref: HTMLElement,
-	tagName: string,
-	theme: string,
-	setSignal: Function
-) => {
+export const createCssEditor = (model: editor.ITextModel, ref: HTMLElement, tagName: string, theme: string, setSignal: Function) => {
 	setTimeout(() => {
 		let css = ``;
 		if (
-			typeof window.KoliBri === 'object' &&
-			window.KoliBri !== null &&
-			typeof window.KoliBri.Themes === 'object' &&
-			window.KoliBri.Themes !== null &&
-			typeof window.KoliBri.Themes[theme] === 'object' &&
-			window.KoliBri.Themes[theme] !== null &&
+			typeof window.A11yUi === 'object' &&
+			window.A11yUi !== null &&
+			typeof window.A11yUi.Themes === 'object' &&
+			window.A11yUi.Themes !== null &&
+			typeof window.A11yUi.Themes[theme] === 'object' &&
+			window.A11yUi.Themes[theme] !== null &&
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-			typeof window.KoliBri.Themes[theme][tagName] === 'string'
+			typeof window.A11yUi.Themes[theme][tagName] === 'string'
 		) {
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-			css = window.KoliBri.Themes[theme][tagName] as string;
+			css = window.A11yUi.Themes[theme][tagName] as string;
 			try {
 				css = format(css, { parser: 'css', plugins: [parserCss] });
 			} catch (e) {}

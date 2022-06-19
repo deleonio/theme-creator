@@ -1,4 +1,4 @@
-import { Component } from 'solid-js';
+import { Bundesanstalt, SelectOption } from '@kolibri/lib';
 import {
 	KolAbbr,
 	KolAccordion,
@@ -37,9 +37,9 @@ import {
 	KolToast,
 	KolVersion,
 } from '@kolibri/solid';
-import { Bundesanstalt, SelectOption } from '@kolibri/lib';
-import { DATA, Zeiten } from './data';
+import { Component } from 'solid-js';
 import countries from 'world_countries_lists/data/countries/de/countries.json';
+import { DATA, Zeiten } from './data';
 
 export const baseCss = `:host button.normal {
     background-color: rgb(105, 11, 85);
@@ -76,6 +76,7 @@ type Country = {
 	})
 );
 
+const HINT_MSG = 'Ich bin ein Hinweis.';
 const ERROR_MSG = 'Ich bin eine Fehlermeldung!';
 
 const LONG_TEXT = `Lorem Ipsum ist ein einfacher Demo-Text für die Print- und Schriftindustrie. Lorem Ipsum ist in der Industrie bereits der Standard Demo-Text seit 1500, als ein unbekannter Schriftsteller eine Hand voll Wörter nahm und diese durcheinander warf um ein Musterbuch zu erstellen. Es hat nicht nur 5 Jahrhunderte überlebt, sondern auch in Spruch in die elektronische Schriftbearbeitung geschafft (bemerke, nahezu unverändert). Bekannt wurde es 1960, mit dem erscheinen von "Letraset", welches Passagen von Lorem Ipsum enhielt, so wie Desktop Software wie "Aldus PageMaker" - ebenfalls mit Lorem Ipsum.`;
@@ -759,6 +760,7 @@ export const components: Record<string, Component> = {
 	'KOL-INPUT-TEXT': () => (
 		<div class="grid justify-center gap-6 bg-red-100">
 			<KolInputText
+				_hint={HINT_MSG}
 				_error={ERROR_MSG}
 				_placeholder="Mit Icons"
 				_icon={{
