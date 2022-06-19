@@ -1,9 +1,9 @@
 import { render } from 'solid-js/web';
 
-import { AppComponent } from './components/app/component.solid';
+import { register } from '@kolibri/core';
 import { defineCustomElements } from '@kolibri/lib/dist/loader';
-import { register } from '@kolibri/lib';
 import { BAMF, BMF, BPA, BZST, DESY, ITZBund, MAPZ, NXT, ZOLL } from '@kolibri/themes';
+import { AppComponent } from './components/app/component.solid';
 
 register([BAMF, BPA, BMF, BZST, DESY, ITZBund, MAPZ, NXT, ZOLL], defineCustomElements, {
 	theme: {
