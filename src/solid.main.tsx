@@ -2,10 +2,10 @@ import { render } from 'solid-js/web';
 
 import { register } from '@kolibri/core';
 import { defineCustomElements } from '@kolibri/lib/dist/loader';
-import { BAMF, BMF, BPA, BZST, DESY, HAMBURG, ITZBund, MAPZ, NXT, ZOLL } from '@kolibri/themes';
+import { BAMF, BMF, BPA, BZST, DESY, HH, ITZBund, MAPZ, NXT, ZOLL } from '@kolibri/themes';
 import { AppComponent } from './components/app/component.solid';
 
-register([BAMF, BPA, BMF, BZST, DESY, HAMBURG, ITZBund, MAPZ, NXT, ZOLL], defineCustomElements, {
+register([BAMF, BPA, BMF, BZST, DESY, HH, ITZBund, MAPZ, NXT, ZOLL], defineCustomElements, {
 	theme: {
 		detect: 'auto',
 	},
