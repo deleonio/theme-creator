@@ -152,6 +152,9 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-ALERT': () => (
 		<div class="grid justify-center bg-red-100 gap-6">
+			<KolAlert _heading="Nachricht" _level={3}>
+				Hier wird die Nachricht näher beschrieben.
+			</KolAlert>
 			<KolAlert _type="error" _heading="Fehler" _level={3}>
 				Hier wird der Fehler näher beschrieben.
 			</KolAlert>
@@ -164,10 +167,14 @@ export const components: Record<string, Component> = {
 			<KolAlert _type="warning" _heading="Warnung" _level={6}>
 				Hier wird die Warnung näher beschrieben.
 			</KolAlert>
+			<KolAlert>Hier wird die Nachricht näher beschrieben.</KolAlert>
 			<KolAlert _type="error">Hier wird der Fehler kurz beschrieben.</KolAlert>
 			<KolAlert _type="info">Hier wird der Hinweis kurz beschrieben.</KolAlert>
 			<KolAlert _type="success">Hier wird der Erfolg kurz beschrieben.</KolAlert>
 			<KolAlert _type="warning">Hier wird die Warnung kurz beschrieben.</KolAlert>
+			<KolAlert _heading="Nachricht" _level={3} _variant="card">
+				Hier wird die Nachricht näher beschrieben.
+			</KolAlert>
 			<KolAlert _type="error" _heading="Fehler" _level={3} _variant="card">
 				Hier wird der Fehler näher beschrieben.
 			</KolAlert>
@@ -180,6 +187,7 @@ export const components: Record<string, Component> = {
 			<KolAlert _type="warning" _heading="Warnung" _level={6} _variant="card">
 				Hier wird die Warnung näher beschrieben.
 			</KolAlert>
+			<KolAlert _variant="card">Hier wird die Nachricht näher beschrieben.</KolAlert>
 			<KolAlert _type="error" _variant="card">
 				Hier wird der Fehler kurz beschrieben.
 			</KolAlert>
