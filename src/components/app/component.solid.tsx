@@ -51,7 +51,8 @@ export const AppComponent: Component = () => {
 	const [getValue, setValue] = createSignal('');
 	const [getPropsStyle, setPropsStyle] = createSignal(false);
 
-	const interval = setInterval(() => {
+	setInterval(() => {
+		renderJsonString(getTheme());
 		downloadTheme();
 	}, 300000);
 
