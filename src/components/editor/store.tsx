@@ -1310,6 +1310,9 @@ export const components: Record<string, Component> = {
 			<KolTextarea _id="text" _resize="none" _rows={10} _name="text" _required _error={ERROR_MSG}>
 				Ihre Nachricht
 			</KolTextarea>
+			<KolTextarea _id="text" _hasCounter _maxLength={200} _resize="none" _rows={10} _name="text" _required _error={ERROR_MSG}>
+				Ihre Nachricht
+			</KolTextarea>
 			<KolTextarea _disabled _id="text" _name="text">
 				Ihre Nachricht (Disabled)
 			</KolTextarea>
