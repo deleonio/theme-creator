@@ -37,7 +37,7 @@ import {
 	KolToast,
 	KolVersion,
 } from '@kolibri/solid';
-import { Component } from 'solid-js';
+import { Component, createSignal } from 'solid-js';
 import countries from 'world_countries_lists/data/countries/de/countries.json';
 import { DATA, Zeiten } from './data';
 
@@ -52,8 +52,6 @@ export const selectedComponent = 'KOL-BUTTON';
 
 // https://css-tricks.com/snippets/javascript/random-hex-color/
 const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
-
-const activeElement = null;
 
 const STATUS_OPTIONS: SelectOption<string>[] = [
 	{
@@ -75,6 +73,7 @@ type Country = {
 		value: country.alpha2,
 	})
 );
+let modalElement: HTMLElement | null = null;
 
 const HINT_MSG = 'Ich bin ein Hinweis.';
 const ERROR_MSG = 'Ich bin eine Fehlermeldung!';
@@ -913,17 +912,32 @@ export const components: Record<string, Component> = {
 	),
 	'KOL-MODAL': () => (
 		<div class="grid justify-center gap-6">
-			<KolModal _active-element={activeElement} _width="80%">
-				<div>
-					<div>Ich bin ein Modal</div>
-					<KolButton _label="Schließen"></KolButton>
-				</div>
+			<KolModal
+				_width="80%"
+				ref={(element) => {
+					modalElement = element;
+				}}
+			>
+				<KolCard _heading="Ich bin ein Modal">
+					<div slot="content">
+						<KolButton
+							_label="Schließen"
+							_on={{
+								onClick: () => {
+									modalElement._activeElement = null;
+								},
+							}}
+						></KolButton>
+					</div>
+				</KolCard>
 			</KolModal>
 			<KolButton
 				_label="Modal öffnen"
 				_on={{
 					onClick: (event: Event) => {
-						activeElement = event.target as HTMLElement;
+						if (modalElement instanceof HTMLElement) {
+							modalElement._activeElement = event.target as HTMLElement;
+						}
 					},
 				}}
 			></KolButton>
